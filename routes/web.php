@@ -19,5 +19,6 @@ Route::get('admin','AdminController@index');
 
 Auth::routes();
 Route::resource('sociedades', 'SociedadesController');
+Route::resource('accionistas', 'AccionistasController');
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -115,6 +115,7 @@ class SociedadesController extends Controller
     */
     public function refreshSessionSociedades(){
         //Refrescamos la variable de sessión
+        Session::forget('allSociedades');
         $allSociedades = Sociedades::get(); 
         Session::put('allSociedades',$allSociedades);
     }
