@@ -15,19 +15,14 @@
         <hr style="color:#003" width="50%">
         <br>
     </div>
-    <div id="principalPanel">
-        <li><a href="{{ url('lang', ['en']) }}">En</a></li>
-        <li><a href="{{ url('lang', ['es']) }}">Es</a></li>
-        <div class="jumbotron container">
-            <p>{{ trans('welcome.home') }} | {{ Session::get('lang') }}</p>
-        </div>
-        @section('myContent')
- 
-        @show
-    </div>
-
-</section>
-
-    
     <!-- /.content -->
+    <div id="principalPanel">
+        <div class="container-fluid">
+            @section('myContent')
+ 
+            @show
+        </div>
+    </div>
+    <!-- /.content -->
+</section>
 </div>
