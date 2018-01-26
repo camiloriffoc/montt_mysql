@@ -21,6 +21,7 @@ Auth::routes();
 Route::resource('sociedades', 'SociedadesController');
 
 Route::get('accionistas/{id}','AccionistasController@index');
+Route::get('accionistas/create/{id}','AccionistasController@create');
 Route::resource('accionistas', 'AccionistasController');
 
 

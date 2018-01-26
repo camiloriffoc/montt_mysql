@@ -4,8 +4,8 @@
 	 {{ Form::select('tipo_accionista',['natural' => 'Persona Natural', 'juridica' => 'Persona jurídica'],isset($accionista->tipo_accionista) ? $accionista->tipo_accionista : 'natural', array('class' => 'form-control')) }}
 </div>
 
-<!-- ID de la SOCIEDAD 
-<input type="hidden" value="">-->
+<!-- ID de la SOCIEDAD -->
+<input type="hidden" name="sociedad_id" value="{{$sociedad->id or ''}}">
 
 <div class="form-group col-sm-6">
 	<label>Razón Social:</label>

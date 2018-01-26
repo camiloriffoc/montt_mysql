@@ -26,10 +26,11 @@ class AccionistasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        $sociedad = Sociedades::find($id);
         //Retornamos formulario de creáción de accionista
-        return view('accionistas.create');
+        return view('accionistas.create')->with('sociedad',$sociedad);
     }
 
     /**
