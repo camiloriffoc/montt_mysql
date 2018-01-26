@@ -1,4 +1,4 @@
-	<li><a href="/datos_generales/form_general/" class="menu-cuentas">Datos Generales</a></li>
+	<li><a href="{{ url('/sociedades/'.$sociedad->id.'/edit') }}">Datos Generales</a></li>
 	<li><a href="/capital_social/form_capital_social/" class="menu-cuentas">Capital Social</a></li>
 	<li><a href="/acciones/form_acciones/" class="menu-cuentas">Acciones</a></li>
 	<li><a href="/accionistas/form_accionistas/" class="menu-cuentas">Accionistas</a></li>
