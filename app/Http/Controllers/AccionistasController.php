@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Accionista;
+use App\Sociedades;
 
 class AccionistasController extends Controller
 {
@@ -12,11 +13,12 @@ class AccionistasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        $sociedad = Sociedades::find($id);
         $accionistas = Accionista::get();
-        return view('accionistas.index')->with('accionistas',$accionistas);
+        return view('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
     }
 
     /**

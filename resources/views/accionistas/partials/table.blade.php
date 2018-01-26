@@ -1,4 +1,4 @@
-<h1 class="text-primary">Administración de Accionistas</h1>
+<h1 class="text-primary">Administración de Accionistas: {{$sociedad->razon_social}}</h1>
 
 <table class="table table-bordered" id="MyTable">
   <thead>

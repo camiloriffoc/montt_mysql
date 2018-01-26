@@ -1,7 +1,7 @@
 	<li><a href="{{ url('/sociedades/'.$sociedad->id.'/edit') }}">Datos Generales</a></li>
 	<li><a href="/capital_social/form_capital_social/" class="menu-cuentas">Capital Social</a></li>
 	<li><a href="/acciones/form_acciones/" class="menu-cuentas">Acciones</a></li>
-	<li><a href="{{ url('/accionistas/') }}" >Accionistas</a></li>
+	<li><a href="{{ url('/accionistas',['id' => $sociedad->id]) }}" >Accionistas</a></li>
 	<li><a href="/registro_acciones/" class="menu-cuentas">Registro de Accionistas</a></li>
 	<li><a href="/directorio/" class="menu-cuentas">Directorio</a></li>
 	<li><a href="/gerente_general/form_gerente_general/" class="menu-cuentas">Gerente General</a></li>
