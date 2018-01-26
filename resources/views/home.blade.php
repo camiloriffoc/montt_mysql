@@ -6,6 +6,7 @@
 
     @section('content')
         <h1>BIENVENIDOS AL SISTEMA DE GESTION MONTT</h1>
+        
     @endsection
 @endauth
 @guest

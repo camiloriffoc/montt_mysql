@@ -21,7 +21,9 @@
         <div class="jumbotron container">
             <p>{{ trans('welcome.home') }} | {{ Session::get('lang') }}</p>
         </div>
+        
         @section('myContent')
+
  
         @show
     </div>

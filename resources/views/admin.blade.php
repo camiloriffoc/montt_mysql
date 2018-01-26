@@ -7,6 +7,7 @@
       
             <!-- Main Header -->
             @include('smartbricks.main-header')
+            
             <!-- Left side column. contains the logo and sidebar -->
             @include('smartbricks.main-sidebar')
             <!-- Content Wrapper. Contains page content -->
@@ -20,6 +21,7 @@
             <!-- Add the sidebar's background. This div must be placed
             immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
+
      </div>
 </div>
 
