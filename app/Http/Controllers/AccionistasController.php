@@ -19,7 +19,6 @@ class AccionistasController extends Controller
      */
     public function index(Request $request,$id)
     {
-
         //Asigno a la session la sociedad correspondiente
         $this->getSociedad($id);
         $sociedad = Session::get('sociedad');
@@ -44,14 +43,18 @@ class AccionistasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request,$id)
     {
-        
+
         $this->getSociedad($id);
         $sociedad = Session::get('sociedad');
 
-        //Retornamos formulario de creáción de accionista
-        return view('accionistas.create')->with('sociedad',$sociedad);
+        $view = \View::make('accionistas.create')->with('sociedad',$sociedad);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
     }
 
     /**
@@ -62,11 +65,20 @@ class AccionistasController extends Controller
      */
     public function store(Request $request)
     {
-        
-        ////Método para guardar en al Base de Datos el nuevo accionista
-        Accionista::create($request->all());
+        if($request->ajax()){
+            ////Método para guardar en al Base de Datos el nuevo accionista
+            Accionista::create($request->all());
 
-        return redirect()->route('accionistas.index');
+            return response()->json([
+                'message' => 'Creado con éxito',
+                'iden' => 'Limpiar',
+            ]);
+
+        }else{
+            return response()->json([
+                'response' => 'Error en guardar',
+            ]);
+        }
     }
 
     /**
@@ -86,11 +98,19 @@ class AccionistasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+
         ////Vista de la edición de una Sociedad
         $accionista = Accionista::find($id);
-        return view('accionistas.edit')->with('accionista',$accionista);
+
+        $view = \View::make('accionistas.edit')->with('accionista',$accionista);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
+
     }
 
     /**
@@ -102,14 +122,22 @@ class AccionistasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        ////Actualizamos una sociedad
-        $input = $request->all();
-        $accionista = Accionista::find($id);
-        $accionista->update($input);
+        if($request->ajax()){
+            ////Actualizamos una sociedad
+            $input = $request->all();
+            $accionista = Accionista::find($id);
+            $accionista->update($input);
+
+        return response()->json([
+                'message' => 'Editado con éxito',
+        ]);
 
 
-        return redirect()->route('accionistas.index');
-
+        }else{
+            return response()->json([
+                'response' => 'Error en guardar',
+            ]);
+        }
     }
 
     /**
@@ -120,10 +148,10 @@ class AccionistasController extends Controller
      */
     public function destroy($id)
     {
-        ////Eliminar una sociedad
+        ////Eliminar un accionista
         $accionista = Accionista::find($id);
         $accionista->delete();
-        
+
         return redirect()->route('accionistas.index');
     }
 }

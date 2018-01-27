@@ -5,7 +5,7 @@
 </div>
 
 <!-- ID de la SOCIEDAD -->
-<input type="hidden" name="sociedad_id" value="{{$sociedad->id or ''}}">
+<input type="hidden" name="sociedad_id" value="{{$sociedad->id or $accionista->sociedad_id }}">
 
 <div class="form-group col-sm-6">
 	<label>Razón Social:</label>

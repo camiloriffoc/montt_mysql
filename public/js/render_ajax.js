@@ -4,13 +4,10 @@ $(document).ready(function(){
 	$(document).on('click','.menu-cuentas',function(event){
 		event.preventDefault();
 		var url = $(this).attr("href");
-		//alert(url);
         ajaxRenderSection(url);
     })
 
 	function ajaxRenderSection(url) {
-		//alert('entre a la funcion ajaxRender');
-		//alert('mi url: '+url);
         $.ajax({
             type: 'GET',
             url: url,
@@ -34,7 +31,4 @@ $(document).ready(function(){
             }
         });
     }
-
-    
-
 });

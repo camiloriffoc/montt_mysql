@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-	{!! Form::open([ 'route' => 'accionistas.store', 'method' => 'POST']) !!}
+	{!! Form::open([ 'route' => 'accionistas.store', 'method' => 'POST', 'class' => 'add-registro-ajax']) !!}
 	@include('accionistas.partials.fields')
 
 	<div class="form-group col-sm-12">
@@ -17,5 +17,5 @@
 
 	{!! Form::close() !!}
 </div>
-
+  <script src="{{ asset('js/accionista.js') }}"></script>
 @endsection
