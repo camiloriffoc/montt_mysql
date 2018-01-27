@@ -12,6 +12,6 @@ class Accionista extends Model
     //Relación del accionista con la sociedad (1 : 1 ) un accionista pertenece a una sociedad
     public function sociedad(){
 
-    	return $this->belongsTo('Sociedades');
+    	return $this->belongsTo('App\Sociedades');
     }
 }

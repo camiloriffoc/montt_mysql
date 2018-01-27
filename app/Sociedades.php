@@ -12,6 +12,6 @@ class Sociedades extends Model
     //Relacion 1 : n (Sociedad muchos accionistas)
     public function accionistas(){
     	
-    	return $this->hasMany('Accionistas');
+    	return $this->hasMany('App\Accionista','sociedad_id');
     }
 }

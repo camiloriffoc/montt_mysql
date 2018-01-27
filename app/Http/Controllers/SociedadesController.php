@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Sociedades;
 use Session;
 
@@ -13,11 +14,17 @@ class SociedadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Retorna todas las sociedades creadas
         $sociedades = Sociedades::get();
-        return view('sociedades.index')->with('sociedades',$sociedades);
+        
+        $view = \View::make('sociedades.index')->with('sociedades',$sociedades);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
     }
 
     /**
@@ -64,11 +71,18 @@ class SociedadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         //Vista de la edición de una Sociedad
         $sociedad = Sociedades::find($id);
-        return view('sociedades.edit')->with('sociedad',$sociedad);
+        $view = \View::make('sociedades.edit')->with('sociedad',$sociedad);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
+
+        
     }
 
     /**

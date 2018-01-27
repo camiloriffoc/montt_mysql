@@ -3,7 +3,7 @@
 @section('myContent')
 <div class="row">
 	<div class="col-md-12">
-		<h1>Nuevo Accionista: {{$sociedad->razon_social}}</h1>
+		<h1>Nuevo Accionista: {{ Session::get('sociedad')->razon_social }}</h1>
 	</div>
 </div>
 

@@ -29,7 +29,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree" id="buscar_aca">
-            <li class="header"><a href="{{ url('/sociedades') }}">Sociedades</a></li>
+            <li class="header"><a href="{{ url('/sociedades') }}" class="menu-cuentas">Sociedades</a></li>
             <!-- Optionally, you can add icons to the links -->
             {{--<li class="active"><a href="#"><i class="fa fa-building"></i> <span>Link</span></a></li>--}}
             {{--<li><a href="#"><i class="fa fa-building"></i> <span>Another Link</span></a></li>--}}

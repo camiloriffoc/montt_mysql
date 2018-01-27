@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Accionista;
 use App\Sociedades;
+use Session;
+
+
 
 class AccionistasController extends Controller
 {
@@ -13,12 +17,26 @@ class AccionistasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(Request $request,$id)
     {
-        //
-        $sociedad = Sociedades::find($id);
-        $accionistas = Accionista::get();
-        return view('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
+
+        //Asigno a la session la sociedad correspondiente
+        $this->getSociedad($id);
+        $sociedad = Session::get('sociedad');
+        //obtendo todos los accionistas*********
+        $accionistas = Sociedades::find($id)->accionistas;
+        //retorno vista y lista de todos los accionistas
+
+        $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
+
+
+        
+        //return view('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
     }
 
     /**
@@ -28,7 +46,10 @@ class AccionistasController extends Controller
      */
     public function create($id)
     {
-        $sociedad = Sociedades::find($id);
+        
+        $this->getSociedad($id);
+        $sociedad = Session::get('sociedad');
+
         //Retornamos formulario de creáción de accionista
         return view('accionistas.create')->with('sociedad',$sociedad);
     }
@@ -41,9 +62,7 @@ class AccionistasController extends Controller
      */
     public function store(Request $request)
     {
-        //Debo obtener el ID de la  sociedad actual
-
-
+        
         ////Método para guardar en al Base de Datos el nuevo accionista
         Accionista::create($request->all());
 
