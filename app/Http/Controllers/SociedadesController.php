@@ -82,6 +82,9 @@ class SociedadesController extends Controller
     {
         //Actualizamos una sociedad
         $input = $request->all();
+        
+        dd($input->id);die();    
+
         $sociedad = Sociedades::find($id);
         $sociedad->update($input);
 
