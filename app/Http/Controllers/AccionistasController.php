@@ -23,7 +23,7 @@ class AccionistasController extends Controller
         $this->getSociedad($id);
         $sociedad = Session::get('sociedad');
         //obtendo todos los accionistas*********
-        $accionistas = Sociedades::find($id)->accionistas;
+        $accionistas = Sociedades::find($id)->accionistas()->orderBy('accionistas.id','DESC')->get();
         //retorno vista y lista de todos los accionistas
 
         $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
@@ -128,9 +128,9 @@ class AccionistasController extends Controller
             $accionista = Accionista::find($id);
             $accionista->update($input);
 
-        return response()->json([
+            return response()->json([
                 'message' => 'Editado con éxito',
-        ]);
+            ]);
 
 
         }else{
@@ -146,12 +146,19 @@ class AccionistasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        ////Eliminar un accionista
-        $accionista = Accionista::find($id);
-        $accionista->delete();
-
-        return redirect()->route('accionistas.index');
+        if($request->ajax()){
+            ////Eliminar un accionista
+            $accionista = Accionista::find($id);
+            $accionista->delete();
+            return response()->json([
+                'message' => 'Eliminado con éxito',
+            ]);
+        }else{
+            return response()->json([
+                'response' => 'Error en guardar',
+            ]);
+        }
     }
 }

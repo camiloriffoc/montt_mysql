@@ -22,5 +22,7 @@ Route::resource('sociedades', 'SociedadesController');
 
 Route::get('accionistas/{id}','AccionistasController@index');
 Route::get('accionistas/create/{id}','AccionistasController@create');
+Route::post('accionistas/{id}','AccionistasController@destroy');
+
 Route::resource('accionistas', 'AccionistasController');
 Route::get('/home', 'HomeController@index')->name('home');

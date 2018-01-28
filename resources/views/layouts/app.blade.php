@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Montt</title>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +30,6 @@
 
   @yield('content')
   <script src="{{ asset('js/render_ajax.js') }}"></script>
-
 
 </body>
 </html> 
