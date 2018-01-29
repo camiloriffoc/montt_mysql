@@ -1,6 +1,6 @@
 $(document).ready(function(){
-$('#myModalAlertGeneral').modal('hide');
 
+	//Se agrega un nuevo accionista
     $('.add-registro-ajax').on("submit", function(ev){
         ev.preventDefault();
         var $form = $(this);
@@ -9,12 +9,13 @@ $('#myModalAlertGeneral').modal('hide');
         var $url = $form.attr("action");
         var $data = $(this)[0];
         var $formData = new FormData($data);
+        
         //Petición AJAX
         $.ajax({
             url: $url,
             method: $form.attr("method"),
             data: $formData,
-            dataType: "json",
+            dataType: "JSON",
             processData: false,
             contentType: false,
             //Se ejecuta antes que la petición inicie
@@ -23,15 +24,14 @@ $('#myModalAlertGeneral').modal('hide');
             },
             //El servidor responde y todo sale bien
             success: function(data){
-                console.log('Data',data);
             	if(data.iden == "Limpiar"){
             		$form.find('input[type="text"]').val('');
-
             	}
             	
-                $('#myModalAlertGeneral').modal('show');
+                $('#myAlertModal').modal('show');
                 $button.val("Guardar");
-                  
+                
+
             },
             error: function(err){
                 console.log('Error',err);
@@ -39,7 +39,7 @@ $('#myModalAlertGeneral').modal('hide');
                     $form.find('input[type="text"]').val('');
                 }
                 
-                $('#myModalAlertGeneral').modal('show');
+                $('#myAlertModal').modal('show');
                 $button.val("Guardar");
             },
         });
@@ -47,77 +47,53 @@ $('#myModalAlertGeneral').modal('hide');
         return false;
     });
 
-    //Agregar SUCURSAL
-    $('.add-registro-ajax-sucursal').on("submit", function(ev){
+    //Se actualiza un accionista
+    $('.update-registro-ajax').on("submit", function(ev){
+    	alert('entreeee');
         ev.preventDefault();
         var $form = $(this);
         //Para buscar en el formulario un elemento que tenga el type submit
         var $button = $form.find("[type='submit']");
         var $url = $form.attr("action");
+        var $data = $(this)[0];
+        var $formData = new FormData($data);
+        alert($url);
         
         //Petición AJAX
         $.ajax({
             url: $url,
             method: $form.attr("method"),
-            data: $form.serialize(),
+            data: $formData,
             dataType: "JSON",
+            processData: false,
+            contentType: false,
             //Se ejecuta antes que la petición inicie
             beforeSend: function(){
                 $button.val("Cargando...");
             },
             //El servidor responde y todo sale bien
             success: function(data){
-                if(data.iden == "Limpiar"){
-                    $form.find('input[type="text"]').val('');
-                }
-                $('#myModalAddGiros').modal('hide');
-                $('#myModalAddSucursal').modal('hide');
-                $('#myModalAlertGeneral').modal('show');
+            	if(data.iden == "Limpiar"){
+            		$form.find('input[type="text"]').val('');
+            	}
+            	
+                $('#myAlertModal').modal('show');
                 $button.val("Guardar");
                 
 
             },
             error: function(err){
-                console.log(err)
-                $button.val("Hubo un Error...");
+                console.log('Error',err);
+                if(err.iden == "Limpiar"){
+                    $form.find('input[type="text"]').val('');
+                }
+                
+                $('#myAlertModal').modal('show');
+                $button.val("Guardar");
             },
         });
 
         return false;
     });
-
-    //Botón modal acceder data de giro
-    $('.edit-giro').on("click",function(ev){
-        ev.preventDefault();
-
-        var $boton = $(this);
-        var $url = $boton.attr('href');
-        $.ajax({
-            type: 'GET',
-            url: $url,
-            dataType: 'json',
-            beforeSend: function () {
-                    $boton.val('Cargando...');
-                },
-            success: function (data) {
-                $('#modalEditGirosData').empty().append($(data));
-                //alert('mostre la página');
-                
-            },
-            error: function (data) {
-                var errors = data.responseJSON;
-                if (errors) {
-                    $.each(errors, function (i) {
-                        alert(errors[i]);
-
-                    });
-                }
-            }
-        });
-
-    });
-
-
-
 
 });

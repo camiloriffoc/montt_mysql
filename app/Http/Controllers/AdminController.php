@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
    public function index()
     {
-      
+      	Session::forget('allSociedades');
     	$allSociedades = Sociedades::get();	
 
     	//Creamos una variable de sesión

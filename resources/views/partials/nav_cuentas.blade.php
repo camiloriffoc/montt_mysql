@@ -1,4 +1,5 @@
-@if(Session::get('allSociedades')!=null)
+
+@if(Session::get('allSociedades') != null)
 	@foreach(Session::get('allSociedades') as $sociedad)
 		<li class="treeview" id="lista_filtro">
 			<a href="#"><i class="fa fa-link"></i> <span>{{str_limit(ucfirst(mb_strtolower($sociedad->razon_social)), $limit = 20, $end = '...')}}</span>
