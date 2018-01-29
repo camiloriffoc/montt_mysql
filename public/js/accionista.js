@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	//Se agrega un nuevo accionista
     $('.add-registro-ajax').on("submit", function(ev){
         ev.preventDefault();
@@ -134,5 +133,24 @@ $(document).ready(function(){
         });
 
     });
+
+    //Comprobamos el valor inicial del select fallecido
+    var valor_inicial_fallecido_select = $('.control-accionista-fallecido').val();
+    comprobarValorSelectFallecido(valor_inicial_fallecido_select);
+
+    //Función para habilitar campos de accionista fallecido
+    $('.control-accionista-fallecido').on('change',function(){
+        var valor = $(this).val();
+        comprobarValorSelectFallecido(valor);
+    });
+
+
+    function comprobarValorSelectFallecido(variable){
+        if(variable == 'si'){
+            $('.div-accionista-fallecido').show();
+        }else{
+            $('.div-accionista-fallecido').hide();
+        }
+    }
 
 });

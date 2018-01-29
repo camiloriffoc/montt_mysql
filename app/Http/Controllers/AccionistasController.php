@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 use App\Accionista;
 use App\Sociedades;
 use Session;
@@ -26,7 +27,13 @@ class AccionistasController extends Controller
         $accionistas = Sociedades::find($id)->accionistas()->orderBy('accionistas.id','DESC')->get();
         //retorno vista y lista de todos los accionistas
 
-        $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad);
+        $porcentajesAccionesAccionistas = DB::table('sociedades')
+                                            ->join('accionistas','sociedades.id','=','accionistas.sociedad_id')
+                                            ->join('porcentaje_acciones_accionistas','accionistas.id','=','porcentaje_acciones_accionistas.accionista_id')
+                                            ->where('sociedades.id','=',$id)
+                                            ->get();
+
+        $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad)->with('porcentajesAccionesAccionistas',$porcentajesAccionesAccionistas);
 
         if($request->ajax()){
             $sections = $view->renderSections();

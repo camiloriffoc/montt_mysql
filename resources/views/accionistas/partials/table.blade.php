@@ -6,7 +6,7 @@
         <th class="text-center">ID</th>
         <th class="text-center">Nombre o Razón Social</th>
         <th class="text-center">Rut</th>
-        <th class="text-center">Fecha</th>
+        <th class="text-center">Fallecido</th>
         <th class="text-center">Acciones</th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
             <td class="text-center">{{ $accionista->id }}</td>
             <td class="text-center">{{ $accionista->razon_social or $accionista->nombre}}</td>
             <td class="text-center">{{ $accionista->rut }}</td>
-        <td class="text-center">{{ $accionista->created_at }}</td>
+        <td class="text-center">{{ $accionista->accionista_fallecido }}</td>
 
         {!! Form::open(['route' => ['accionistas.destroy', ':ACCIONISTA_ID'], 'method' => 'DELETE', 'id'=>'form-delete-accionista']) !!}
 

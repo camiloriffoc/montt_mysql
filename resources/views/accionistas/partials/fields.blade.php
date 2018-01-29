@@ -1,7 +1,7 @@
 
 <div class="form-group col-sm-6">
 	<label>Tipo:</label>
-	 {{ Form::select('tipo_accionista',['natural' => 'Persona Natural', 'juridica' => 'Persona jurídica'],isset($accionista->tipo_accionista) ? $accionista->tipo_accionista : 'natural', array('class' => 'form-control')) }}
+	{{ Form::select('tipo_accionista',['natural' => 'Persona Natural', 'juridica' => 'Persona jurídica'],isset($accionista->tipo_accionista) ? $accionista->tipo_accionista : 'natural', array('class' => 'form-control')) }}
 </div>
 
 <!-- ID de la SOCIEDAD -->
@@ -128,5 +128,43 @@
 	<input type="text" class="form-control" name="personerias_y_proxys" value="{{ $accionista->personerias_y_proxys or '' }}">
 </div>
 
+<div class="form-group col-sm-6">
+	<label>Fallecido:</label>
+	{{ Form::select('accionista_fallecido',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_fallecido) ? $accionista->accionista_fallecido : 'no', array('class' => 'form-control control-accionista-fallecido')) }}
+</div>
 
 
+
+<div class="row">
+	<div class="col-md-12 div-accionista-fallecido">
+		<div class="form-group col-sm-6">
+			<label>Número de Acciones:</label>
+			<input type="text" class="form-control" name="fallecido_numero_acciones" value="{{ $accionista->fallecido_numero_acciones or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Fecha de Fallecimiento:</label>
+			<input type="date" class="form-control" name="fallecido_fecha_fallecimiento" value="{{ $accionista->fallecido_fecha_fallecimiento or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Designación de Albacea y/o Administrador Proindiviso –  Nombre y RUT:</label>
+			<input type="text" class="form-control" name="fallecido_designacion_albacea_administrador" value="{{ $accionista->fallecido_designacion_albacea_administrador or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Cumplido o no los trámites legales de libre transferencia:</label>
+			{{ Form::select('fallecido_tramites_libre_transferencia',['no' => 'No', 'si' => 'Si'],isset($accionista->fallecido_tramites_libre_transferencia) ? $accionista->fallecido_tramites_libre_transferencia : 'no', array('class' => 'form-control')) }}
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>RUT de comunidad o Número:</label>
+			<input type="text" class="form-control" name="fallecido_rut_comunidad" value="{{ $accionista->fallecido_rut_comunidad or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Nómina de Herederos /  RUT / Porcentaje:</label>
+			<input type="text" class="form-control" name="fallecido_nomina_herederos" value="{{ $accionista->fallecido_nomina_herederos or '' }}">
+		</div>
+	</div>
+</div>
