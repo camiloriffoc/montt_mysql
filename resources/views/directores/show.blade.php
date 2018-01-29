@@ -4,27 +4,10 @@
 
 <div class="row">
 	<br>
-	<a href="/director/{{$id}}" class="btn btn-info">Agregar nuevo Director</a>
-	<a href="/directorio/{{$id}}/edit" class="btn btn-info">Directorio</a>
-	<a href="/secretario/{{$id}}" class="btn btn-info">Agregar Secretario</a>
+	<a href="/director/{{$id}}" class="btn btn-info menu-cuentas">Agregar nuevo Director</a>
+	<a href="/directorio/{{$id}}/edit" class="btn btn-info menu-cuentas">Directorio</a>
+	<a href="/secretario/{{$id}}" class="btn btn-info menu-cuentas">Agregar Secretario</a>
 </div>	
-
-@isset($check)
-	<div class="row" style="margin-top: 10px;">
-		<div class="alert alert-success alert-dismissable">
-    		<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    		<strong>Director editado con exito</strong>
-  		</div>
-	</div>
-@endisset
-@isset($delete)
-    <div class="row" style="margin-top: 10px;">
-		<div class="alert alert-danger alert-dismissable">
-    		<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    		<strong>Director eliminado con exito</strong>
-  		</div>
-	</div>
-@endisset
 
 
 <div class="row">
@@ -33,5 +16,6 @@
 	@include('directores.partials.list')
 
 </div>
+<script src="{{ asset('js/directorio.js') }}"></script>
 
 @endsection

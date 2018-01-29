@@ -3,7 +3,7 @@
 	<li><a href="{{ url('/acciones',['id' => $sociedad->id]) }}" class="menu-cuentas">Acciones</a></li>
 	<li><a href="{{ url('/accionistas',['id' => $sociedad->id]) }}" class="menu-cuentas">Accionistas</a></li>
 	<!--<li><a href="/registro_acciones/" class="menu-cuentas">Registro de Accionistas</a></li>-->
-	<li><a href="/directorio/" class="menu-cuentas">Directorio</a></li>
+	<li><a href="/directorio/{{$sociedad->id}}/edit" class="menu-cuentas">Directorio</a></li>
 	<!--<li><a href="/gerente_general/form_gerente_general/" class="menu-cuentas">Gerente General</a></li>
 	<li><a href="/poderes_apoderados/form_list_poderes/" class="menu-cuentas">{{-- str_limit('Listado de Poderes y Apoderados', $limit = 25, $end = '...') --}}</a></li>
 	<li><a href="/form_fiscalizadores/" class="menu-cuentas">Fiscalizadores</a></li>

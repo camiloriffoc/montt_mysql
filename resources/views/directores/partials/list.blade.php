@@ -31,7 +31,7 @@
             @else
              <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
             @endif
-            <td><a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$director->directorio_id}}/{{$director->id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            <td><a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$director->directorio_id}}/{{$director->id}}" class="delete-director"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
         @endif  
       @endforeach
@@ -73,7 +73,7 @@
             @else
              <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
             @endif
-            <td><a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$director->directorio_id}}/{{$director->id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            <td><a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$director->directorio_id}}/{{$director->id}}" class="delete-director"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
         @endif  
       @endforeach
@@ -101,7 +101,7 @@
           <td>{{$secretario->nombres}}</td>
           <td>{{$secretario->rut}}</td>
           <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-          <td><a href="/secretario/{{$secretario->directorio_id}}" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$secretario->directorio_id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+          <td><a href="/secretario/{{$secretario->directorio_id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/secretario/delete/{{$secretario->directorio_id}}" class="delete-secretario"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
         </tr>
       @endif
     </tbody>
