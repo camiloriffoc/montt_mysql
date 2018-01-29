@@ -115,7 +115,7 @@
                 if(data.iden == "Limpiar"){
                     $form.find('input[type="text"]').val('');
                 }
-                $('.modal-body').html('<p>'+data.message+'</p>');
+                $('#myAlertModal  .modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $row.hide();
 
