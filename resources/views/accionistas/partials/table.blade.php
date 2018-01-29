@@ -27,6 +27,10 @@
                 <a href="{{ url('/accionistas/'.$accionista->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </a>
+
+                <a href="{{ url('/porcentajeAccionesAccionista/'.$accionista->id) }}" class="btn btn-success btn-xs menu-cuentas" data-toggle="tooltip" data-placement="top" title="Porcentaje Acciones">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
             </td>
 
         {!! Form::close() !!}

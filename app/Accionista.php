@@ -14,4 +14,10 @@ class Accionista extends Model
 
     	return $this->belongsTo('App\Sociedades');
     }
+
+    //Relacion 1 : n (accionistas muchos porcentaje acciones accionista)
+    public function porcentajeAccionesAccionistas(){
+    	
+    	return $this->hasMany('App\PorcentajeAccionesAccionista','accionista_id');
+    }
 }

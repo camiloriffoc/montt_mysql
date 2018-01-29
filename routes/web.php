@@ -39,6 +39,11 @@ Route::get('sucursales/create/{id}','SucursalsController@create');
 Route::post('sucursales/{id}','SucursalsController@destroy');
 Route::resource('sucursales', 'SucursalsController');
 
+//Rutas Porcentaje Accioniones para accionista
+Route::get('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@index');
+Route::post('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@destroy');
+Route::resource('porcentajeAccionesAccionista', 'PorcentajeAccionesAccionistaController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

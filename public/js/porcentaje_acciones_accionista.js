@@ -1,5 +1,5 @@
-//Funcion para agregar por AJAX una nueva Sucursal
-	$('.add-sucursal-ajax').on("submit", function(ev){
+//Funcion para agregar por AJAX una nuevo porcentaje
+	$('.add-porcentaje-acciones-ajax').on("submit", function(ev){
         ev.preventDefault();
         var $form = $(this);
         //Para buscar en el formulario un elemento que tenga el type submit
@@ -18,7 +18,7 @@
             contentType: false,
             //Se ejecuta antes que la petición inicie
             beforeSend: function(){
-            	$('#myModalAddSucursal').modal('hide');
+            	$('#myModalAddPorcentajeAccionista').modal('hide');
                 $button.val("Cargando...");
             },
             //El servidor responde y todo sale bien
@@ -45,8 +45,8 @@
         return false;
     });
 
-    //Funcion para EDITAR por AJAX una Sucursal
-	$('.update-sucursal-ajax').on("submit", function(ev){
+    //Funcion para EDITAR por AJAX un % de acciones de accionista
+    $('.update-porcentaje-acciones-ajax').on("submit", function(ev){
 
         ev.preventDefault();
         var $form = $(this);
@@ -71,10 +71,10 @@
             },
             //El servidor responde y todo sale bien
             success: function(data){
-            	if(data.iden == "Limpiar"){
-            		$form.find('input[type="text"]').val('');
-            	}
-            	$('.modal-body').html('<p>'+data.message+'</p>');
+                if(data.iden == "Limpiar"){
+                    $form.find('input[type="text"]').val('');
+                }
+                $('.modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $button.val("Guardar");
                 
@@ -90,13 +90,13 @@
         return false;
     });
 
-     //Función para eliminar una sucursal
-    $('.delete-sucursal').on('click',function(){
+     //Función para eliminar un porcentaje
+    $('.delete-porcentaje').on('click',function(){
         var $row = $(this).parents('tr');
         var $id = $row.data('id');
-        var $form = $('#form-delete-sucursal');
-        var $url = $form.attr('action').replace(':SUCURSAL_ID',$id);
-        var $data = $('#form-delete-sucursal');
+        var $form = $('#form-delete-porcentaje-accionista');
+        var $url = $form.attr('action').replace(':PORCENTAJE_ID',$id);
+        var $data = $('#form-delete-porcentaje-accionista');
         var $formData = new FormData($data);
         //Petición AJAX
         $.ajax({
@@ -128,3 +128,4 @@
         });
 
     });
+
