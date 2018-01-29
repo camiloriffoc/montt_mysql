@@ -4,5 +4,5 @@
         soporte@smartbricks.com
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="#">SmartBricks </a>.</strong> Todos los derechos reservados.
+    <strong>Copyright &copy; 2018 <a href="#"></a>.</strong> Todos los derechos reservados.
 </footer>
