@@ -44,6 +44,11 @@ Route::get('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaCont
 Route::post('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@destroy');
 Route::resource('porcentajeAccionesAccionista', 'PorcentajeAccionesAccionistaController');
 
+//Rutas titulos de acciones
+Route::get('tituloAcciones/{id}','TituloAccionesController@index');
+Route::post('tituloAcciones/{id}','TituloAccionesController@destroy');
+Route::resource('tituloAcciones', 'TituloAccionesController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
