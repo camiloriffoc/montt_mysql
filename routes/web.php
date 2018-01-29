@@ -53,4 +53,4 @@ Route::get('director/delete/{directorio_id}/{id}', 'DirectorController@delete');
 //secretario
 Route::get('secretario/{id}', 'SecretarioController@index');
 Route::post('secretario', 'SecretarioController@store');
-Route::get('director/delete/{directorio_id}', 'SecretarioController@delete');
+Route::get('secretario/delete/{directorio_id}', 'SecretarioController@delete');
