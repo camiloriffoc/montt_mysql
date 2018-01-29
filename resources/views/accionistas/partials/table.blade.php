@@ -12,18 +12,18 @@
   </thead>
   <tbody>
     @foreach($accionistas as $accionista)
-        <tr>
+        <tr data-id='{{ $accionista->id }}'>
             <td class="text-center">{{ $accionista->id }}</td>
             <td class="text-center">{{ $accionista->razon_social or $accionista->nombre}}</td>
             <td class="text-center">{{ $accionista->rut }}</td>
         <td class="text-center">{{ $accionista->created_at }}</td>
 
-        {!! Form::open(['route' => ['accionistas.destroy', $accionista->id], 'method' => 'DELETE']) !!}
+        {!! Form::open(['route' => ['accionistas.destroy', ':ACCIONISTA_ID'], 'method' => 'DELETE', 'id'=>'form-delete-accionista']) !!}
 
             <td class="text-center">
-                <button type="submit" class="btn btn-danger btn-xs">
+                <a type="submit" class="btn btn-danger btn-xs delete-accionista" data-confirm="Are you sure?">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
+                </a>
                 <a href="{{ url('/accionistas/'.$accionista->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </a>
@@ -44,3 +44,4 @@
     </tr>
   </tfoot>
 </table>
+<script src="{{ asset('js/accionista.js') }}"></script>
