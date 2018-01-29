@@ -20,4 +20,10 @@ class Sociedades extends Model
     	
     	return $this->hasMany('App\Acciones','sociedad_id');
     }
+
+    //Relacion 1 : n (Sociedad muchas sucursales)
+    public function sucursales(){
+        
+        return $this->hasMany('App\Sucursal','sociedad_id');
+    }
 }

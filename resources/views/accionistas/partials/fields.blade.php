@@ -63,11 +63,6 @@
 </div>
 
 <div class="form-group col-sm-6">
-	<label>Estado:</label>
-	<input type="text" class="form-control" name="domicilio_estado" value="{{ $accionista->domicilio_comuna or '' }}">
-</div>
-
-<div class="form-group col-sm-6">
 	<label>Código Postal / Zip Code:</label>
 	<input type="text" class="form-control" name="domicilio_codigo_postal" value="{{ $accionista->domicilio_codigo_postal or '' }}">
 </div>

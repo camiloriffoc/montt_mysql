@@ -33,6 +33,11 @@ Route::get('acciones/create/{id}','AccionesController@create');
 Route::post('acciones/{id}','AccionesController@destroy');
 Route::resource('acciones', 'AccionesController');
 
+//Rutas para sucursales
+Route::get('sucursales/{id}','SucursalsController@index');
+Route::get('sucursales/create/{id}','SucursalsController@create');
+Route::post('sucursales/{id}','SucursalsController@destroy');
+Route::resource('sucursales', 'SucursalsController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
