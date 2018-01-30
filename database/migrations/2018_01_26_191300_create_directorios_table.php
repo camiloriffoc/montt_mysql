@@ -19,9 +19,9 @@ class CreateDirectoriosTable extends Migration
             $table->string('con_o_sin_suplentes')->nullable();
             $table->string('vigencia_estatutaria_en_el_cargo')->nullable();
             $table->string('cifra_repartidora_de_eleccion')->nullable();
-            $table->string('fecha_nombramiento')->nullable();
+            $table->date('fecha_nombramiento')->nullable();
             $table->string('renovaciones_totales_o_parcial')->nullable();
-            $table->string('epoca_de_renovación')->nullable();
+            $table->date('epoca_de_renovación')->nullable();
             $table->string('vigencia_comprendida_en_cada_periodo')->nullable();
             $table->string('remunerados')->nullable();
             $table->string('gastos_de_representacion')->nullable();

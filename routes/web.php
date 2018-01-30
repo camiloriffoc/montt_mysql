@@ -33,20 +33,22 @@ Route::get('acciones/create/{id}','AccionesController@create');
 Route::post('acciones/{id}','AccionesController@destroy');
 Route::resource('acciones', 'AccionesController');
 
-//Rutas para sucursales
-Route::get('sucursales/{id}','SucursalsController@index');
-Route::get('sucursales/create/{id}','SucursalsController@create');
-Route::post('sucursales/{id}','SucursalsController@destroy');
-Route::resource('sucursales', 'SucursalsController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Rutas para capital social
+Route::get('capital/{id}','CapitalController@index');
+Route::post('capital/','CapitalController@store');
+//capital suscripcion
+Route::post('capital/suscripcion','CapitalController@suscripcionStore');
+Route::get('capital/suscripcion/edit/{id}','CapitalController@suscripcionEdit');
+Route::post('capital/suscripcion/update','CapitalController@suscripcionUpdate');
+//capital pago
+Route::post('capital/pago','CapitalController@pagoStore');
+Route::get('capital/pago/edit/{id}','CapitalController@pagoEdit');
+Route::post('capital/pago/update','CapitalController@pagoUpdate');
 
 
-//directorio
-Route::get('/directorio/{id}/edit','DirectorioController@edit');
-Route::post('/directorio/store','DirectorioController@store');
 
-//director
+//Rutas para director
 Route::get('director/{id}', 'DirectorController@index');
 Route::get('director/show/{id}','DirectorController@show');
 Route::get('director/edit/{id_directorio}/{id}', 'DirectorController@edit');
@@ -54,8 +56,22 @@ Route::post('director', 'DirectorController@store');
 Route::post('director/update', 'DirectorController@update');
 Route::get('director/delete/{directorio_id}/{id}', 'DirectorController@delete');
 
+//directorio
+Route::get('/directorio/{id}/edit','DirectorioController@edit');
+Route::post('/directorio/store','DirectorioController@store');
 
-//secretario
+//Rutas para sucursales
+Route::get('sucursales/{id}','SucursalsController@index');
+Route::get('sucursales/create/{id}','SucursalsController@create');
+Route::post('sucursales/{id}','SucursalsController@destroy');
+Route::resource('sucursales', 'SucursalsController');
+
+
+//Rutas para secretario
 Route::get('secretario/{id}', 'SecretarioController@index');
 Route::post('secretario', 'SecretarioController@store');
 Route::get('secretario/delete/{directorio_id}', 'SecretarioController@delete');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
