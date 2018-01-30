@@ -16,7 +16,6 @@ class CapitalController extends Controller
       		
     		$request_capital = $request->all();
     		$capital = Capital::where('sociedad_id','=',$id)->first();
-        $capital = Capital::where('sociedad_id','=',$id)->first();
         $suscripcion = PlazoMaximoSuscripcion::where('sociedad_id','=',$id)->get();
         $pago = PlazoMaximoPago::where('sociedad_id','=',$id)->get();
         

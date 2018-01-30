@@ -12,14 +12,14 @@
 
 <div class="form-group col-sm-6">
     <label for="">CAPITAL SOCIAL TOTAL AUTORIZADO</label>
-    <input type="number" class="form-control" id="" aria-describedby="emailHelp" placeholder="$10000" name="capital_autorizado" value="{{$capital->capital_autorizado}}">
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Monto Escrito" name="capital_autorizado_escrito" value="{{$capital->capital_autorizado_escrito or ''}}">
+    <input type="number" class="form-control" id="" aria-describedby="emailHelp" placeholder="$10000" name="capital_autorizado" value="{{$capital->capital_autorizado or ''}}">
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Monto Escrito" name="capital_autorizado_escrito" value="{{$capital->capital_autorizado_escrito or ' '}}">
 </div>
 
 <div class="form-group col-sm-6">
     <label>CAPITAL REVALORIZADO AL 31 DE DICIEMBRE DEL AÑO ANTERIOR:</label>
     {{ Form::select('capital_revalorizado',['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($capital->capital_revalorizado) ? $capital->capital_revalorizado : '', array('class' => 'form-control')) }}
-    <input type="text" class="form-control" placeholder="Monto Escrito" name="capital_revalorizado_escrito" value="{{ $capital->capital_revalorizado_escrito or '' }}">
+    <input type="text" class="form-control" placeholder="Monto Escrito" name="capital_revalorizado_escrito" value="{{ $capital->capital_revalorizado_escrito or ' ' }}">
 </div>
 
 <div class="form-group col-sm-6">
@@ -30,7 +30,7 @@
 
  <div class="form-group col-sm-6">
     <label for="">CAPITAL SOCIAL TOTAL PENDIENTE DE SUSCRIPCION:</label>
-    <input type="number" class="form-control" placeholder="Ej. $90" name="capital_por_suscribir" value="{{$capital->capital_por_suscribir or '' }}">
+    <input type="number" class="form-control" placeholder="Ej. $90" name="capital_por_suscribir" value="{{$capital->capital_por_suscribir or ' ' }}">
     {{ Form::select('capital_pendiente_por_suscribir_divisa',['Peso Chileno' => 'Peso Chileno', 'Peso Colombiano' => 'Peso Colombiano', 'Nuevos Soles' => 'Nuevos Soles', 'Peso Argentino' => 'Peso Argentino', 'Reales' => 'Reales', 'Guaranies' => 'Guaranies', 'Dolares' => 'Dolares'],isset($capital->capital_pendiente_por_suscribir_divisa) ? $capital->capital_pendiente_por_suscribir_divisa : '', array('class' => 'form-control')) }}
 </div>
 
@@ -42,6 +42,6 @@
   
   <div class="form-group col-sm-6">
     <label for="">CAPITAL SOCIAL TOTAL PENDIENTE DE PAGO:</label>
-    <input type="number" class="form-control" id="" aria-describedby="emailHelp" placeholder="" name="capital_pendiente_pago" value="{{ $capital->capital_pendiente_pago or '' }}">
+    <input type="number" class="form-control" id="" aria-describedby="emailHelp" placeholder="" name="capital_pendiente_pago" value="{{$capital->capital_pendiente_pago or '' }}">
     {{ Form::select('capital_pendiente_pago_divisa',['Peso Chileno' => 'Peso Chileno', 'Peso Colombiano' => 'Peso Colombiano', 'Nuevos Soles' => 'Nuevos Soles', 'Peso Argentino' => 'Peso Argentino', 'Reales' => 'Reales', 'Guaranies' => 'Guaranies', 'Dolares' => 'Dolares'], isset($capital->capital_pendiente_pago_divisa) ? $capital->capital_pendiente_pago_divisa : '', array('class' => 'form-control')) }}
   </div>
