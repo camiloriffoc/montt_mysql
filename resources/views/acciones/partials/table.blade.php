@@ -46,10 +46,15 @@
   </tbody>
   <tfoot>
     <tr>
-        <th class="text-center">ID</th>
-        <th class="text-center">Razón Social</th>
-        <th class="text-center">Rut</th>
-        <th class="text-center">Fecha</th>
+        <th class="text-center">Serie</th>
+        <th class="text-center">Ordinarias</th>
+        <th class="text-center">Preferida</th>
+        <th class="text-center">Autorizadas</th>
+        <th class="text-center">Suscritas</th>
+        <th class="text-center">Pagadas</th>
+        <th class="text-center">Fecha Autorización</th>
+        <th class="text-center">Fecha Máxima de Suscripción</th>
+        <th class="text-center">Fecha Máxima de Pago</th>
         <th class="text-center">Acciones</th>
     </tr>
   </tfoot>

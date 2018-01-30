@@ -46,6 +46,19 @@ Route::post('capital/pago','CapitalController@pagoStore');
 Route::get('capital/pago/edit/{id}','CapitalController@pagoEdit');
 Route::post('capital/pago/update','CapitalController@pagoUpdate');
 
+//Rutas Porcentaje Accioniones para accionista
+Route::get('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@index');
+Route::post('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@destroy');
+Route::resource('porcentajeAccionesAccionista', 'PorcentajeAccionesAccionistaController');
+
+//Rutas titulos de acciones
+Route::get('tituloAcciones/{id}','TituloAccionesController@index');
+Route::post('tituloAcciones/{id}','TituloAccionesController@destroy');
+Route::resource('tituloAcciones', 'TituloAccionesController');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 
 //Rutas para director

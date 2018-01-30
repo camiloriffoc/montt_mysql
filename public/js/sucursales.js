@@ -45,7 +45,7 @@
         return false;
     });
 
-    //Funcion para EDITAR por AJAX una Accion
+    //Funcion para EDITAR por AJAX una Sucursal
 	$('.update-sucursal-ajax').on("submit", function(ev){
 
         ev.preventDefault();
@@ -115,7 +115,7 @@
                 if(data.iden == "Limpiar"){
                     $form.find('input[type="text"]').val('');
                 }
-                $('.modal-body').html('<p>'+data.message+'</p>');
+                $('#myAlertModal .modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $row.hide();
 

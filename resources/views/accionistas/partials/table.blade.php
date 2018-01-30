@@ -6,7 +6,7 @@
         <th class="text-center">ID</th>
         <th class="text-center">Nombre o Razón Social</th>
         <th class="text-center">Rut</th>
-        <th class="text-center">Fecha</th>
+        <th class="text-center">Fallecido</th>
         <th class="text-center">Acciones</th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
             <td class="text-center">{{ $accionista->id }}</td>
             <td class="text-center">{{ $accionista->razon_social or $accionista->nombre}}</td>
             <td class="text-center">{{ $accionista->rut }}</td>
-        <td class="text-center">{{ $accionista->created_at }}</td>
+        <td class="text-center">{{ $accionista->accionista_fallecido }}</td>
 
         {!! Form::open(['route' => ['accionistas.destroy', ':ACCIONISTA_ID'], 'method' => 'DELETE', 'id'=>'form-delete-accionista']) !!}
 
@@ -26,6 +26,14 @@
                 </a>
                 <a href="{{ url('/accionistas/'.$accionista->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+
+                <a href="{{ url('/porcentajeAccionesAccionista/'.$accionista->id) }}" class="btn btn-success btn-xs menu-cuentas" data-toggle="tooltip" data-placement="top" title="Porcentaje Acciones">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </a>
+
+                <a href="{{ url('/tituloAcciones/'.$accionista->id) }}" class="btn btn-success btn-xs menu-cuentas" data-toggle="tooltip" data-placement="top" title="Titulo de Acciones">
+                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 </a>
             </td>
 

@@ -7,6 +7,12 @@
 			@include('accionistas.partials.table')
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			@include('accionistas.partials.table_porcentaje_accionistas')
+		</div>
+	</div>
     
 
 @endsection

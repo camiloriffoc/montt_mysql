@@ -28,7 +28,7 @@ $(document).ready(function(){
             		$form.find('input[type="text"]').val('');
             		$form.find('input[type="number"]').val('');
             	}
-            	$('.modal-body').html('<p>'+data.message+'</p>');
+            	$('#myAlertModal  .modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $button.val("Guardar");
                 
@@ -36,7 +36,7 @@ $(document).ready(function(){
             },
             error: function(err){
                 console.log('Error',err);
-                $('.modal-body').html('<p>'+err+'</p>');
+                $('#myAlertModal  .modal-body').html('<p>'+err+'</p>');
                 $('#myAlertModal').modal('show');
             },
         });
@@ -73,7 +73,7 @@ $(document).ready(function(){
             	if(data.iden == "Limpiar"){
             		$form.find('input[type="text"]').val('');
             	}
-            	$('.modal-body').html('<p>'+data.message+'</p>');
+            	$('#myAlertModal .modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $button.val("Guardar");
                 
@@ -81,7 +81,7 @@ $(document).ready(function(){
             },
             error: function(err){
                 console.log('Error',err);
-                $('.modal-body').html('<p>'+err+'</p>');
+                $('#myAlertModal  .modal-body').html('<p>'+err+'</p>');
                 $('#myAlertModal').modal('show');
             },
         });
@@ -114,7 +114,7 @@ $(document).ready(function(){
             	if(data.iden == "Limpiar"){
             		$form.find('input[type="text"]').val('');
             	}
-            	$('.modal-body').html('<p>'+data.message+'</p>');
+            	$('#myAlertModal  .modal-body').html('<p>'+data.message+'</p>');
                 $('#myAlertModal').modal('show');
                 $row.hide();
 
@@ -123,7 +123,7 @@ $(document).ready(function(){
             },
             error: function(err){
                 console.log('Error',err);
-                $('.modal-body').html('<p>'+err+'</p>');
+                $('#myAlertModal  .modal-body').html('<p>'+err+'</p>');
                 $('#myAlertModal').modal('show');
             },
         });
