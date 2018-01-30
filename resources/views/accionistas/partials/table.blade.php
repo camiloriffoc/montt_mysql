@@ -24,7 +24,7 @@
                 <a type="submit" class="btn btn-danger btn-xs delete-accionista" data-confirm="Are you sure?">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </a>
-                <a href="{{ url('/accionistas/'.$accionista->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
+                <a href="{{ url('/accionistas/'.$accionista->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas" data-toggle="tooltip" data-placement="top" title="Editar">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </a>
 
