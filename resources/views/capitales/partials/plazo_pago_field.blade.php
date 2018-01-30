@@ -1,7 +1,7 @@
 
 {!! Form::open(array('url' => '/capital/pago', 'method' => 'post', 'class'=>'add-capital')) !!}
 	{!! Form::token() !!}
-	<input type="hidden" name='sociedad_id' value="{{$capital->sociedad_id}}">
+	<input type="hidden" name='sociedad_id' value="{{$sociedad_id}}">
 	<div class="form-group col-sm-6">
     	<label>FECHA EMISION:</label>
     	<input type="date" class="form-control" name="fecha_emision">
