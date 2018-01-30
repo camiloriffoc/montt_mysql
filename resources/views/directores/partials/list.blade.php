@@ -14,6 +14,7 @@
       </tr>
     </thead>
     <tbody>
+      @isset($directores)
       @foreach($directores as $director)
         @if($director->accionista=='Si')
           <tr style="text-align: center;">
@@ -35,6 +36,7 @@
           </tr>
         @endif  
       @endforeach
+      @endisset
     </tbody>
   </table>
 </div>

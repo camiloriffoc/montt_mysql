@@ -9,5 +9,10 @@ class Directorio extends Model
 {
 	protected $table = 'directorios';
 	protected $guarded = array();
+
+	public function sociedad() {
+
+		return $this->belongsTo('App\Sociedades');
+	}
     
 }

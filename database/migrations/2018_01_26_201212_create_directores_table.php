@@ -19,8 +19,8 @@ class CreateDirectoresTable extends Migration
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
             $table->string('cargo')->nullable();
-            $table->string('fecha_nombramiento')->nullable();
-            $table->string('fecha_de_vencimiento')->nullable();
+            $table->date('fecha_nombramiento')->nullable();
+            $table->date('fecha_de_vencimiento')->nullable();
             $table->string('rut')->nullable();
             $table->string('domicilio')->nullable();
             $table->string('comuna_distrito')->nullable();
