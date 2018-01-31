@@ -87,8 +87,12 @@ Route::get('secretario/delete/{directorio_id}', 'SecretarioController@delete');
 
 //Rutas para Fiscalizadores
 Route::post('/fiscalizadores/{id}','FiscalizadoresController@update');
-//Route::get('/fiscalizadores/{id}/edit','CapitalController@edit');
 Route::resource('fiscalizadores', 'FiscalizadoresController');
+
+//Rutas Pacto Accionistas
+Route::get('pacto_accionista/{id}','PactosController@index');
+Route::post('pacto_accionista/{id}','PactosController@destroy');
+Route::resource('pacto_accionista', 'PactosController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
