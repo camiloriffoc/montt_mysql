@@ -5,9 +5,9 @@
 	<!--<li><a href="/registro_acciones/" class="menu-cuentas">Registro de Accionistas</a></li>-->
 	<li><a href="/directorio/{{$sociedad->id}}/edit" class="menu-cuentas">Directorio</a></li>
 	<!--<li><a href="/gerente_general/form_gerente_general/" class="menu-cuentas">Gerente General</a></li>
-	<li><a href="/poderes_apoderados/form_list_poderes/" class="menu-cuentas">{{-- str_limit('Listado de Poderes y Apoderados', $limit = 25, $end = '...') --}}</a></li>
-	<li><a href="/form_fiscalizadores/" class="menu-cuentas">Fiscalizadores</a></li>
-	<li><a href="/form_inspectores_cuenta/" class="menu-cuentas">Inspectores de Cuenta</a></li>
+	<li><a href="/poderes_apoderados/form_list_poderes/" class="menu-cuentas">{{-- str_limit('Listado de Poderes y Apoderados', $limit = 25, $end = '...') --}}</a></li> -->
+	<li><a href="{{ url('/fiscalizadores/'.$sociedad->id.'/edit') }}" class="menu-cuentas">Fiscalizadores</a></li>
+	<!--<li><a href="/form_inspectores_cuenta/" class="menu-cuentas">Inspectores de Cuenta</a></li>
 	<li><a href="/formas_disolucion/form_disolucion_liq_haber_social/" class="menu-cuentas">{{-- str_limit('Forma de disolución y Liq. haber social', $limit = 25, $end = '...') }}</a></li>
 	<li><a href="/formas_disolucion/form_conflicto_accionistas/" class="menu-cuentas">{{ str_limit('Forma de resolución entre accionistas', $limit = 25, $end = '...') }}</a></li>
 	<li><a href="/pactos_especiales/" class="menu-cuentas">Otros Pactos Especiales</a></li>

@@ -1,6 +1,6 @@
 <h1 class="text-primary">Porcentaje de acciones por accionista</h1>
 
-<table class="table table-bordered" id="MyTable">
+<table class="table table-bordered" id="table-porcentaje-accionistas">
   <thead>
     <tr>
         <th class="text-center">Nombre o Razón social</th>

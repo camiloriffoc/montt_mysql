@@ -26,4 +26,8 @@ class Sociedades extends Model
         
         return $this->hasMany('App\Sucursal','sociedad_id');
     }
+
+    public function fiscalizador(){
+        return $this->hasOne('App\Fiscalizadores','sociedad_id');
+    }
 }

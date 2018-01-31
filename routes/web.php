@@ -85,6 +85,11 @@ Route::get('secretario/{id}', 'SecretarioController@index');
 Route::post('secretario', 'SecretarioController@store');
 Route::get('secretario/delete/{directorio_id}', 'SecretarioController@delete');
 
+//Rutas para Fiscalizadores
+Route::post('/fiscalizadores/{id}','FiscalizadoresController@update');
+//Route::get('/fiscalizadores/{id}/edit','CapitalController@edit');
+Route::resource('fiscalizadores', 'FiscalizadoresController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
