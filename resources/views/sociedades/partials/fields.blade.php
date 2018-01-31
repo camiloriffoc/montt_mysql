@@ -1,45 +1,45 @@
 <div class="form-group col-sm-6">
-	<label>Razón Social:</label>
+	<label>{{ trans('form_general.razon_social') }}:</label>
 	<input type="text" class="form-control" name="razon_social" value="{{ $sociedad->razon_social or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Nombre de Fantasia:</label>
+	<label>{{ trans('form_general.nombre_fantasia') }}:</label>
 	<input type="text" class="form-control" name="nombre_fantasia" value="{{ $sociedad->nombre_fantasia or '' }}">
 </div>
 
 <div class="form-group col-sm-6">
-	<label>S.A. Abierta o Cerrada</label>
+	<label>{{ trans('form_general.abierta_cerrada_sa') }}</label>
 	<input type="text" class="form-control" name="sa_abierta_o_cerrada" value="{{ $sociedad->sa_abierta_o_cerrada or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Rut:</label>
+	<label>{{ trans('form_general.rut') }}:</label>
 	<input type="text" class="form-control" name="rut" value="{{ $sociedad->rut or '' }}">
 </div>
 
 <div class="form-group col-sm-6">
-	<label>País de incorporación:</label>
+	<label>{{ trans('form_general.pais_de_incorporacion') }}:</label>
 	<input type="text" class="form-control" name="pais_incorporacion" value="{{ $sociedad->pais_incorporacion or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Teléfono corporativo:</label>
+	<label>{{ trans('form_general.telefono_corporativo') }}:</label>
 	<input type="text" class="form-control" name="telefono_corporativo" value="{{ $sociedad->telefono_corporativo or '' }}">
 </div>	
 
 <div class="form-group col-sm-6">
-	<label>WebSite:</label>
+	<label>{{ trans('form_general.web_site') }}:</label>
 	<input type="text" class="form-control" name="website" value="{{ $sociedad->website or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Grupo Empresarial:</label>
+	<label>{{ trans('form_general.grupo_empresarial') }}:</label>
 	<input type="text" class="form-control" name="grupo_empresarial" value="{{ $sociedad->grupo_empresarial or '' }}">
 </div>
 
 <div class="form-group col-sm-6">
-	<label>Archivador físico Montt No.:</label>
+	<label>{{ trans('form_general.archivador_montt') }}:</label>
 	<input type="text" class="form-control" name="archivador_fisico_montt_no" value="{{ $sociedad->archivador_fisico_montt_no or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Duración:</label>
+	<label>{{ trans('form_general.duracion') }}:</label>
 	<input type="text" class="form-control" name="duracion" value="{{ $sociedad->duracion or '' }}">
 </div>
 
@@ -48,12 +48,12 @@
 	<input type="text" class="form-control" name="plazo" value="{{ $sociedad->plazo or '' }}">
 </div>
 <div class="form-group col-sm-6">
-	<label>Inicio de actividades:</label>
+	<label>{{ trans('form_general.inicio_acitividades') }}:</label>
 	<input type="text" class="form-control" name="inicio_actividades" value="{{ $sociedad->inicio_actividades or '' }}">
 </div>
 
 <div class="form-group col-sm-6">
-	<label>Modificaciones inicio de actividades:</label>
+	<label>{{ trans('form_general.modificaciones_inicio_actividades') }}:</label>
 	<input type="text" class="form-control" name="modificaciones_inicio_actividades" value="{{ $sociedad->modificaciones_inicio_actividades or '' }}">
 </div>
 <div class="form-group col-sm-6">
