@@ -94,6 +94,11 @@ Route::get('pacto_accionista/{id}','PactosController@index');
 Route::post('pacto_accionista/{id}','PactosController@destroy');
 Route::resource('pacto_accionista', 'PactosController');
 
+//Rutas SubPacto Accionistas
+Route::get('subpacto_accionista/{id}','SubPactosController@index');
+Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
+Route::resource('subpacto_accionista', 'SubPactosController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

@@ -40,6 +40,10 @@
                     <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                 </a>
 
+                <a href="{{ url('/subpacto_accionista/'.$accionista->id) }}" class="btn btn-success btn-xs menu-cuentas" data-toggle="tooltip" data-placement="top" title="SubPacto de Accionista">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                </a>
+
 
 
                 
