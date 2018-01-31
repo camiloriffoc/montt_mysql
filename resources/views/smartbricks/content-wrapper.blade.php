@@ -17,7 +17,11 @@
     </div>
     <!-- /.content -->
     <div id="principalPanel">
-
+        <li><a href="{{ url('lang', ['en']) }}">En</a></li>
+        <li><a href="{{ url('lang', ['es']) }}">Es</a></li>
+        <div class="jumbotron container">
+            <p>{{ trans('welcome.home') }} | {{ Session::get('lang') }}</p>
+        </div>
         <div class="container-fluid">
             @section('myContent')
 

@@ -10,10 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => ['web']], function () {
 Route::get('/', function () {
-     return view('auth.login');
+	return view('auth.login');
 });
+
+Route::get('lang/{lang}', function ($lang) {
+	session(['lang' => $lang]);
+	return \Redirect::back();
+})->where([
+	'lang' => 'en|es'
+]);
 
 Route::get('admin','AdminController@index');
 
@@ -101,4 +108,4 @@ Route::resource('subpacto_accionista', 'SubPactosController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+});
