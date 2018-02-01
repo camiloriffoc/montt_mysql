@@ -33,7 +33,17 @@ class AccionistasController extends Controller
                                             ->where('sociedades.id','=',$id)
                                             ->get();
 
-        $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad)->with('porcentajesAccionesAccionistas',$porcentajesAccionesAccionistas);
+        $listadoAccionistaFallecidos = Sociedades::find($id)->accionistas()->where('accionista_fallecido','=','si')->get();
+        $listadoAccionistaMenorEdad = Sociedades::find($id)->accionistas()->where('accionista_menor_edad','=','si')->get();
+        $listadoAccionistaInterdiccion = Sociedades::find($id)->accionistas()->where('accionista_interdiccion','=','si')->get();
+        $listadoAccionistaLiquidacion = Sociedades::find($id)->accionistas()->where('accionista_liquidador','=','si')->get();
+        $titulosDeAcciones = DB::table('sociedades')
+                                            ->join('accionistas','sociedades.id','=','accionistas.sociedad_id')
+                                            ->join('titulo_acciones','accionistas.id','=','titulo_acciones.accionista_id')
+                                            ->where('sociedades.id','=',$id)
+                                            ->get();
+
+        $view = \View::make('accionistas.index')->with('accionistas',$accionistas)->with('sociedad',$sociedad)->with('porcentajesAccionesAccionistas',$porcentajesAccionesAccionistas)->with('listadoAccionistaFallecidos',$listadoAccionistaFallecidos)->with('listadoAccionistaMenorEdad',$listadoAccionistaMenorEdad)->with('listadoAccionistaInterdiccion',$listadoAccionistaInterdiccion)->with('listadoAccionistaLiquidacion',$listadoAccionistaLiquidacion)->with('titulosDeAcciones',$titulosDeAcciones);
 
         if($request->ajax()){
             $sections = $view->renderSections();

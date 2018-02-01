@@ -153,4 +153,77 @@ $(document).ready(function(){
         }
     }
 
+    //Comprobamos el valor inicial del select interdiccion
+    var valor_inicial_interdiccion_select = $('.control-accionista-interdiccion').val();
+    comprobarValorSelectInterdiccion(valor_inicial_interdiccion_select);
+
+    //Función para habilitar campos de accionista fallecido
+    $('.control-accionista-interdiccion').on('change',function(){
+        var valor = $(this).val();
+        comprobarValorSelectInterdiccion(valor);
+    });
+
+
+    function comprobarValorSelectInterdiccion(variable){
+        if(variable == 'si'){
+            $('.div-accionista-interdiccion').show();
+        }else{
+            $('.div-accionista-interdiccion').hide();
+        }
+    }
+
+    //Comprobamos el valor inicial del select menor edad
+    var valor_inicial_menor_edad_select = $('.control-accionista-menor-edad').val();
+    comprobarValorSelectMenorEdad(valor_inicial_menor_edad_select);
+
+    //Función para habilitar campos de accionista fallecido
+    $('.control-accionista-menor-edad').on('change',function(){
+        var valor = $(this).val();
+        comprobarValorSelectMenorEdad(valor);
+    });
+
+
+    function comprobarValorSelectMenorEdad(variable){
+        if(variable == 'si'){
+            $('.div-accionista-menor-edad').show();
+        }else{
+            $('.div-accionista-menor-edad').hide();
+        }
+    }
+
+    //Comprobamos el valor inicial del select liquidador
+    var valor_inicial_liquidador = $('.control-accionista-liquidador').val();
+    comprobarValorSelectLiquidador(valor_inicial_liquidador);
+
+    //Función para habilitar campos de accionista fallecido
+    $('.control-accionista-liquidador').on('change',function(){
+        var valor = $(this).val();
+        comprobarValorSelectLiquidador(valor);
+    });
+
+
+    function comprobarValorSelectLiquidador(variable){
+        if(variable == 'si'){
+            $('.div-accionista-liquidacion').show();
+        }else{
+            $('.div-accionista-liquidacion').hide();
+        }
+    }
+
+    //Comprobamos si es Persona Natural o Persona Jurídica
+    var accionista_tipo = $('.tipo-accionista').val();
+    getTipoAccionista(accionista_tipo);
+
+    //Función dependiendo del tipo
+    function getTipoAccionista(tipo){
+        if(tipo == 'natural'){
+
+
+        }else{
+
+            
+        }
+
+    }
+
 });

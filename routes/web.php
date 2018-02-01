@@ -10,10 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => ['web']], function () {
 Route::get('/', function () {
-     return view('auth.login');
+	return view('auth.login');
 });
+
+Route::get('lang/{lang}', function ($lang) {
+	session(['lang' => $lang]);
+	return \Redirect::back();
+})->where([
+	'lang' => 'en|es'
+]);
 
 Route::get('admin','AdminController@index');
 
@@ -118,6 +125,20 @@ Route::get('secretario/{id}', 'SecretarioController@index');
 Route::post('secretario', 'SecretarioController@store');
 Route::get('secretario/delete/{directorio_id}', 'SecretarioController@delete');
 
+//Rutas para Fiscalizadores
+Route::post('/fiscalizadores/{id}','FiscalizadoresController@update');
+Route::resource('fiscalizadores', 'FiscalizadoresController');
+
+//Rutas Pacto Accionistas
+Route::get('pacto_accionista/{id}','PactosController@index');
+Route::post('pacto_accionista/{id}','PactosController@destroy');
+Route::resource('pacto_accionista', 'PactosController');
+
+//Rutas SubPacto Accionistas
+Route::get('subpacto_accionista/{id}','SubPactosController@index');
+Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
+Route::resource('subpacto_accionista', 'SubPactosController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+});

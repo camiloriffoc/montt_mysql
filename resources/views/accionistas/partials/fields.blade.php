@@ -1,7 +1,7 @@
 
 <div class="form-group col-sm-6">
 	<label>Tipo:</label>
-	{{ Form::select('tipo_accionista',['natural' => 'Persona Natural', 'juridica' => 'Persona jurídica'],isset($accionista->tipo_accionista) ? $accionista->tipo_accionista : 'natural', array('class' => 'form-control')) }}
+	{{ Form::select('tipo_accionista',['natural' => 'Persona Natural', 'juridica' => 'Persona jurídica'],isset($accionista->tipo_accionista) ? $accionista->tipo_accionista : 'natural', array('class' => 'form-control tipo-accionista')) }}
 </div>
 
 <!-- ID de la SOCIEDAD -->
@@ -133,10 +133,27 @@
 	{{ Form::select('accionista_fallecido',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_fallecido) ? $accionista->accionista_fallecido : 'no', array('class' => 'form-control control-accionista-fallecido')) }}
 </div>
 
+<div class="form-group col-sm-6">
+	<label>Menor de Edad:</label>
+	{{ Form::select('accionista_menor_edad',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_menor_edad) ? $accionista->accionista_menor_edad : 'no', array('class' => 'form-control control-accionista-menor-edad')) }}
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Interdicción:</label>
+	{{ Form::select('accionista_interdiccion',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_interdiccion) ? $accionista->accionista_interdiccion : 'no', array('class' => 'form-control control-accionista-interdiccion')) }}
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Sujeto a procedimiento de liquidación y reorganización empresarial:</label>
+	{{ Form::select('accionista_liquidador',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_liquidador) ? $accionista->accionista_liquidador : 'no', array('class' => 'form-control control-accionista-liquidador')) }}
+</div>
+
 
 
 <div class="row">
+
 	<div class="col-md-12 div-accionista-fallecido">
+		<h4>Datos accionista Fallecido</h4>
 		<div class="form-group col-sm-6">
 			<label>Número de Acciones:</label>
 			<input type="text" class="form-control" name="fallecido_numero_acciones" value="{{ $accionista->fallecido_numero_acciones or '' }}">
@@ -168,3 +185,90 @@
 		</div>
 	</div>
 </div>
+
+<div class="row">
+	
+	<div class="col-md-12 div-accionista-interdiccion">
+		<h4>Datos accionista Interdicción</h4>
+		<div class="form-group col-sm-6">
+			<label>Títulos:</label>
+			<input type="text" class="form-control" name="interdiccion_titulo" value="{{ $accionista->interdiccion_titulo or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Número de acciones:</label>
+			<input type="date" class="form-control" name="interdiccion_numero_acciones" value="{{ $accionista->interdiccion_numero_acciones or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Fecha de Interdicción / Sentencia de Interdicción:</label>
+			<input type="date" class="form-control" name="interdiccion_fecha_interdiccion" value="{{ $accionista->interdiccion_fecha_interdiccion or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Tutor y Curador / Nombre y RUT :</label>
+			<input type="text" class="form-control" name="interdiccion_tutor_curador" value="{{ $accionista->interdiccion_tutor_curador or '' }}">
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-12 div-accionista-menor-edad">
+		<h4>Datos accionista Menor de Edad</h4>
+		<div class="form-group col-sm-6">
+			<label>Títulos:</label>
+			<input type="text" class="form-control" name="menor_titulo" value="{{ $accionista->menor_titulo or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Número de acciones:</label>
+			<input type="number" class="form-control" name="menor_numero_acciones" value="{{ $accionista->menor_numero_acciones or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Fecha Nacimiento:</label>
+			<input type="date" class="form-control" name="menor_fecha_nacimiento" value="{{ $accionista->menor_fecha_nacimiento or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Fecha Mayoría de Edad :</label>
+			<input type="date" class="form-control" name="menor_fecha_mayoria_edad" value="{{ $accionista->menor_fecha_mayoria_edad or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Representante Legal / Nombre y RUT.  :</label>
+			<input type="text" class="form-control" name="menor_representante_legal" value="{{ $accionista->menor_representante_legal or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Si hay o no sentencia que se lo asigne a otro en específico:</label>
+			{{ Form::select('menor_sentencia_especifica',['no' => 'No', 'si' => 'Si'],isset($accionista->menor_sentencia_especifica) ? $accionista->menor_sentencia_especifica : 'no', array('class' => 'form-control')) }}
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-12 div-accionista-liquidacion">
+		<h4>Datos accionista sujeto a procedimientos de liquidación y reorganización empresarial</h4>
+		<div class="form-group col-sm-6">
+			<label>Títulos:</label>
+			<input type="text" class="form-control" name="liquidacion_titulo" value="{{ $accionista->liquidacion_titulo or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Número de acciones:</label>
+			<input type="numer" class="form-control" name="liquidacion_numero_acciones" value="{{ $accionista->liquidacion_numero_acciones or '' }}">
+		</div>
+
+		<div class="form-group col-sm-6">
+			<label>Nombre Liquidador designado:</label>
+			<input type="text" class="form-control" name="liquidacion_nombre_liquidador" value="{{ $accionista->liquidacion_nombre_liquidador or '' }}">
+		</div>
+
+	</div>
+</div>
+

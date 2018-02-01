@@ -27,6 +27,7 @@ class Sociedades extends Model
         return $this->hasMany('App\Sucursal','sociedad_id');
     }
 
+
     public function poderesApoderados(){
         
         return $this->hasMany('App\PoderesApoderados','sociedad_id');
@@ -54,4 +55,9 @@ class Sociedades extends Model
 
 
 
+=======
+    public function fiscalizador(){
+        return $this->hasOne('App\Fiscalizadores','sociedad_id');
+    }
+>>>>>>> 691f1126ac4aa254b90dbd5de939b8767f852393
 }
