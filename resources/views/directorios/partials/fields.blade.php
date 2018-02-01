@@ -109,7 +109,17 @@
     <input type="text" class="form-control" id="" name="voto_dirimente_y_forma_dirimir" value="{{ $directorio->voto_dirimente_y_forma_dirimir or ''}}">
   </div>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-6">
     <label>Actas de directorio:</label>
     <input type="file" class="form-control" id="" accept='application/pdf' name="actas_de_directorio" value="{{ $directorio->actas_de_directorio or ''}}">
   </div>
+  <div class="form-group col-sm-6">
+    @if(isset($directorio->actas_de_directorio))
+    <br>
+    <p style="margin-top: 20px;"><a target="_blank" href="{{asset('uploads/'.$directorio->actas_de_directorio) }}">ver acta</a></p>
+    @else
+    <br>
+    <p style="margin-top: 20px;">No tiene Acta ajunta.</p>
+    @endif
+  </div>
+
