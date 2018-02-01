@@ -153,8 +153,19 @@ class DirectorController extends Controller
 
             $director = Director::find($id);
             $directorio_id=$director['directorio_id'];
+
+            $nombre_rut_old = $director->rut_file;
+            $nombre_fecha_old = $director->fecha_nombramiento_file;
             //para eliminar un director se coloca su status en 0
-            $director->update(['status' => '0']);
+            $director->delete();
+
+            if(\File::exists(public_path('uploads/directores'.$nombre_rut_old))){
+                \File::delete(public_path('uploads/directores/'.$nombre_rut_old));
+            }
+
+            if(\File::exists(public_path('uploads/directores'.$nombre_fecha_old))){
+                \File::delete(public_path('uploads/directores/'.$nombre_fecha_old));
+            }
 
             $directores = Director::where("directorio_id","=",$directorio_id)->where('status','=','1')->get();
         	$secretario = Secretario::find($directorio_id);

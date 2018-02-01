@@ -218,7 +218,7 @@
   </div>
 
   <div class="form-group col-sm-12">
-    <input type="submit" class="btn btn-info" value="Enviar">
+    <input type="submit" class="btn btn-info" value="Guardar">
   </div>
 
 

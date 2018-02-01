@@ -59,7 +59,7 @@ class DirectorioController extends Controller
                     $file->move('uploads/directorios', str_replace(" ","_",$file->getClientOriginalName()));
 
                     if(\File::exists(public_path('uploads/directorios/'.$nombreOld))){
-                        \File::delete(public_path('uploads/directorios'.$nombreOld));
+                        \File::delete(public_path('uploads/directorios/'.$nombreOld));
                     }
                 }
         	}
