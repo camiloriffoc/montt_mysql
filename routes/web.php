@@ -33,10 +33,24 @@ Route::get('acciones/create/{id}','AccionesController@create');
 Route::post('acciones/{id}','AccionesController@destroy');
 Route::resource('acciones', 'AccionesController');
 
-
 //Rutas para capital social
 Route::get('capital/{id}','CapitalController@index');
 Route::post('capital/','CapitalController@store');
+
+//Rutas para estatutos sociales
+Route::get('estatutos_sociales/{sociedad_id}','EstatutoSocialController@index');
+//Rutas estatutos generales
+Route::post('estatutos_sociales/generales','EstatutoSocialController@generalesStore');
+Route::get('estatutos_sociales/generales/edit/{id}','EstatutoSocialController@generalesEdit');
+Route::get('estatutos_sociales/generales/delete/{id}','EstatutoSocialController@generalesDelete');
+Route::post('estatutos_sociales/generales/update','EstatutoSocialController@generalesUpdate');
+//Rutas estatutos especiales
+
+Route::post('estatutos_sociales/especiales','EstatutoSocialController@especialesStore');
+Route::get('estatutos_sociales/especiales/edit/{id}','EstatutoSocialController@especialesEdit');
+Route::get('estatutos_sociales/especiales/delete/{id}','EstatutoSocialController@especialesDelete');
+Route::post('estatutos_sociales/especiales/update','EstatutoSocialController@especialesUpdate');
+
 //capital suscripcion
 Route::post('capital/suscripcion','CapitalController@suscripcionStore');
 Route::get('capital/suscripcion/edit/{id}','CapitalController@suscripcionEdit');
@@ -45,6 +59,25 @@ Route::post('capital/suscripcion/update','CapitalController@suscripcionUpdate');
 Route::post('capital/pago','CapitalController@pagoStore');
 Route::get('capital/pago/edit/{id}','CapitalController@pagoEdit');
 Route::post('capital/pago/update','CapitalController@pagoUpdate');
+
+//Rutas Gerentes Generales o Representantes
+Route::get('gerente_representante/{sociedad_id}','GerenteRepresentanteController@index');
+Route::post('gerente_representante/update','GerenteRepresentanteController@update');
+
+//Rutas InspectoresCuenta
+Route::get('inspectores_cuenta/{sociedad_id}','InspectoresCuentaController@index');
+Route::post('inspectores_cuenta/update','InspectoresCuentaController@update');
+Route::post('inspectores_cuenta/inspector/update','InspectoresCuentaController@inspectorUpdate');
+
+
+//Rutas PoderesApoderados 
+Route::get('poderes_apoderados/{sociedad_id}','PoderesApoderadosController@index');
+Route::get('poderes_apoderados/create/{sociedad_id}','PoderesApoderadosController@create');
+Route::post('poderes_apoderados/store', 'PoderesApoderadosController@store');
+Route::get('poderes_apoderados/delete/{poder_id}', 'PoderesApoderadosController@delete');
+Route::get('poderes_apoderados/edit/{poder_id}', 'PoderesApoderadosController@edit');
+Route::post('poderes_apoderados/update', 'PoderesApoderadosController@update');
+
 
 //Rutas Porcentaje Accioniones para accionista
 Route::get('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@index');

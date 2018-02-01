@@ -90,11 +90,10 @@
     <input type="text" class="form-control" name="comunicacion" placeholder="Comunicación" value="{{ $directorio->comunicacion or ''}}">
   </div>
 
-  <div class="form-group col-sm-6">
-    <br><br><br>
+  <div class="col-sm-12">
+    <h2>Instalación de la sala y adopción de acuerdos</h2>
   </div>
 
-  <h2>Instalación de la sala y adopción de acuerdos</h2>
   <div class="form-group col-sm-6">
     <label>Quórums Instalar Sala</label>
     <input type="text" class="form-control" id="" name="quorums_instalar_sala" placeholder="Quórums instalar sala" value="{{ $directorio->quorums_instalar_sala or ''}}">
@@ -112,5 +111,5 @@
 
   <div class="form-group col-sm-12">
     <label>Actas de directorio:</label>
-  
+    <input type="file" class="form-control" id="" accept='application/pdf' name="actas_de_directorio" value="{{ $directorio->actas_de_directorio or ''}}">
   </div>

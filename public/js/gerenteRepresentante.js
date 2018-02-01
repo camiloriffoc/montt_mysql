@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	//Funcion para agregar por AJAX una nueva Accion
-	$('.add-capital').on("submit", function(ev){
+	$('.add-gerente').on("submit", function(ev){
         ev.preventDefault();
         var $form = $(this);
         //Para buscar en el formulario un elemento que tenga el type submit

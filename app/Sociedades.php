@@ -26,4 +26,32 @@ class Sociedades extends Model
         
         return $this->hasMany('App\Sucursal','sociedad_id');
     }
+
+    public function poderesApoderados(){
+        
+        return $this->hasMany('App\PoderesApoderados','sociedad_id');
+    }
+
+    public function gerenteRepresentante(){
+        
+        return $this->hasOne('App\GerenteRepresentante','sociedad_id');
+    }
+
+    public function inspectorCuenta(){
+        
+        return $this->hasOne('App\InspectorCuenta','sociedad_id');
+    }
+
+    public function estatutoRegimenGenerales(){
+        
+        return $this->hasMany('App\EstatutoRegimenGeneral','sociedad_id');
+    }
+
+    public function estatutoRegimenEspeciales(){
+        
+        return $this->hasMany('App\EstatutoRegimenEspecial','sociedad_id');
+    }
+
+
+
 }

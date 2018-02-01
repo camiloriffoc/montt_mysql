@@ -126,9 +126,12 @@ $(document).ready(function(){
 
   	$('.delete-director').on('click',function(event){
 		event.preventDefault();
-		var url = $(this).attr("href");
+		
+        if (confirm("Esta seguro que desea eliminar")) {
+
+            var url = $(this).attr("href");
        
-       	$.ajax({
+            $.ajax({
             type: 'GET',
             url: url,
             dataType: 'json',
@@ -153,39 +156,43 @@ $(document).ready(function(){
                     });
                 }
             }
-        });
+            });
+        }        
     })
 
     $('.delete-secretario').on('click',function(event){
 		event.preventDefault();
-		var url = $(this).attr("href");
-       
-       	$.ajax({
-            type: 'GET',
-            url: url,
-            dataType: 'json',
-            beforeSend: function () {
-                        $('#principalPanel').empty();
-                        $("#resultado").show();
+
+        if (confirm("Esta seguro que desea eliminar")) {
+    		var url = $(this).attr("href");
+           
+           	$.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                beforeSend: function () {
+                            $('#principalPanel').empty();
+                            $("#resultado").show();
+                    },
+                success: function (data) {
+                    $('#principalPanel').empty().append($(data));
+                    $("#resultado").hide();
+                    $('html, body').animate({scrollTop:0}, 'slow');
+                    $('.modal-body').html('<p>Secretario ELiminado con Exito</p>');
+                    $('#myAlertModal').modal('show');
+
                 },
-            success: function (data) {
-                $('#principalPanel').empty().append($(data));
-                $("#resultado").hide();
-                $('html, body').animate({scrollTop:0}, 'slow');
-                $('.modal-body').html('<p>Secretario ELiminado con Exito</p>');
-                $('#myAlertModal').modal('show');
+                error: function (data) {
+                    var errors = data.responseJSON;
+                    if (errors) {
+                        $.each(errors, function (i) {
+                            alert(errors[i]);
 
-            },
-            error: function (data) {
-                var errors = data.responseJSON;
-                if (errors) {
-                    $.each(errors, function (i) {
-                        alert(errors[i]);
-
-                    });
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
     })
 
 

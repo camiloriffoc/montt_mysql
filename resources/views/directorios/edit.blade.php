@@ -19,7 +19,7 @@
 
 	@include('directorios.partials.fields')
 	<button type="submit" class="btn btn-success btn-block" >Guardar cambios</button>
-	<script src="{{ asset('js/directorio.js') }}"></script><
+	<script src="{{ asset('js/directorio.js') }}"></script>
 	{!! Form::close() !!}
 </div>
 

@@ -1,7 +1,8 @@
+
 $(document).ready(function(){
 
 	//Funcion para agregar por AJAX una nueva Accion
-	$('.add-capital').on("submit", function(ev){
+	$('.add-poder').on("submit", function(ev){
         ev.preventDefault();
         var $form = $(this);
         //Para buscar en el formulario un elemento que tenga el type submit
@@ -26,6 +27,7 @@ $(document).ready(function(){
             //El servidor responde y todo sale bien
             success: function(data){
             
+            	
             	$('html, body').animate({scrollTop:0}, 'slow');
                 $('.modal-body').html('<p>Guardo con Exito</p>');
                 $('#myAlertModal').modal('show');
@@ -42,4 +44,46 @@ $(document).ready(function(){
         return false;
     });
 
+    $('.delete-poder').on('click',function(event){
+        event.preventDefault();
+
+        if (confirm("Esta seguro que desea eliminar")) {
+            
+            var url = $(this).attr("href");
+       
+            $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json',
+            beforeSend: function () {
+                        $('#principalPanel').empty();
+                        $("#resultado").show();
+                },
+            success: function (data) {
+                $('#principalPanel').empty().append($(data));
+                $("#resultado").hide();
+                $('html, body').animate({scrollTop:0}, 'slow');
+                $('.modal-body').html('<p>Poder/Apoderado ELiminado con Exito</p>');
+                $('#myAlertModal').modal('show');
+
+            },
+            error: function (data) {
+                var errors = data.responseJSON;
+                if (errors) {
+                    $.each(errors, function (i) {
+                        alert(errors[i]);
+
+                    });
+                }
+            }
+            });
+        } 
+        else {
+            
+        }
+        
+    })
+
 });
+
+
