@@ -22,7 +22,7 @@
 	<h4 class="text-center">Editar Director</h4>
 	{!! Form::open(array('url' => '/director/update', 'method' => 'POST', 'class'=>'update-director')) !!}
 	{!! Form::token() !!}
-	@include('directores.partials.fields')
+	@include('directores.partials.fields_edit')
 	<button type="submit" class="btn btn-success btn-block">Guardar cambios</button>
 	{!! Form::close() !!}
 	

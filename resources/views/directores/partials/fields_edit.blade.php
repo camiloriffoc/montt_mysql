@@ -33,34 +33,46 @@
     {{ Form::select('accionista', ['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($director->accionista) ? $director->accionista : '', array('class' => 'form-control')) }}
   </div>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-6">
     <label>Fecha nombramiento</label>
     <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$director->fecha_nombramiento or ''}}">
+  <!--   {{ Form::file('adjunto_fecha_nombramiento',['accept'=>'application/pdf','class'=>'form-control']) }} -->
   <input type="file" class="form-control" name="fecha_nombramiento_file" accept="application/pdf">
   </div>
 
   <div class="form-group col-sm-6">
-    <label>Fecha vencimiento en el cargo</label>
-    <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha vencimiento en el cargo" name="fecha_de_vencimiento" value="{{$director->fecha_de_vencimiento or ''}}">
-  
+    <label style="visibility:hidden">ver Adjunto</label>
+    <input type="" class="form-control"  style="visibility:hidden">
+    <div class="form-group col-sm-6">
+      <p>
+        <a href="">ver Adjunto</a>
+      </p>
+    </div>
   </div>
 
   <div class="form-group col-sm-6">
     <label>RUT</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="RUT" name="rut" value="{{$director->rut or ''}}">
-  </div>
-  <div class="form-group col-sm-6">
+    <!-- {{Form::file('adjunto_rut',['accept'=>'application/pdf','class'=>'form-control']) }} -->
     <input type="file" class="form-control" name="rut_file" accept="application/pdf">
   </div>
+
+  <div class="form-group col-sm-6">
+    <label>Fecha vencimiento en el cargo</label>
+    <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha vencimiento en el cargo" name="fecha_de_vencimiento" value="{{$director->fecha_de_vencimiento or ''}}">
+    <div class="form-group col-sm-6">
+      <br>
+        <p><a href="">ver</a></p>
+    </div>
+  </div>  
+
   <div class="form-group col-sm-6">
     <label>Domicilio</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Domicilio" name="domicilio" value="{{$director->domicilio or ''}}">
-  </div>
-  <div class="form-group col-sm-6">
+    <br>
     <label>Numero</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="NRO" onKeyPress="return soloNumeros(event)" name="numero" value="{{$director->numero or ''}}">
-  </div>
-  <div class="form-group col-sm-6">
+    <br>
     <label>Piso / Oficina</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Piso" name="piso_oficina" value="{{$director->piso_oficina or ''}}">
   </div>
@@ -69,7 +81,7 @@
     <label>Comuna/Distrito</label>
     <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Comuna/Distrito" name="comuna_distrito" value="{{$director->comuna_distrito or ''}}">
   </div>
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-6">  
     <label>Ciudad</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Cuidad" name="ciudad" value="{{$director->ciudad or ''}}">
   </div>
@@ -140,6 +152,7 @@
     <label>Asistencia</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Asistencia" name="asistencia" value="{{$director->asistencia or ''}}">
   </div>
+
   <div class="form-group col-sm-6">
     <label>Expertise</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Expertise" name="expertise" value="{{$director->expertise or ''}}">
@@ -148,25 +161,27 @@
   <div class="form-group col-sm-6">
     <label>Repetición de Filiales</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Se repite en filiales" name="repeticion_de_filiales" value="{{$director->repeticion_de_filiales or ''}}">
+
   </div>
   <div class="form-group col-sm-6">
     <label>Actividad que Desempeña</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Actividad que desempeña" name="actividad_que_desempeña" value="{{$director->actividad_que_desempeña or ''}}">
   </div>
-
   <div class="form-group col-sm-6">
     <label>Idiomas</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Idiomas" name="idiomas" value="{{$director->idiomas or ''}}">
+
   </div>
   <div class="form-group col-sm-6">
     <label>Comisiones que Integra</label>
-    <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Comisiones que integra" name="comisiones_que_integra" value="{{$director->comisiones_que_integra or ''}}">
-  </div>
+      <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Comisiones que integra" name="comisiones_que_integra" value="{{$director->comisiones_que_integra or ''}}">
+  </div>    
   
   <div class="form-group col-sm-6">
     <label>Con o Sin Poder</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Con o sin poder" name="con_o_sin_poder" value="{{$director->con_o_sin_poder or ''}}">
   </div>
+
   <div class="form-group col-sm-6">
     <label>Participación Grupo Externo</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Participación grupo externo" name="participacion_grupo_externo" value="{{$director->participacion_grupo_externo or ''}}">
