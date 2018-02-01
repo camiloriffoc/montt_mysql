@@ -127,7 +127,7 @@ class DirectorController extends Controller
                 $director->update(['rut_file'=>$nombre_rut]);              
                 $file_rut->move('uploads/directores', str_replace(" ","_",$file_rut->getClientOriginalName()));
 
-                if(\File::exists(public_path('uploads/directores'.$nombre_rut_old))){
+                if(\File::exists(public_path('uploads/directores/'.$nombre_rut_old))){
                         \File::delete(public_path('uploads/directores/'.$nombre_rut_old));
                 }
             }
@@ -159,11 +159,11 @@ class DirectorController extends Controller
             //para eliminar un director se coloca su status en 0
             $director->delete();
 
-            if(\File::exists(public_path('uploads/directores'.$nombre_rut_old))){
+            if(\File::exists(public_path('uploads/directores/'.$nombre_rut_old))){
                 \File::delete(public_path('uploads/directores/'.$nombre_rut_old));
             }
 
-            if(\File::exists(public_path('uploads/directores'.$nombre_fecha_old))){
+            if(\File::exists(public_path('uploads/directores/'.$nombre_fecha_old))){
                 \File::delete(public_path('uploads/directores/'.$nombre_fecha_old));
             }
 

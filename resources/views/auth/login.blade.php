@@ -33,6 +33,8 @@
           </div>
           <button class="btn btn-primary btn-block">Acceder</button>
         </form>
+        <br>
+        <a href="/register">Registrarse</a>
 
       </div>
     </div>

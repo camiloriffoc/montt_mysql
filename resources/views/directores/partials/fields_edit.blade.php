@@ -21,16 +21,16 @@
 
   <div class="form-group col-sm-6">
     <label>Tipo de Director</label>
-    {{ Form::select('tipo_de_director', ['' => '-None-', 'Director Titular' => 'Director Titular', 'Director Suplente' => 'Director Suplente'],isset($director->tipo_de_director) ? $director->tipo_de_director : '', array('class' => 'form-control')) }}
+    {{ Form::select('tipo_de_director', ['Director Titular' => 'Director Titular', 'Director Suplente' => 'Director Suplente'],isset($director->tipo_de_director) ? $director->tipo_de_director : '', array('class' => 'form-control')) }}
   </div>
   <div class="form-group col-sm-6">
     <label>Presidente de Directorio</label>
-    {{ Form::select('presidente_del_directorio', ['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
+    {{ Form::select('presidente_del_directorio', ['No' => 'No', 'Si' => 'Si'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
   </div>
 
   <div class="form-group col-sm-6">
     <label>Es Accionista</label>
-    {{ Form::select('accionista', ['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($director->accionista) ? $director->accionista : '', array('class' => 'form-control')) }}
+    {{ Form::select('accionista', [ 'No' => 'No', 'Si' => 'Si'],isset($director->accionista) ? $director->accionista : '', array('class' => 'form-control')) }}
   </div>
 
   <div class="form-group col-sm-6">
