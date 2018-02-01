@@ -28,19 +28,62 @@ class SecretarioController extends Controller
 
         if($request->ajax()){
 
+            $file_fecha = $request->file('fecha_nombramiento_file');
+            $file_rut   = $request->file('rut_file');
+
             //un directorio solo puede tener un secretario    
         	$new_secretario = $request->all();
             //se consulta si el directrio tiene secretario, si tiene se edita si no se crea uno
             $secretario = Secretario::where('directorio_id','=',$new_secretario['directorio_id'])->where('status','=','1')->first();
         	
         	if($secretario){
+                
+                $nombre_rut_old = $secretario->rut_file;
+                $nombre_fecha_old = $secretario->fecha_nombramiento_file;
+            	
+                $secretario->update($new_secretario);
 
-            	$secretario->update($new_secretario);
+                if($file_fecha) {
+                    $nombre_fecha= str_replace(" ", "_", $file_fecha->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                    $secretario->update(['fecha_nombramiento_file'=>$nombre_fecha]);              
+                    $file_fecha->move('uploads/secretarios', str_replace(" ","_",$file_fecha->getClientOriginalName()));
+                
+                    if(\File::exists(public_path('uploads/secretarios'.$nombre_fecha_old))){
+                        \File::delete(public_path('uploads/secretarios/'.$nombre_fecha_old));
+                    }
+                }
+                if($file_rut) {
+                    $nombre_rut= str_replace(" ", "_", $file_rut->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                    $secretario->update(['rut_file'=>$nombre_rut]);              
+                    $file_rut->move('uploads/secretarios', str_replace(" ","_",$file_rut->getClientOriginalName()));
+
+                    if(\File::exists(public_path('uploads/secretarios'.$nombre_rut_old))){
+                            \File::delete(public_path('uploads/secretarios/'.$nombre_rut_old));
+                    }
+                }
         	}
         	else{
 
         		$secretario = new Secretario($new_secretario);
             	$secretario->save();
+
+                if($file_fecha)
+                {   
+                    $nombre_fecha= str_replace(" ", "_", $file_fecha->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                    $secretario->update(['fecha_nombramiento_file'=>$nombre_fecha]);              
+                    $file_fecha->move('uploads/secretarios', str_replace(" ","_",$file_fecha->getClientOriginalName()));
+                }
+                if($file_rut) 
+                {
+                    $nombre_rut= str_replace(" ", "_", $file_rut->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                    $secretario->update(['rut_file'=>$nombre_rut]);              
+                    $file_rut->move('uploads/secretarios', str_replace(" ","_",$file_rut->getClientOriginalName()));
+                }
+
 
         	}
 

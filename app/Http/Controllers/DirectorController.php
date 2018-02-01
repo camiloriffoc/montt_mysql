@@ -26,10 +26,27 @@ class DirectorController extends Controller
 
         if($request->ajax()){
 
+            $file_fecha = $request->file('fecha_nombramiento_file');
+            $file_rut   = $request->file('rut_file');
+
         	$new_director = $request->all();
 
             $director = new Director($new_director);
             $director->save();
+
+            if($file_fecha) {
+                $nombre_fecha= str_replace(" ", "_", $file_fecha->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $director->update(['fecha_nombramiento_file'=>$nombre_fecha]);              
+                $file_fecha->move('uploads/directores', str_replace(" ","_",$file_fecha->getClientOriginalName()));
+            }
+
+            if($file_rut) {
+                $nombre_rut= str_replace(" ", "_", $file_rut->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $director->update(['rut_file'=>$nombre_rut]);              
+                $file_rut->move('uploads/directores', str_replace(" ","_",$file_rut->getClientOriginalName()));
+            }
             
             //Se retorna al index con el id del directorio y el check de que se guardo
             //return view('directores.index')->with(['id'=>$new_director['directorio_id'],'check'=>1]);
@@ -80,20 +97,48 @@ class DirectorController extends Controller
 
         if($request->ajax()){
 
+            $file_fecha = $request->file('fecha_nombramiento_file');
+            $file_rut   = $request->file('rut_file');
+
         	$director_update = $request->all();
             $director = Director::find($director_update['id']);
+
+            //los nombres de los archivos adjuntos antiguos
+            $nombre_rut_old = $director->rut_file;
+            $nombre_fecha_old = $director->fecha_nombramiento_file;
+
             $directorio_id=$director['directorio_id'];
             $director->update($director_update);
+
+            if($file_fecha) {
+                $nombre_fecha= str_replace(" ", "_", $file_fecha->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $director->update(['fecha_nombramiento_file'=>$nombre_fecha]);              
+                $file_fecha->move('uploads/directores', str_replace(" ","_",$file_fecha->getClientOriginalName()));
+                
+                if(\File::exists(public_path('uploads/directores'.$nombre_fecha_old))){
+                        \File::delete(public_path('uploads/directores/'.$nombre_fecha_old));
+                }
+            }
+
+            if($file_rut) {
+                $nombre_rut= str_replace(" ", "_", $file_rut->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $director->update(['rut_file'=>$nombre_rut]);              
+                $file_rut->move('uploads/directores', str_replace(" ","_",$file_rut->getClientOriginalName()));
+
+                if(\File::exists(public_path('uploads/directores'.$nombre_rut_old))){
+                        \File::delete(public_path('uploads/directores/'.$nombre_rut_old));
+                }
+            }
+
+
+
 
             $directores = Director::where("directorio_id","=",$directorio_id)->where('status','=','1')->get();
         	$secretario = Secretario::where('directorio_id','=',$directorio_id)->where('status','=','1')->first();
 
-        	//Se retorna al index con el id del directorio, los directores, el secretario y el check de modificacion
-
-        	//return view('directores.show')->with(['id'=>$directorio_id, 'directores'=>$directores, 'secretario'=>$secretario, 'check'=>1]);
-
-            //return redirect()->action('DirectorController@show', ['id' => $directorio_id]); old2
-
+        	
             $view = \View::make('directores.show')->with(['id'=>$directorio_id, 'directores'=>$directores, 'secretario'=>$secretario]);
 
             $sections = $view->renderSections();

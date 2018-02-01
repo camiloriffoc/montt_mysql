@@ -33,11 +33,18 @@
     {{ Form::select('accionista', ['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($director->accionista) ? $director->accionista : '', array('class' => 'form-control')) }}
   </div>
 
-  <div class="form-group col-sm-12">
-    <label>Fecha nombramiento</label>
-    <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$director->fecha_nombramiento or ''}}">
-  <input type="file" class="form-control" name="fecha_nombramiento_file" accept="application/pdf">
-  </div>
+ 
+    <div class="form-group col-sm-6">
+        <label>Fecha nombramiento</label>
+        <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$director->fecha_nombramiento or ''}}">
+        <input type="file" class="form-control" name="fecha_nombramiento_file" accept="application/pdf">
+    </div>
+    <div class="form-group col-sm-6">
+        <label>RUT</label>
+        <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="RUT" name="rut" value="{{$director->rut or ''}}">
+        <input type="file" class="form-control" name="rut_file" accept="application/pdf">
+    </div>
+
 
   <div class="form-group col-sm-6">
     <label>Fecha vencimiento en el cargo</label>
@@ -45,13 +52,6 @@
   
   </div>
 
-  <div class="form-group col-sm-6">
-    <label>RUT</label>
-    <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="RUT" name="rut" value="{{$director->rut or ''}}">
-  </div>
-  <div class="form-group col-sm-6">
-    <input type="file" class="form-control" name="rut_file" accept="application/pdf">
-  </div>
   <div class="form-group col-sm-6">
     <label>Domicilio</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Domicilio" name="domicilio" value="{{$director->domicilio or ''}}">

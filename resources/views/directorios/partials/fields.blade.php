@@ -116,10 +116,10 @@
   <div class="form-group col-sm-6">
     @if(isset($directorio->actas_de_directorio))
     <br>
-    <p style="margin-top: 20px;"><a target="_blank" href="{{asset('uploads/'.$directorio->actas_de_directorio) }}">ver acta</a></p>
+    <p style="margin-top: 20px;"><a target="_blank" href="{{asset('uploads/directorios/'.$directorio->actas_de_directorio) }}">Ver Archivo Adjunto</a></p>
     @else
     <br>
-    <p style="margin-top: 20px;">No tiene Acta ajunta.</p>
+    <p style="margin-top: 20px;">No tiene Archivo Adjunto.</p>
     @endif
   </div>
 

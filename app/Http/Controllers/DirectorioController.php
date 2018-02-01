@@ -37,7 +37,8 @@ class DirectorioController extends Controller
            //una sociedad solo puede tener un directorio 
             $file = $request->file('actas_de_directorio');
             if($file) {
-                $nombre = $file->getClientOriginalName();
+
+                $nombre= str_replace(" ", "_", $file->getClientOriginalName());
             }
         	
             $new_directorio = $request->all();
@@ -55,10 +56,10 @@ class DirectorioController extends Controller
                     $id=$directorio->id;
                     //obtenemos el campo file definido en el formulario
                     $directorio->update(['actas_de_directorio'=>$nombre]);              
-                    $file->move('uploads', $file->getClientOriginalName());
+                    $file->move('uploads/directorios', str_replace(" ","_",$file->getClientOriginalName()));
 
-                    if(\File::exists(public_path('uploads/'.$nombreOld))){
-                        \File::delete(public_path('uploads/'.$nombreOld));
+                    if(\File::exists(public_path('uploads/directorios/'.$nombreOld))){
+                        \File::delete(public_path('uploads/directorios'.$nombreOld));
                     }
                 }
         	}
@@ -72,7 +73,7 @@ class DirectorioController extends Controller
                     $update= Directorio::find($id);
                     $update->update(['actas_de_directorio'=>$nombre]);
                     
-                    $file->move('uploads', $file->getClientOriginalName());
+                    $file->move('uploads/directorios', str_replace(" ","_",$file->getClientOriginalName()));
         	   }
             }
 

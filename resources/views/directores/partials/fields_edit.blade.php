@@ -45,7 +45,11 @@
     <input type="" class="form-control"  style="visibility:hidden">
     <div class="form-group col-sm-6">
       <p>
-        <a href="">ver Adjunto</a>
+        @if(isset($director->fecha_nombramiento_file))
+          <a target="_blank" href="{{asset('uploads/directores/'.$director->fecha_nombramiento_file) }}">Ver Archivo Adjunto</a>
+        @else 
+          No Tiene Archivo Adjunto
+        @endif  
       </p>
     </div>
   </div>
@@ -62,7 +66,13 @@
     <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha vencimiento en el cargo" name="fecha_de_vencimiento" value="{{$director->fecha_de_vencimiento or ''}}">
     <div class="form-group col-sm-6">
       <br>
-        <p><a href="">ver</a></p>
+        <p>
+        @if(isset($director->rut_file))
+          <a target="_blank" href="{{asset('uploads/directores/'.$director->rut_file) }}">Ver Archivo Adjunto</a>
+        @else 
+          No Tiene Archivo Adjunto
+        @endif  
+      </p>
     </div>
   </div>  
 
