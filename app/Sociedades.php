@@ -53,11 +53,8 @@ class Sociedades extends Model
         return $this->hasMany('App\EstatutoRegimenEspecial','sociedad_id');
     }
 
-
-
-=======
     public function fiscalizador(){
         return $this->hasOne('App\Fiscalizadores','sociedad_id');
     }
->>>>>>> 691f1126ac4aa254b90dbd5de939b8767f852393
+
 }

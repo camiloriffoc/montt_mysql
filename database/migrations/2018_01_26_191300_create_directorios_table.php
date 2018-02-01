@@ -38,7 +38,6 @@ class CreateDirectoriosTable extends Migration
             $table->string('quorum_y_mayorías_especiales')->nullable();
             $table->string('mayoria_para_adoptar_acuerdo')->nullable();
             $table->string('voto_dirimente_y_forma_dirimir')->nullable();
-            $table->string('actas_de_directorio')->nullable();
 
             $table->timestamps();
         });
