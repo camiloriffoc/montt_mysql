@@ -128,6 +128,39 @@
 	<input type="text" class="form-control" name="personerias_y_proxys" value="{{ $accionista->personerias_y_proxys or '' }}">
 </div>
 
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Administración de Facultades</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Es Gerente General o Representante Legal:</label>
+	{{ Form::select('accionista_gerente_representante',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_gerente_representante) ? $accionista->accionista_gerente_representante : 'no') }}
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Es Director Titular:</label>
+	{{ Form::select('accionista_director_titular',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_director_titular) ? $accionista->accionista_director_titular : 'no') }}
+</div>
+
+
+<div class="form-group col-sm-6">
+	<label>Es Director Suplente:</label>
+	{{ Form::select('accionista_director_suplente',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_director_suplente) ? $accionista->accionista_director_suplente : 'no') }}
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Es Presidente del Directorio:</label>
+	{{ Form::select('accionista_presidente_directorio',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_presidente_directorio) ? $accionista->accionista_presidente_directorio : 'no') }}
+</div>
+
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Opciones adicionales</h1>
+	</div>
+</div>
 <div class="form-group col-sm-6">
 	<label>Fallecido:</label>
 	{{ Form::select('accionista_fallecido',['no' => 'No', 'si' => 'Si'],isset($accionista->accionista_fallecido) ? $accionista->accionista_fallecido : 'no', array('class' => 'form-control control-accionista-fallecido')) }}

@@ -7,10 +7,10 @@
 			@include('accionistas.partials.table')
 		</div>
 	</div>
-
+	<!--
 	<div class="row">
 		<div class="col-md-12">
-			@include('accionistas.partials.table_porcentaje_accionistas')
+			{{--  @include('accionistas.partials.table_porcentaje_accionistas') 
 		</div>
 	</div>
 
@@ -19,7 +19,7 @@
 			@include('accionistas.partials.table_titulo_De_acciones')
 		</div>
 	</div>
-
+	--}} -->
 	<div class="row">
 		<div class="col-md-12">
 			@include('accionistas.partials.table_listado_accionistas_fallecidos')
@@ -43,7 +43,7 @@
 			@include('accionistas.partials.table_listado_accionistas_liquidacion')
 		</div>
 	</div>
-
+	 
 
     
 
