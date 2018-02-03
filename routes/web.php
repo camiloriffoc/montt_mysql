@@ -119,6 +119,12 @@ Route::get('sucursales/create/{id}','SucursalsController@create');
 Route::post('sucursales/{id}','SucursalsController@destroy');
 Route::resource('sucursales', 'SucursalsController');
 
+//Rutas para giros
+Route::get('giros/{id}','GirosController@index');
+Route::get('giros/create/{id}','GirosController@create');
+Route::post('giros/{id}','GirosController@destroy');
+Route::resource('giros', 'GirosController');
+
 
 //Rutas para secretario
 Route::get('secretario/{id}', 'SecretarioController@index');
