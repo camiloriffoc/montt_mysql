@@ -27,6 +27,12 @@ class Sociedades extends Model
         return $this->hasMany('App\Sucursal','sociedad_id');
     }
 
+    //Relacion 1 : n (Sociedad muchos Giros)
+    public function giros(){
+        
+        return $this->hasMany('App\Giro','sociedad_id');
+    }
+
 
     public function poderesApoderados(){
         

@@ -104,34 +104,35 @@ $(document).ready(function(){
     	var $data = $('#form-delete-accionista');
         var $formData = new FormData($data);
     	//Petición AJAX
-        $.ajax({
-            url: $url,
-            method: $form.attr("method"),
-            data: $formData,
-            dataType: "JSON",
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            processData: false,
-            contentType: false,
-            //Se ejecuta antes que la petición inicie
-            beforeSend: function(){
-            },
-            //El servidor responde y todo sale bien
-            success: function(data){
-            	if(data.iden == "Limpiar"){
-            		$form.find('input[type="text"]').val('');
-            	}
-            	$('#myAlertModal .modal-body').html('<p>'+data.message+'</p>');
-                $('#myAlertModal').modal('show');
-                $row.hide();
+        if (confirm("Esta seguro que desea eliminar")) {
+            $.ajax({
+                url: $url,
+                method: $form.attr("method"),
+                data: $formData,
+                dataType: "JSON",
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                processData: false,
+                contentType: false,
+                //Se ejecuta antes que la petición inicie
+                beforeSend: function(){
+                },
+                //El servidor responde y todo sale bien
+                success: function(data){
+                	if(data.iden == "Limpiar"){
+                		$form.find('input[type="text"]').val('');
+                	}
+                	$('#myAlertModal .modal-body').html('<p>'+data.message+'</p>');
+                    $('#myAlertModal').modal('show');
+                    $row.hide();
 
-                
+                    
 
-            },
-            error: function(err){
-                console.log('Error',err);
-            },
-        });
-
+                },
+                error: function(err){
+                    console.log('Error',err);
+                },
+            });
+        }
     });
 
     //Comprobamos el valor inicial del select fallecido

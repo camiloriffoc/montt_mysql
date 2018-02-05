@@ -101,3 +101,288 @@
 	<label>Idioma</label>
 	<input type="text" class="form-control" name="idioma" value="{{ $sociedad->idioma or '' }}">
 </div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Dirección Comercial</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Calle/Avenida:</label>
+	<input type="text" class="form-control" name="comercial_calle" value="{{ $sociedad->comercial_calle or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Número:</label>
+	<input type="text" class="form-control" name="comercial_numero" value="{{ $sociedad->comercial_numero or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Piso / Oficina:</label>
+	<input type="text" class="form-control" name="comercial_piso_oficina" value="{{ $sociedad->comercial_piso_oficina or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Comuna / Distrito:</label>
+	<input type="text" class="form-control" name="comercial_comuna" value="{{ $sociedad->comercial_comuna or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Ciudad:</label>
+	<input type="text" class="form-control" name="comercial_ciudad" value="{{ $sociedad->comercial_ciudad or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Región / Provincia / Barra:</label>
+	<input type="text" class="form-control" name="comercial_region" value="{{ $sociedad->comercial_region or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Estado:</label>
+	<input type="text" class="form-control" name="comercial_estado" value="{{ $sociedad->comercial_estado or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>País:</label>
+	<input type="text" class="form-control" name="comercial_pais" value="{{ $sociedad->comercial_pais or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Código Postal / Zip Code:</label>
+	<input type="text" class="form-control" name="comercial_codigo_postal" value="{{ $sociedad->comercial_codigo_postal or '' }}">
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Persona de Contacto</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Nombre:</label>
+	<input type="text" class="form-control" name="contacto_nombre" value="{{ $sociedad->contacto_nombre or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Teléfono:</label>
+	<input type="text" class="form-control" name="contacto_telefono" value="{{ $sociedad->contacto_telefono or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Correo:</label>
+	<input type="text" class="form-control" name="contacto_email" value="{{ $sociedad->contacto_email or '' }}">
+</div>	
+
+<div class="form-group col-sm-6">
+	<label>Celular:</label>
+	<input type="text" class="form-control" name="contacto_celular" value="{{ $sociedad->contacto_celular or '' }}">
+</div>	
+
+<div class="form-group col-sm-6">
+	<label>Skype:</label>
+	<input type="text" class="form-control" name="contacto_skype" value="{{ $sociedad->contacto_skype or '' }}">
+</div>	
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Dirección Tributaria</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Calle/Avenida:</label>
+	<input type="text" class="form-control" name="tributario_calle" value="{{ $sociedad->tributario_calle or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Número:</label>
+	<input type="text" class="form-control" name="tributario_numero" value="{{ $sociedad->tributario_numero or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Piso / Oficina:</label>
+	<input type="text" class="form-control" name="tributario_piso_oficina" value="{{ $sociedad->tributario_piso_oficina or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Comuna / Distrito:</label>
+	<input type="text" class="form-control" name="tributario_comuna" value="{{ $sociedad->tributario_comuna or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Ciudad:</label>
+	<input type="text" class="form-control" name="tributario_ciudad" value="{{ $sociedad->tributario_ciudad or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Región / Provincia / Barra:</label>
+	<input type="text" class="form-control" name="tributario_region" value="{{ $sociedad->tributario_region or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Estado:</label>
+	<input type="text" class="form-control" name="tributario_estado" value="{{ $sociedad->tributario_estado or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>País:</label>
+	<input type="text" class="form-control" name="tributario_pais" value="{{ $sociedad->tributario_pais or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Código Postal / Zip Code:</label>
+	<input type="text" class="form-control" name="tributario_codigo_postal" value="{{ $sociedad->tributario_codigo_postal or '' }}">
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Domicilio comercial Matriz</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Calle/Avenida:</label>
+	<input type="text" class="form-control" name="comercial_matriz_calle" value="{{ $sociedad->comercial_matriz_calle or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Número:</label>
+	<input type="text" class="form-control" name="comercial_matriz_numero" value="{{ $sociedad->comercial_matriz_numero or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Piso / Oficina:</label>
+	<input type="text" class="form-control" name="comercial_matriz_piso_oficina" value="{{ $sociedad->comercial_matriz_piso_oficina or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Comuna / Distrito:</label>
+	<input type="text" class="form-control" name="comercial_matriz_comuna" value="{{ $sociedad->comercial_matriz_comuna or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Ciudad:</label>
+	<input type="text" class="form-control" name="comercial_matriz_ciudad" value="{{ $sociedad->comercial_matriz_ciudad or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Región / Provincia / Barra:</label>
+	<input type="text" class="form-control" name="comercial_matriz_region" value="{{ $sociedad->comercial_matriz_region or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Estado:</label>
+	<input type="text" class="form-control" name="comercial_matriz_estado" value="{{ $sociedad->comercial_matriz_estado or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>País:</label>
+	<input type="text" class="form-control" name="comercial_matriz_pais" value="{{ $sociedad->comercial_matriz_pais or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Código Postal / Zip Code:</label>
+	<input type="text" class="form-control" name="comercial_matriz_codigo_postal" value="{{ $sociedad->comercial_matriz_codigo_postal or '' }}">
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Patente Municipal</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Exenta de Pago:</label>
+	<input type="text" class="form-control" name="patente_municipal_exenta_pago" value="{{ $sociedad->patente_municipal_exenta_pago or '' }}">
+</div>
+<div class="form-group col-sm-6">
+	<label>Comuna donde paga la patente la casa matriz:</label>
+	<input type="text" class="form-control" name="patente_municipal_comuna" value="{{ $sociedad->patente_municipal_comuna or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Fecha última patente pagada:</label>
+	<input type="text" class="form-control" name="patente_municipal_ultima_pagada" value="{{ $sociedad->patente_municipal_ultima_pagada or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Registra patente impaga:</label>
+	<input type="text" class="form-control" name="patente_municipal_registra_impaga" value="{{ $sociedad->patente_municipal_registra_impaga or '' }}">
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Contador a cargo</h1>
+	</div>
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Nombre</label>
+	<input type="text" class="form-control" name="contador_nombre" value="{{ $sociedad->contador_nombre or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Rut:</label>
+	<input type="text" class="form-control" name="contador_rut" value="{{ $sociedad->contador_rut or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Calle/Avenida:</label>
+	<input type="text" class="form-control" name="contador_domicilio_calle" value="{{ $sociedad->contador_domicilio_calle or '' }}">
+</div>	
+
+<div class="form-group col-sm-6">
+	<label>Número:</label>
+	<input type="text" class="form-control" name="contador_domicilio_numero" value="{{ $sociedad->contador_domicilio_numero or '' }}">
+</div>	
+
+<div class="form-group col-sm-6">
+	<label>Piso:</label>
+	<input type="text" class="form-control" name="contador_domicilio_piso" value="{{ $sociedad->contador_domicilio_piso or '' }}">
+</div>	
+
+<div class="form-group col-sm-6">
+	<label>Comuna / Distrito:</label>
+	<input type="text" class="form-control" name="contador_domicilio_comuna" value="{{ $sociedad->contador_domicilio_comuna or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Ciudad:</label>
+	<input type="text" class="form-control" name="contador_domicilio_ciudad" value="{{ $sociedad->contador_domicilio_ciudad or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Región / Provincia / Barra:</label>
+	<input type="text" class="form-control" name="contador_domicilio_region" value="{{ $sociedad->contador_domicilio_region or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Estado:</label>
+	<input type="text" class="form-control" name="contador_domicilio_estado" value="{{ $sociedad->contador_domicilio_estado or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>País:</label>
+	<input type="text" class="form-control" name="contador_domicilio_pais" value="{{ $sociedad->contador_domicilio_pais or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Código Postal / Zip Code:</label>
+	<input type="text" class="form-control" name="contador_domicilio_codigo" value="{{ $sociedad->contador_domicilio_codigo or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Profesión:</label>
+	<input type="text" class="form-control" name="contador_domicilio_profesion" value="{{ $sociedad->contador_domicilio_profesion or '' }}">
+</div>
+
+
+<div class="form-group col-sm-6">
+	<label>Nacionalidad:</label>
+	<input type="text" class="form-control" name="contador_domicilio_nacionalidad" value="{{ $sociedad->contador_domicilio_nacionalidad or '' }}">
+</div>
+
+
+<div class="form-group col-sm-6">
+	<label>Correo Electrónico:</label>
+	<input type="text" class="form-control" name="contador_domicilio_email" value="{{ $sociedad->contador_domicilio_email or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Skype:</label>
+	<input type="text" class="form-control" name="contador_domicilio_skype" value="{{ $sociedad->contador_domicilio_skype or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Teléfono:</label>
+	<input type="text" class="form-control" name="contador_domicilio_telefono" value="{{ $sociedad->contador_domicilio_telefono or '' }}">
+</div>
+
+<div class="form-group col-sm-6">
+	<label>Celular:</label>
+	<input type="text" class="form-control" name="contador_domicilio_celular" value="{{ $sociedad->contador_domicilio_celular or '' }}">
+</div>
+

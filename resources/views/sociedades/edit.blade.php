@@ -5,8 +5,7 @@
 	<div class="col-md-12">
 		<div class="btn-group" role="group" aria-label="Basic example">
 			<a type="button" class="btn btn-primary menu-cuentas" href="{{ url('/sucursales',['id' => $sociedad->id]) }}">Administra Sucursales</a>
-			<a type="button" class="btn btn-primary" disabled>Administrar Giros</a>
-			<a type="button" class="btn btn-primary" disabled>Otros</a>
+			<a type="button" class="btn btn-primary menu-cuentas" href="{{ url('/giros',['id' => $sociedad->id]) }}">Administrar Giros</a>
 		</div>
 	</div>
 </div>
