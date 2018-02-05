@@ -129,7 +129,7 @@ class DirectorController extends Controller
                 $director->update(['fecha_nombramiento_file'=>$nombre_fecha]);              
                 $file_fecha->move('uploads/directores', str_replace(" ","_",$file_fecha->getClientOriginalName()));
                 
-                if(\File::exists(public_path('uploads/directores'.$nombre_fecha_old))){
+                if(\File::exists(public_path('uploads/directores/'.$nombre_fecha_old))){
                         \File::delete(public_path('uploads/directores/'.$nombre_fecha_old));
                 }
             }

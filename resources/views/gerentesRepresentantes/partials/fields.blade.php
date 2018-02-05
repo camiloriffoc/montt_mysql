@@ -19,20 +19,19 @@
   </div>
 
    <div class="form-group col-sm-6">
-    <label>Fecha nombramiento</label>
-    <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$gerente->fecha_nombramiento or ''}}">
-  <!--   {{ Form::file('adjunto_fecha_nombramiento',['accept'=>'application/pdf','class'=>'form-control']) }} -->
-  </div>
+        <label>Fecha nombramiento</label>
+        <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$gerente->fecha_nombramiento or ''}}">
+        <input type="file" class="form-control" name="fecha_nombramiento_file" accept="application/pdf">
+    </div>
+    <div class="form-group col-sm-6">
+        <label>RUT</label>
+        <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="RUT" name="rut" value="{{$gerente->rut or ''}}">
+        <input type="file" class="form-control" name="rut_file" accept="application/pdf">
+    </div>
 
-  
   <div class="form-group col-sm-6">
     <label>Fecha vencimiento en el cargo</label>
     <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha vencimiento en el cargo" name="fecha_vencimiento" value="{{$gerente->fecha_vencimiento or ''}}">
-  </div>
-
-  <div class="form-group col-sm-6">
-    <label>RUT</label>
-    <input type="text" class="form-control" id="" name="rut" aria-describedby="emailHelp" placeholder="RUT" value="{{$gerente->rut or ''}}">
   </div>
 
   <div class="form-group col-sm-6">
