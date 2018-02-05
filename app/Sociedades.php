@@ -33,9 +33,9 @@ class Sociedades extends Model
         return $this->hasMany('App\PoderesApoderados','sociedad_id');
     }
 
-    public function gerenteRepresentante(){
+    public function gerentesRepresentantes(){
         
-        return $this->hasOne('App\GerenteRepresentante','sociedad_id');
+        return $this->hasMany('App\GerenteRepresentante','sociedad_id');
     }
 
     public function inspectorCuenta(){

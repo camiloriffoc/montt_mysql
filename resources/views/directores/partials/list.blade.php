@@ -9,34 +9,31 @@
         <th style=" text-align: center;">Es Director titular</th>
         <th style=" text-align: center;">Es Director Suplente</th>
         <th style=" text-align: center;">Es Presidente del Directorio</th>
-        <th style=" text-align: center;">Editar / Eliminar</th>
+        <!--<th style=" text-align: center;">Editar / Eliminar</th>-->
 
       </tr>
     </thead>
     <tbody>
-      @isset($directores)
-      @foreach($directores as $director)
-        @if($director->accionista=='Si')
+      @foreach($directores_accionistas as $director)
           <tr style="text-align: center;">
-            <td>{{$director->nombres}}</td>
+            <td>{{$director->nombre}}</td>
             <td>{{$director->rut}}</td>
-            @if($director->tipo_de_director=='Director Titular')
+            @if($director->accionista_director_titular  =='si')
             <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
             <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-            @else
+            @endif
+            @if($director->accionista_director_suplente  =='si')
              <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
              <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
             @endif
-             @if($director->presidente_del_directorio=='Si')
+             @if($director->accionista_presidente_directorio =='si')
             <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
             @else
              <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
             @endif
-            <td><a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/director/delete/{{$director->directorio_id}}/{{$director->id}}" class="delete-director"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+            <td><!--<a href="/director/edit/{{$director->directorio_id}}/{{$director->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>  <a href="/director/delete_accionista/{{$director->id}}" class="delete-director"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>-->
           </tr>
-        @endif  
       @endforeach
-      @endisset
     </tbody>
   </table>
 </div>

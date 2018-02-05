@@ -68,8 +68,12 @@ Route::get('capital/pago/edit/{id}','CapitalController@pagoEdit');
 Route::post('capital/pago/update','CapitalController@pagoUpdate');
 
 //Rutas Gerentes Generales o Representantes
+Route::get('gerente_representante/delete/{id}','GerenteRepresentanteController@delete');
 Route::get('gerente_representante/{sociedad_id}','GerenteRepresentanteController@index');
+Route::get('gerente_representante/create/{sociedad_id}', 'GerenteRepresentanteController@create');
 Route::post('gerente_representante/update','GerenteRepresentanteController@update');
+Route::get('gerente_representante/edit/{id}','GerenteRepresentanteController@edit');
+Route::post('gerente_representante/store','GerenteRepresentanteController@store');
 
 //Rutas InspectoresCuenta
 Route::get('inspectores_cuenta/{sociedad_id}','InspectoresCuentaController@index');
@@ -107,7 +111,7 @@ Route::get('director/show/{id}','DirectorController@show');
 Route::get('director/edit/{id_directorio}/{id}', 'DirectorController@edit');
 Route::post('director', 'DirectorController@store');
 Route::post('director/update', 'DirectorController@update');
-Route::get('director/delete/{directorio_id}/{id}', 'DirectorController@delete');
+Route::get('director/delete/{id}', 'DirectorController@delete');
 
 //directorio
 Route::get('/directorio/{id}/edit','DirectorioController@edit');

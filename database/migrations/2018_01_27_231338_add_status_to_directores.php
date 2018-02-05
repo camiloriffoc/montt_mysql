@@ -14,7 +14,7 @@ class AddStatusToDirectores extends Migration
     public function up()
     {
         Schema::table('directores', function(Blueprint $table) {
-            $table->string('status')->default(1)->after('accionista');
+            $table->string('status')->default(1)->after('cargo');
         });
     }
 

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Director;
+use App\Directorio;
 use App\Secretario;
+use App\Accionista;
+use App\Sociedades;
 
 class DirectorController extends Controller
 {
@@ -64,12 +67,22 @@ class DirectorController extends Controller
         if($request->ajax()){
         	//Se buscan los directores que pertenescan al directorio y se encuentren activos
         	$directores = Director::where("directorio_id","=",$id)->where('status','=','1')->get();
-        	$secretario = Secretario::where('directorio_id','=',$id)->where('status','=','1')->first();
 
+        	$secretario = Secretario::where('directorio_id','=',$id)->where('status','=','1')->first();
+            
+            $directorio = Directorio::find($id);
+            $sociedad_id= $directorio['sociedad_id'];
+
+            $directores_accionistas = Accionista::where('sociedad_id','=',$sociedad_id)
+                                    ->where(function($q) {
+                                    $q->where('accionista_director_titular','=','Si')
+                                    ->orWhere('accionista_director_Suplente','=','Si');
+                                    })->get();
+                                
         	//Se retorna al index con el id del directorio, los directores y el secretario
         	//return view('directores.show')->with(['id'=>$id, 'directores'=>$directores, 'secretario'=>$secretario]);
             
-            $view = \View::make('directores.show')->with(['id'=>$id, 'directores'=>$directores, 'secretario'=>$secretario]);
+            $view = \View::make('directores.show')->with(['id'=>$id, 'directores'=>$directores, 'secretario'=>$secretario, 'directores_accionistas'=>$directores_accionistas]);
 
             $sections = $view->renderSections();
             return Response::json($sections['myContent']); 
@@ -132,14 +145,20 @@ class DirectorController extends Controller
                 }
             }
 
+            $directorio = Directorio::find($directorio_id);
+            $sociedad_id= $directorio['sociedad_id'];
 
-
+            $directores_accionistas = Accionista::where('sociedad_id','=',$sociedad_id)
+                                    ->where(function($q) {
+                                    $q->where('accionista_director_titular','=','Si')
+                                    ->orWhere('accionista_director_Suplente','=','Si');
+                                    })->get();
 
             $directores = Director::where("directorio_id","=",$directorio_id)->where('status','=','1')->get();
         	$secretario = Secretario::where('directorio_id','=',$directorio_id)->where('status','=','1')->first();
 
         	
-            $view = \View::make('directores.show')->with(['id'=>$directorio_id, 'directores'=>$directores, 'secretario'=>$secretario]);
+            $view = \View::make('directores.show')->with(['id'=>$directorio_id, 'directores'=>$directores, 'secretario'=>$secretario,'directores_accionistas'=>$directores_accionistas]);
 
             $sections = $view->renderSections();
             return Response::json($sections['myContent']); 
@@ -147,7 +166,7 @@ class DirectorController extends Controller
 
     }
 
-    public function delete(request $request,$directorio_id,$id){
+    public function delete(request $request,$id){
 
         if($request->ajax()){
 

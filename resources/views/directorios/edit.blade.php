@@ -11,7 +11,7 @@
 @endisset
 
 <div class="row">
-	<h4 class="text-center">Editar Directorio: </h4>
+
 	{!! Form::open(array('url' => '/directorio/store', 'method' => 'post', 'class' => 'add-directorio','files' => true)) !!}
 	{!! Form::token() !!}
 

@@ -4,20 +4,16 @@
 
 
 <div class="row">
+	<br><br>
+	<a href="/gerente_representante/create/{{$sociedad_id}}" class="btn btn-info menu-cuentas ">Agregar Nuevo Gerente</a>
 
-	<h2>Gerente General O Representante</h2>
-	{{ Form::open(['url' => 'gerente_representante/update','class'=>'add-gerente', 'method' =>'POST', 'files' => true ]) }}
-	<input type="hidden" name='sociedad_id' value={{$sociedad_id}}>
-	@include('gerentesRepresentantes.partials.fields')
+	<h2>Listado de Gerentes o Representantes</h2>
 	
-	<br>
-  	<br>
-  <button type="submit" class="btn btn-success btn-block" >Guardar cambios</button>
+	@include('gerentesRepresentantes.partials.list')
 
-	{{ Form::close() }}
 </div>
 
-<script src="{{ asset('js/gerenteRepresentante.js') }}"></script><
+<script src="{{ asset('js/gerenteRepresentante.js') }}"></script>
 
 
 @endsection

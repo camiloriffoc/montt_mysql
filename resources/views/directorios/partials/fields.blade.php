@@ -9,7 +9,7 @@
 
   <div class="form-group col-sm-6">
      <label>Con o son suplentes</label>
-    {{ Form::select('con_o_sin_suplentes', ['' => '-None-', 'Con Suplentes' => 'Con Suplentes', 'Sin Suplentes' => 'Sin Suplentes'],isset($directorio->con_o_sin_suplentes) ? $directorio->con_o_sin_suplentes : '', array('class' => 'form-control')) }}
+    {{ Form::select('con_o_sin_suplentes', ['Con Suplentes' => 'Con Suplentes', 'Sin Suplentes' => 'Sin Suplentes'],isset($directorio->con_o_sin_suplentes) ? $directorio->con_o_sin_suplentes : '', array('class' => 'form-control')) }}
     
   </div>
 

@@ -82,19 +82,19 @@
     <label>País</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="País" name="pais" value="{{ $secretario->pais or ''}}">
   </div>
+   <div class="form-group col-sm-6">
+    <label>Nacionalidad</label>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Nacionalidad" name="nacionalidad" value="{{ $secretario->nacionalidad or ''}}">
+  </div>
   <div class="form-group col-sm-6">
     <label>Codigo Postal</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Codigo Postal" name="codigo_postal" value="{{ $secretario->codigo_postal or ''}}">
   </div>
-
   <div class="form-group col-sm-6">
     <label>Profesión</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Profesion" name="profesion" value="{{ $secretario->profesion or ''}}">
   </div>
-  <div class="form-group col-sm-6">
-    <label>Nacionalidad</label>
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Nacionalidad" name="nacionalidad" value="{{ $secretario->nacionalidad or ''}}">
-  </div>
+ 
   <div class="form-group col-sm-6">
     <label>Estado Civil</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Estado Civil" name="estado_civil" value="{{ $secretario->estado_civil or ''}}">

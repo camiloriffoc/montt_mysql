@@ -23,16 +23,7 @@
     <label>Tipo de Director</label>
     {{ Form::select('tipo_de_director', ['Director Titular' => 'Director Titular', 'Director Suplente' => 'Director Suplente'],isset($director->tipo_de_director) ? $director->tipo_de_director : '', array('class' => 'form-control')) }}
   </div>
-  <div class="form-group col-sm-6">
-    <label>Presidente de Directorio</label>
-    {{ Form::select('presidente_del_directorio', ['No' => 'No', 'Si' => 'Si'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
-  </div>
-
-  <div class="form-group col-sm-6">
-    <label>Es Accionista</label>
-    {{ Form::select('accionista', [ 'No' => 'No', 'Si' => 'Si'],isset($director->accionista) ? $director->accionista : '', array('class' => 'form-control')) }}
-  </div>
-
+  
   <div class="form-group col-sm-6">
     <label>Fecha nombramiento</label>
     <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$director->fecha_nombramiento or ''}}">
@@ -195,6 +186,10 @@
   <div class="form-group col-sm-6">
     <label>Participación Grupo Externo</label>
     <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Participación grupo externo" name="participacion_grupo_externo" value="{{$director->participacion_grupo_externo or ''}}">
+  </div>
+  <div class="form-group col-sm-6">
+    <label>Presidente de Directorio</label>
+    {{ Form::select('presidente_del_directorio', ['No' => 'No', 'Si' => 'Si'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
   </div>
    <div class="form-group col-sm-6">
     <label>Es Gerente General o Representante:</label>

@@ -1,12 +1,21 @@
 <br><br>
-<div class="form-group col-sm-6">
+  <div class="form-group col-sm-6">
     <label>Nombres:</label>
     <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Nombre" name="nombre" value="{{$gerente->nombre or ''}}">
+  </div>
+  <div class="form-group col-sm-6">
+    <label>Aoellidos:</label>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Apellido" name="apellido" value="{{$gerente->apellido or ''}}">
   </div>
 
   <div class="form-group col-sm-6">
     <label>Cargo</label>
     <input type="text" class="form-control" id="" aria-describedby="emailHelp" placeholder="Cargo" name="cargo" value="{{$gerente->cargo or ''}}">
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label>Es Gerente Actual:</label>
+    {{ Form::select('gerente_actual', ['Si' => 'Si', 'No' => 'No'],isset($gerente->gerente_actual) ? $gerente->gerente_actual : '', array('class' => 'form-control')) }}
   </div>
 
    <div class="form-group col-sm-6">
@@ -15,10 +24,6 @@
   <!--   {{ Form::file('adjunto_fecha_nombramiento',['accept'=>'application/pdf','class'=>'form-control']) }} -->
   </div>
 
-  <div class="form-group col-sm-6">
-    <label>Gerente General o Representante</label>
-    {{ Form::select('gerente_o_representante', ['Gerente General' => 'Gerente General', 'Representante' => 'Representante'],isset($gerente->gerente_o_representante) ? $gerente->gerente_o_representante : '', array('class' => 'form-control')) }}
-  </div>
   
   <div class="form-group col-sm-6">
     <label>Fecha vencimiento en el cargo</label>
@@ -32,44 +37,53 @@
 
   <div class="form-group col-sm-6">
     <label>Domicilio</label>
-    <input type="text" class="form-control" id="" name="domicilio" aria-describedby="emailHelp" placeholder="Domicilio" value="{{$gerente->domicilio or ''}}">
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_calle" aria-describedby="emailHelp" placeholder="Domicilio" value="{{$gerente->domicilio_calle or ''}}">
+  </div>
+  <div class="form-group col-sm-6">
     <label>Numero</label>
-    <input type="text" class="form-control" id="" name="numero" aria-describedby="emailHelp" placeholder="NRO" onKeyPress="return soloNumeros(event)" value="{{$gerente->numero or ''}}">
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_numero" aria-describedby="emailHelp" placeholder="NRO" onKeyPress="return soloNumeros(event)" value="{{$gerente->domicilio_numero or ''}}">
+  </div>
+  <div class="form-group col-sm-6">
     <label>Piso</label>
-    <input type="text" class="form-control" id="" name="piso" aria-describedby="emailHelp" placeholder="Piso" value="{{$gerente->piso or ''}}">
+    <input type="text" class="form-control" id="" name="domicilio_piso" aria-describedby="emailHelp" placeholder="Piso" value="{{$gerente->domicilio_piso or ''}}">
   </div>
 
   <div class="form-group col-sm-6">
     <label>Comuna</label>
-    <input type="text" class="form-control" id="" name="comuna" aria-describedby="emailHelp" placeholder="Comuna/Distrito" value="{{$gerente->comuna or ''}}">
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_comuna" aria-describedby="emailHelp" placeholder="Comuna/Distrito" value="{{$gerente->domicilio_comuna or ''}}">
+  </div>
+  <div class="form-group col-sm-6">
     <label>Cuidad</label>
-    <input type="text" class="form-control" id="" name="ciudad" aria-describedby="emailHelp" placeholder="Cuidad" value="{{$gerente->ciudad or ''}}"> 
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_ciudad" aria-describedby="emailHelp" placeholder="Cuidad" value="{{$gerente->domicilio_ciudad or ''}}"> 
+  </div>
+  <div class="form-group col-sm-6">
     <label>Región</label>
-    <input type="text" class="form-control" id="" name="region" aria-describedby="emailHelp" placeholder="Región" value="{{$gerente->region or ''}}"> 
+    <input type="text" class="form-control" id="" name="domicilio_region_provincia_barra" aria-describedby="emailHelp" placeholder="Región" value="{{$gerente->domicilio_region_provincia_barra or ''}}"> 
   </div>
 
   <div class="form-group col-sm-6">
     <label>Estado</label>
-    <input type="text" class="form-control" id="" name="estado" aria-describedby="emailHelp" placeholder="Estado" value="{{$gerente->estado or ''}}"> 
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_estado" aria-describedby="emailHelp" placeholder="Estado" value="{{$gerente->domicilio_estado or ''}}"> 
+  </div>
+  <div class="form-group col-sm-6">
     <label>País</label>
-    <input type="text" class="form-control" id="" name="pais" aria-describedby="emailHelp" placeholder="País" value="{{$gerente->pais or ''}}"> 
-    <br>
+    <input type="text" class="form-control" id="" name="domicilio_pais" aria-describedby="emailHelp" placeholder="País" value="{{$gerente->domicilio_pais or ''}}"> 
+  </div>
+  <div class="form-group col-sm-6">
+    <label>Nacionalidad</label>
+    <input type="text" class="form-control" id="" name="nacionalidad" aria-describedby="emailHelp" placeholder="Nacionalidad" value="{{$gerente->nacionalidad or ''}}"> 
+  </div>
+  <div class="form-group col-sm-6">
     <label>Codigo Postal</label>
-    <input type="text" class="form-control" id="" name="codigo_postal" aria-describedby="emailHelp" placeholder="Codigo Postal" value="{{$gerente->codigo_postal or ''}}"> 
+    <input type="text" class="form-control" id="" name="domicilio_codigo_postal" aria-describedby="emailHelp" placeholder="Codigo Postal" value="{{$gerente->domicilio_codigo_postal or ''}}"> 
   </div>
 
   <div class="form-group col-sm-6">
     <label>Profesion</label>
     <input type="text" class="form-control" id="" name="profesion" aria-describedby="emailHelp" placeholder="Profesion" value="{{$gerente->profesion or ''}}"> 
-    <br>
-    <label>Nacionalidad</label>
-    <input type="text" class="form-control" id="" name="nacionalidad" aria-describedby="emailHelp" placeholder="Nacionalidad" value="{{$gerente->nacionalidad or ''}}"> 
-    <br>
+  </div>
+  
+  <div class="form-group col-sm-6">
     <label>Estado Civil</label>
     <input type="text" class="form-control" id="" name="estado_civil" aria-describedby="emailHelp" placeholder="Estado Civil" value="{{$gerente->estado_civil or ''}}">
   </div>
@@ -77,7 +91,8 @@
   <div class="form-group col-sm-6">
     <label>Correo Electronico</label>
     <input type="text" class="form-control" id="" name="correo_electronico" aria-describedby="emailHelp" placeholder="Correo Electrónico" value="{{$gerente->correo_electronico or ''}}"> 
-    <br>
+  </div>
+  <div class="form-group col-sm-6">
     <label>Skype</label>
     <input type="text" class="form-control" id="" name="skype" aria-describedby="emailHelp" placeholder="Skype" value="{{$gerente->skype or ''}}"> 
   </div>
@@ -85,7 +100,8 @@
   <div class="form-group col-sm-6">
     <label>Telefono</label>
     <input type="text" class="form-control" id="" name="telefono" aria-describedby="emailHelp" placeholder="Teléfono" onKeyPress="return soloNumeros(event)" value="{{$gerente->telefono or ''}}"> 
-    <br>
+  </div>
+  <div class="form-group col-sm-6">
     <label>Celular</label>
     <input type="text" class="form-control" id="" name="celular" aria-describedby="emailHelp" placeholder="Celular" onKeyPress="return soloNumeros(event)" value="{{$gerente->celular or ''}}"> 
   </div>
