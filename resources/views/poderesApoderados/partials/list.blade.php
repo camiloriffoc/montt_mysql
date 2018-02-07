@@ -28,12 +28,30 @@
             <td>{{ $poder->periodo_vigencia or ''}}</td>
             <td>{{ $poder->rut or ''  }}</td>
             <td>{{ $poder->forma_de_actuar or ''}}</td>
+            
+            @if($poder->fecha_nombramiento_file)
+            <td><a target="_blank" href="{{asset('uploads/poderes/'.$poder->fecha_nombramiento_file)}}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>
+            @else
             <td></td>
-            <td></td>
+            @endif
+            
+            <td> fecha revocacion</td>
             <td>{{ $poder->instrumento_revocacion_de_poder or ''}}</td>
-            <td></td>
+            
+            @if($poder->poder_inscrito_cbr_file)
+            <td><a target="_blank" href="{{asset('uploads/poderes/'.$poder->poder_inscrito_cbr_file)}}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>
+            @else
+            <td> </td>
+            @endif
+            
             <td>{{ $poder->informado_bancos or '' }}</td>
-            <td></td>
+            
+            @if($poder->inscripcion_renovacion_cbr_file)
+            <td><a target="_blank" href="{{asset('uploads/poderes/'.$poder->inscripcion_renovacion_cbr_file)}}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>
+            @else
+            <td> </td>
+            @endif
+            
             <td>{{ $value['Revocación informada a Bancos'] or '' }}</td>
             <td>
               <a href="/poderes_apoderados/edit/{{ $poder->id}}" class="menu-cuentas btn btn-info btn-xs ">

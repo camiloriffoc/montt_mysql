@@ -23,4 +23,4 @@
 	<li><a href="/junta_accionistas/form_junta_accionista/" class="menu-cuentas">Junta de Accionistas</a></li>
 	<li><a href="/derecho_retiro/form_derecho_retiro/" class="menu-cuentas">Derecho a Retiro</a></li> -->
 	<li><a href="/estatutos_sociales/{{$sociedad->id}}" class="menu-cuentas">Estatuto Sociales</a></li>
-	<!--<li><a href="/sectores/form_sectores_regulados/" class="menu-cuentas">{{-- str_limit('Autorizaciones sectoriales', $limit = 25, $end = '...') --}</a></li> -->
+	<li><a href="/autorizacion_sectores/{{$sociedad->id}}" class="menu-cuentas">{{str_limit('Autorizaciones sectoriales', $limit = 25, $end = '...') }}</a></li>

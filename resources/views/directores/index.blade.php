@@ -11,7 +11,7 @@
 
 <div class="row">
 	<h4 class="text-center">Agregar Director</h4>
-	{!! Form::open(array('url' => '/director', 'method' => 'post', 'class'=>'add-director')) !!}
+	{!! Form::open(array('url' => '/director', 'method' => 'post', 'class'=>'add-director','files' => true)) !!}
 	{!! Form::token() !!}
 	@include('directores.partials.fields')
 	<button type="submit" class="btn btn-success btn-block">Guardar cambios</button>

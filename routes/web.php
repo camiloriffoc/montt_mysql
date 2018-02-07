@@ -40,6 +40,10 @@ Route::get('acciones/create/{id}','AccionesController@create');
 Route::post('acciones/{id}','AccionesController@destroy');
 Route::resource('acciones', 'AccionesController');
 
+//Rutas para autorizaciones sectores regulados
+Route::get('autorizacion_sectores/{sociedad_id}','AutorizacionController@index');
+Route::post('autorizacion_sectores/store','AutorizacionController@store');
+
 //Rutas para capital social
 Route::get('capital/{id}','CapitalController@index');
 Route::post('capital/','CapitalController@store');

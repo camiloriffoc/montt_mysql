@@ -63,4 +63,9 @@ class Sociedades extends Model
         return $this->hasOne('App\Fiscalizadores','sociedad_id');
     }
 
+    public function Autorizaciones(){
+        
+        return $this->hasMany('App\Autorizacion','sociedad_id');
+    }
+
 }
