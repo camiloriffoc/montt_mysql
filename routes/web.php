@@ -151,6 +151,14 @@ Route::get('pacto_accionista/{id}','PactosController@index');
 Route::post('pacto_accionista/{id}','PactosController@destroy');
 Route::resource('pacto_accionista', 'PactosController');
 
+//Rutas Composición Accionaria
+Route::get('composicionAccionaria/{id}', 'ComposicionAccionariaController@index');
+
+//Rutas Listado de accionista Capital
+Route::get('listado_capital/{id}','ListadoAccionistaCapitalController@index');
+Route::post('listado_capital/{id}','ListadoAccionistaCapitalController@destroy');
+Route::resource('listado_capital', 'ListadoAccionistaCapitalController');
+
 //Rutas SubPacto Accionistas
 Route::get('subpacto_accionista/{id}','SubPactosController@index');
 Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
