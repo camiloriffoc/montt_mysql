@@ -9,6 +9,18 @@
 		@include('listadoAccionistaCapital.index')
 	</div>
 </div>
+
+<div class="row">
+	<div class="col-md-12">
+		@include('listadoAccionistaVoto.index')
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		@include('listadoAccionistaDividendo.index')
+	</div>
+</div>
     
 
 @endsection

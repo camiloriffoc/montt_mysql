@@ -21,9 +21,11 @@ class ComposicionAccionariaController extends Controller
 
         //Obtenemos todo el listado de accionista capital
         $listado_capital = $sociedad->listadoAccionistasCapitales;
+        $listado_voto = $sociedad->listadoAccionistasVotos;
+        $listado_dividendo = $sociedad->listadoAccionistasDividendos;
         
         //retorno vista y lista de todas las sucursales
-        $view = \View::make('composicionAccionaria.index')->with('sociedad',$sociedad)->with('listado_capital',$listado_capital);
+        $view = \View::make('composicionAccionaria.index')->with('sociedad',$sociedad)->with('listado_capital',$listado_capital)->with('listado_voto',$listado_voto)->with('listado_dividendo',$listado_dividendo);
 
         if($request->ajax()){
             $sections = $view->renderSections();

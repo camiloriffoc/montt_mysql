@@ -1,20 +1,20 @@
 
-<a class="btn btn-success pull-right" href="#" role="button" data-toggle="modal" data-target="#myModalAddListadoCapital">Nuevo Listado Accionista Capital</a>
+<a class="btn btn-success pull-right" href="#" role="button" data-toggle="modal" data-target="#myModalAddListadoVoto">Nuevo Listado Accionista con Derecho a Voto</a>
 <div class="row">
 	<div class="col-md-12">
-		@include('listadoAccionistaCapital.partials.table')
+		@include('listadoAccionistaVoto.partials.table')
 	</div>
 </div>
 
 <!-- Modal para agregar-->
 
-<div id="myModalAddListadoCapital" class="modal fade" role="dialog">
+<div id="myModalAddListadoVoto" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-body">
 				<p>
-					@include('listadoAccionistaCapital.create')
+					@include('listadoAccionistaVoto.create')
 				</p>
 			</div>
 			<div class="modal-footer">
@@ -24,4 +24,3 @@
 
 	</div>
 </div> 
-

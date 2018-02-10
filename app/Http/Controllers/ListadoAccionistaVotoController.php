@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use App\Sociedades;
-use App\ListadoAccionistaCapital;
+use App\ListadoAccionistaVoto;
 use Session;
 
-class ListadoAccionistaCapitalController extends Controller
+class ListadoAccionistaVotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,7 +41,7 @@ class ListadoAccionistaCapitalController extends Controller
         //
         if($request->ajax()){
             ////Método para guardar en al Base de Datos
-            ListadoAccionistaCapital::create($request->all());
+            ListadoAccionistaVoto::create($request->all());
 
             $id = $request->input('sociedad_id');
 
@@ -50,12 +50,12 @@ class ListadoAccionistaCapitalController extends Controller
             $sociedad = Session::get('sociedad');
 
             //obtendo todos
-            $listado_capital = $sociedad->listadoAccionistasCapitales;
             $listado_voto = $sociedad->listadoAccionistasVotos;
+            $listado_capital = $sociedad->listadoAccionistasCapitales;
             $listado_dividendo = $sociedad->listadoAccionistasDividendos;
 
             //retorno vista
-            $view = \View::make('composicionAccionaria.index')->with('sociedad',$sociedad)->with('listado_capital',$listado_capital)->with('listado_voto',$listado_voto)->with('listado_dividendo',$listado_dividendo);
+            $view = \View::make('composicionAccionaria.index')->with('sociedad',$sociedad)->with('listado_voto',$listado_voto)->with('listado_capital',$listado_capital)->with('listado_dividendo',$listado_dividendo);
 
             
             $sections = $view->renderSections();
@@ -88,9 +88,10 @@ class ListadoAccionistaCapitalController extends Controller
     public function edit(Request $request, $id)
     {
         //
-        $listado_capital = ListadoAccionistaCapital::find($id);
+        //
+        $listado_voto = ListadoAccionistaVoto::find($id);
 
-        $view = \View::make('listadoAccionistaCapital.edit')->with('listado_capital',$listado_capital);
+        $view = \View::make('listadoAccionistaVoto.edit')->with('listado_voto',$listado_voto);
 
         if($request->ajax()){
             $sections = $view->renderSections();
@@ -107,12 +108,12 @@ class ListadoAccionistaCapitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        ////
         if($request->ajax()){
             ////Actualizamos un giro
             $input = $request->all();
-            $listado_capital = ListadoAccionistaCapital::find($id);
-            $listado_capital->update($input);
+            $listado_voto = ListadoAccionistaVoto::find($id);
+            $listado_voto->update($input);
 
             return response()->json([
                 'message' => 'Editado con éxito',

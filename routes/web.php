@@ -159,6 +159,16 @@ Route::get('listado_capital/{id}','ListadoAccionistaCapitalController@index');
 Route::post('listado_capital/{id}','ListadoAccionistaCapitalController@destroy');
 Route::resource('listado_capital', 'ListadoAccionistaCapitalController');
 
+//Rutas Listado de accionista Con derecho a Voto
+Route::get('listado_voto/{id}','ListadoAccionistaVotoController@index');
+Route::post('listado_voto/{id}','ListadoAccionistaVotoController@destroy');
+Route::resource('listado_voto', 'ListadoAccionistaVotoController');
+
+//Rutas Listado de accionista Con derecho a Dividendo
+Route::get('listado_dividendo/{id}','ListadoAccionistaDividendoController@index');
+Route::post('listado_dividendo/{id}','ListadoAccionistaDividendoController@destroy');
+Route::resource('listado_dividendo', 'ListadoAccionistaDividendoController');
+
 //Rutas SubPacto Accionistas
 Route::get('subpacto_accionista/{id}','SubPactosController@index');
 Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
