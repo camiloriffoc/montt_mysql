@@ -11,7 +11,6 @@
 					<th>Informado al SII</th>
 					<th>Informado al Banco</th>
 					<th>Observaciones</th>
-					<th>Texto Refundido</th>
 					<th>Adjunto Texto Refundido</th>
 					<th>Adjunto Archivo</th>
 					<th>Editar/Eliminar</th>
@@ -26,7 +25,6 @@
 					<td>{{$especial->informado_sii}}</td>
 					<td>{{$especial->informado_banco}}</td>
 					<td>{{$especial->observaciones}}</td>
-					<td>{{$especial->texto_refundido}}</td>
 					<td>adjunto texto refundido</td>
 					<td>archivo adjunto</td>
 					<td>

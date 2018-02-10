@@ -10,7 +10,7 @@
 	 	
 	 	<input type="hidden" name="id" value="{{$poder_id}}">
 
-		@include('poderesApoderados.partials.fields')
+		@include('poderesApoderados.partials.fields_edit')
 		
 	{{ Form::close() }}
    

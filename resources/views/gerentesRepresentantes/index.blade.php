@@ -7,7 +7,7 @@
 	<br><br>
 	<a href="/gerente_representante/create/{{$sociedad_id}}" class="btn btn-info menu-cuentas ">Agregar Nuevo Gerente</a>
 
-	<h2>Listado de Gerentes o Representantes</h2>
+	<h2>Lista Actual de Gerente General o Representante Legal</h2>
 	
 	@include('gerentesRepresentantes.partials.list')
 

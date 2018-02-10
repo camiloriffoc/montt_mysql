@@ -22,7 +22,7 @@
     <br>
     <p>
       @if(isset($secretario->rut_file))
-        <a target="_blank" href="{{asset('uploads/secretarios/'.$secretario->fecha_nombramiento_file) }}">Ver Archivo Adjunto</a>
+        <a target="_blank" href="{{asset('uploads/secretarios/'.$secretario->fecha_nombramiento_file) }}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
       @else
         No hay archivo adjunto
       @endif  
@@ -36,7 +36,7 @@
     <br>
     <p>
       @if(isset($secretario->rut_file))
-        <a target="_blank" href="{{asset('uploads/secretarios/'.$secretario->rut_file) }}">Ver Archivo Adjunto</a>
+        <a target="_blank" href="{{asset('uploads/secretarios/'.$secretario->rut_file) }}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
       @else
         No hay archivo adjunto
       @endif  

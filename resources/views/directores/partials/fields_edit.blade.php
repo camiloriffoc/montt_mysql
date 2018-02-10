@@ -37,7 +37,7 @@
     <div class="form-group col-sm-6">
       <p>
         @if(isset($director->fecha_nombramiento_file))
-          <a target="_blank" href="{{asset('uploads/directores/'.$director->fecha_nombramiento_file) }}">Ver Archivo Adjunto</a>
+          <a target="_blank" href="{{asset('uploads/directores/'.$director->fecha_nombramiento_file) }}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
         @else 
           No Tiene Archivo Adjunto
         @endif  
@@ -59,7 +59,7 @@
       <br>
         <p>
         @if(isset($director->rut_file))
-          <a target="_blank" href="{{asset('uploads/directores/'.$director->rut_file) }}">Ver Archivo Adjunto</a>
+          <a target="_blank" href="{{asset('uploads/directores/'.$director->rut_file) }}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
         @else 
           No Tiene Archivo Adjunto
         @endif  
@@ -191,6 +191,12 @@
     <label>Presidente de Directorio</label>
     {{ Form::select('presidente_del_directorio', ['No' => 'No', 'Si' => 'Si'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
   </div>
+  
+  <div class="form-group col-sm-6">
+    <label>Es Secretario:</label>
+    {{ Form::select('es_secretario', ['Si' => 'Si', 'No' => 'No'],isset($director->es_secretario) ? $director->es_secretario : '', array('class' => 'form-control')) }}
+  </div>  
+  
    <div class="form-group col-sm-6">
     <label>Es Gerente General o Representante:</label>
     {{ Form::select('es_gerente_general_o_representante', ['' => '-None-', 'Si' => 'Si', 'No' => 'No'],isset($director->es_gerente_general_o_representante) ? $director->es_gerente_general_o_representante : '', array('class' => 'form-control')) }}

@@ -48,9 +48,28 @@ class EstatutoSocialController extends Controller
 
     	if($request->ajax()){
 
+        $file_escritura = $request->file('escritura_file');
+        $file_texto   = $request->file('texto_refundido_file');
+
     	$new_general = $request->all();
     	$estatuto = new EstatutoRegimenGeneral($new_general);
     	$estatuto->save();
+
+
+        if($file_escritura) {
+            $nombre_file= str_replace(" ", "_", $file_escritura->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+            $estatuto->update(['escritura_file'=>$nombre_file]);              
+            $file_escritura->move('uploads/estatutos', str_replace(" ","_",$file_escritura->getClientOriginalName()));
+        }
+
+        if($file_texto) {
+            $nombre_texto= str_replace(" ", "_", $file_texto->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+            $estatuto->update(['texto_refundido_file'=>$nombre_texto]);              
+           $file_texto->move('uploads/estatutos', str_replace(" ","_",$file_texto->getClientOriginalName()));
+        }
+
 
     	$generales = EstatutoRegimenGeneral::where("sociedad_id","=",$new_general['sociedad_id'])->get();
     	$especiales =EstatutoRegimenEspecial::where("sociedad_id","=",$new_general['sociedad_id'])->get();
@@ -80,10 +99,41 @@ class EstatutoSocialController extends Controller
 
     	if($request->ajax()){
 
+            $file_escritura = $request->file('escritura_file');
+            $file_texto   = $request->file('texto_refundido_file');
+
     		$general_request = $request->all();
     		$general = EstatutoRegimenGeneral::find($general_request['id']);
+
+            $nombre_escritura_old = $general->escritura_file;
+            $nombre_texto_old = $general->texto_refundido_file;
+
     		$general->update($general_request);
     		$sociedad_id=$general['sociedad_id'];
+
+
+            if($file_escritura) {
+                $nombre_file= str_replace(" ", "_", $file_escritura->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                $estatuto->update(['escritura_file'=>$nombre_file]);              
+                $file_escritura->move('uploads/estatutos', str_replace(" ","_",$file_escritura->getClientOriginalName()));
+
+                if(\File::exists(public_path('uploads/estatutos/'.$nombre_escritura_old))){
+                        \File::delete(public_path('uploads/estatutos/'.$nombre_escritura_old));
+                }
+            }
+
+            if($file_texto) {
+                $nombre_texto= str_replace(" ", "_", $file_texto->getClientOriginalName());
+                    //obtenemos el campo file definido en el formulario
+                $estatuto->update(['texto_refundido_file'=>$nombre_texto]);              
+               $file_texto->move('uploads/estatutos', str_replace(" ","_",$file_texto->getClientOriginalName()));
+
+               if(\File::exists(public_path('uploads/estatutos/'.$nombre_texto_old))){
+                        \File::delete(public_path('uploads/estatutos/'.$nombre_texto_old));
+                }
+            }
+
 
 		$generales = EstatutoRegimenGeneral::where("sociedad_id","=",$general['sociedad_id'])->get();
     	$especiales =EstatutoRegimenEspecial::where("sociedad_id","=",$general['sociedad_id'])->get();
@@ -92,7 +142,7 @@ class EstatutoSocialController extends Controller
 
             $sections = $view->renderSections();
             return Response::json($sections['myContent']); 
-        }else return $view;
+        }else return $view; 
     }
 
     public function especialesEdit(request $request, $id) {

@@ -43,6 +43,9 @@ Route::resource('acciones', 'AccionesController');
 //Rutas para autorizaciones sectores regulados
 Route::get('autorizacion_sectores/{sociedad_id}','AutorizacionController@index');
 Route::post('autorizacion_sectores/store','AutorizacionController@store');
+Route::get('autorizacion_sectores/edit/{id}','AutorizacionController@edit');
+Route::post('autorizacion_sectores/update', 'AutorizacionController@update');
+Route::get('autorizacion_sectores/delete/{id}','AutorizacionController@delete');
 
 //Rutas para capital social
 Route::get('capital/{id}','CapitalController@index');

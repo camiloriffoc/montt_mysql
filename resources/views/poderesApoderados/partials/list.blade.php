@@ -10,12 +10,11 @@
           <th>Vigente o Revocado </th>
           <th>Rut Apoderado</th>
           <th>Forma de actuar</th>
-          <th>Fecha Otorgamiento (Archivo adjunto)</th>
-          <th>Fecha revocación (Archivo adjunto)</th>
-          <th>Tipo de Instrumento</th>
-          <th>Inscripción de otorgamiento en el Registro de Comercio Archivo adjunto</th>
+          <th>Fecha Otorgamiento</th>
+          <th>Fecha revocación</th>
+          <th>Inscripción de otorgamiento en el Registro de Comercio</th>
           <th>Informado a Bancos</th>
-          <th>inscripción de Revocación en el Registro de Comercio Archivo adjunto</th>
+          <th>inscripción de Revocación en el Registro de Comercio</th>
           <th>Revocación Informada a Bancos</th>
           <th>Editar</th>
           <th></th>
@@ -35,8 +34,7 @@
             <td></td>
             @endif
             
-            <td> fecha revocacion</td>
-            <td>{{ $poder->instrumento_revocacion_de_poder or ''}}</td>
+            <td>{{$poder->fecha_revocacion_de_poder}}</td>
             
             @if($poder->poder_inscrito_cbr_file)
             <td><a target="_blank" href="{{asset('uploads/poderes/'.$poder->poder_inscrito_cbr_file)}}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>

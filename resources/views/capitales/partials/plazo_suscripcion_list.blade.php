@@ -17,7 +17,7 @@
 			<tr>
 				<td>{{$sus->fecha_emision or ''}}</td>
 				<td>{{$sus->plazo_maximo_suscripcion or ''}}</td>
-				<td><a href="/capital/suscripcion/edit/{{$sus->id}}" class="menu-cuentas">editar</a></td>
+				<td><a href="/capital/suscripcion/edit/{{$sus->id}}" class="menu-cuentas">Editar</a></td>
 				<td>
 					
 				</td>

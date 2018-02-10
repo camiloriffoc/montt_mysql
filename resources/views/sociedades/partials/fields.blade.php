@@ -178,13 +178,14 @@
 	<input type="text" class="form-control" name="contacto_skype" value="{{ $sociedad->contacto_skype or '' }}">
 </div>	
 
+<!--
 <div class="row">
 	<div class="col-md-12">
 		<h1 class="text-primary">Dirección Tributaria</h1>
 	</div>
 </div>
 
-<div class="form-group col-sm-6">
+ <div class="form-group col-sm-6">
 	<label>Calle/Avenida:</label>
 	<input type="text" class="form-control" name="tributario_calle" value="{{ $sociedad->tributario_calle or '' }}">
 </div>
@@ -221,7 +222,7 @@
 <div class="form-group col-sm-6">
 	<label>Código Postal / Zip Code:</label>
 	<input type="text" class="form-control" name="tributario_codigo_postal" value="{{ $sociedad->tributario_codigo_postal or '' }}">
-</div>
+</div> -->
 
 <div class="row">
 	<div class="col-md-12">

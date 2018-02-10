@@ -164,7 +164,12 @@
   <div class="form-group col-sm-6">
     <label>Presidente de Directorio</label>
     {{ Form::select('presidente_del_directorio', ['No' => 'No', 'Si' => 'Si'],isset($director->presidente_del_directorio) ? $director->presidente_del_directorio : '', array('class' => 'form-control')) }}
-  </div> 
+  </div>
+
+  <div class="form-group col-sm-6">
+    <label>Es Secretario:</label>
+    {{ Form::select('es_secretario', ['Si' => 'Si', 'No' => 'No'],isset($director->es_secretario) ? $director->es_secretario : '', array('class' => 'form-control')) }}
+  </div>  
   
    <div class="form-group col-sm-6">
     <label>Es Gerente General o Representante:</label>

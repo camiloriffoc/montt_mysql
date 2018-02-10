@@ -17,15 +17,27 @@
     <input type="date" class="form-control" id="" name="fecha_revocacion" aria-describedby="emailHelp" placeholder="Fecha Revocación" value="{{$poder->fecha_revocacion or ''}}">
   </div>
 
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-4">
         <label>Fecha nombramiento</label>
         <input type="date" class="form-control" id=""  aria-describedby="emailHelp" placeholder="Fecha nombramiento" name="fecha_nombramiento" value="{{$poder->fecha_nombramiento or ''}}">
         <input type="file" class="form-control" name="fecha_nombramiento_file" accept="application/pdf">
     </div>
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-2">
+      <br><br><br>
+      @if($poder->fecha_nombramiento_file)
+        <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->fecha_nombramiento_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+      @endif
+    </div>
+    <div class="form-group col-sm-4">
         <label>RUT</label>
         <input type="text" class="form-control" id=""  aria-describedby="emailHelp" placeholder="RUT" name="rut" value="{{$poder->rut or ''}}">
         <input type="file" class="form-control" name="rut_file" accept="application/pdf">
+    </div>
+    <div class="form-group col-sm-2">
+      <br><br><br>
+      @if($poder->rut_file)
+      <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->rut_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+      @endif
     </div>
 
   
@@ -173,18 +185,32 @@
   </div>
 
   
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-4">
     <label>Instrumento en el cual consta el poder</label>
     <input type="text" class="form-control" id="" name="instrumento_consta_poder" aria-describedby="emailHelp" placeholder="Instrumento en el cual consta el poder" value="{{$poder->instrumento_consta_poder or ''}}">
     <input type="file" class="form-control" name="instrumento_consta_poder_file" accept="application/pdf"> 
     
   </div>
 
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-2">
+    <br><br><br>
+    @if($poder->instrumento_consta_poder_file)
+    <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->instrumento_consta_poder_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+    @endif
+  </div>
+
+  <div class="form-group col-sm-4">
     <label>Poder Inscrito en CBR</label>
     <input type="text" class="form-control" id="" name="poder_inscrito_cbr" aria-describedby="emailHelp" placeholder="Poder inscrito en CBR" value="{{$poder->poder_inscrito_cbr or ''}}"> 
     <input type="file" class="form-control" name="poder_inscrito_cbr_file" accept="application/pdf">
    
+  </div>
+
+  <div class="form-group col-sm-2">
+    <br><br><br>
+    @if($poder->poder_inscrito_cbr_file) 
+      <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->poder_inscrito_cbr_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+    @endif
   </div>
 
   <div class="form-group col-sm-6">
@@ -199,18 +225,31 @@
   </div>
 
   
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-4">
     <label>Instrumento en el cual consta la revocación del poder</label>
     <input type="text" class="form-control" id="" name="instrumento_revocacion_de_poder" aria-describedby="emailHelp" placeholder="Instrumento revocación de poder" value="{{$poder->instrumento_revocacion_de_poder or ''}}"> 
     <input type="file" class="form-control" name="instrumento_revocacion_de_poder_file" accept="application/pdf">
   
-  </div> 
+  </div>
 
-  <div class="form-group col-sm-6">
+  <div class="form-group col-sm-2">
+    <br><br><br>
+    @if($poder->instrumento_revocacion_de_poder_file)
+      <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->instrumento_revocacion_de_poder_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+    @endif
+  </div>
+
+  <div class="form-group col-sm-4">
    <label>Inscripción de Revocaciones en CBR</label>
     <input type="text" class="form-control" id="" name="inscripcion_renovacion_cbr" aria-describedby="emailHelp" placeholder="Inscripción de revocaciones en CBR" value="{{$poder->inscripcion_renovacion_cbr or ''}}">
     <input type="file" class="form-control" name="inscripcion_renovacion_cbr_file" accept="application/pdf">
+  </div>
 
+  <div class="form-group col-sm-2">
+    <br><br><br>
+    @if($poder->inscripcion_renovacion_cbr_file)
+    <p><a target="_blank" href="{{asset('uploads/poderes/'.$poder->inscripcion_renovacion_cbr_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
+    @endif
   </div>
   <!-- <div class="form-group col-sm-6">
     <label>Poderes Revocados</label>

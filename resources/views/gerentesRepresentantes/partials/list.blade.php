@@ -4,7 +4,7 @@
       <tr >
         <th >Nombre</th>
         <th >RUT</th>
-        <th >Es Gerente Acutal</th>
+        <th >Es Gerente General o Representante</th>
         <th >Fecha de Vencimiento</th>
         <th >Editar / Eliminar</th>
 

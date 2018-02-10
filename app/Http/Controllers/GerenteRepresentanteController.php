@@ -43,12 +43,18 @@ class GerenteRepresentanteController extends Controller
             $file_fecha = $request->file('fecha_nombramiento_file');
             $file_rut   = $request->file('rut_file');
 
+            $file_fecha_remplazante = $request->file('fecha_designacion_file');
+            $file_rut_remplazante   = $request->file('rut_file_remplazante');
+
         	$gerente_request = $request->all();
 
         	$gerente = GerenteRepresentante::find($gerente_request['id']);
 
             $nombre_rut_old = $gerente->rut_file;
             $nombre_fecha_old = $gerente->fecha_nombramiento_file;
+            
+            $nombre_rut_remplazante_old = $gerente->rut_file_remplazante;
+            $nombre_fecha_remplazante_old = $gerente->fecha_designacion_file;
 
             $gerente->update($gerente_request);
             $sociedad_id=$gerente['sociedad_id'];
@@ -75,16 +81,38 @@ class GerenteRepresentanteController extends Controller
                 }
             }
 
+            if($file_fecha_remplazante) {
+                $nombre_fecha_remplazante= str_replace(" ", "_", $file_fecha_remplazante->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $gerente->update(['fecha_designacion_file'=>$nombre_fecha_remplazante]);              
+                $file_fecha_remplazante->move('uploads/gerentes', str_replace(" ","_",$file_fecha_remplazante->getClientOriginalName()));
+                
+                if(\File::exists(public_path('uploads/gerentes/'.$nombre_fecha_remplazante_old))){
+                        \File::delete(public_path('uploads/gerentes/'.$nombre_fecha_remplazante_old));
+                }
+            }
+            if($file_rut_remplazante) {
+                $nombre_rut_remplazante= str_replace(" ", "_", $file_rut_remplazante->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $gerente->update(['rut_file_remplazante'=>$nombre_rut_remplazante]);              
+                $file_rut_remplazante->move('uploads/gerentes', str_replace(" ","_",$file_rut_remplazante->getClientOriginalName()));
+
+                if(\File::exists(public_path('uploads/gerentes/'.$nombre_rut_remplazante_old))){
+                        \File::delete(public_path('uploads/gerentes/'.$nombre_rut_remplazante_old));
+                }
+            }
+
 
         	$sociedad=Sociedades::find($sociedad_id);
         	$gerente=$sociedad->gerentesRepresentantes;
 
         	$view = \View::make('gerentesRepresentantes.index')->with(['sociedad_id'=>$sociedad_id,'gerente'=>$gerente]);
 
-        	$sections = $view->renderSections();
+          $sections = $view->renderSections();
             return Response::json($sections['myContent']); 
         }else return $view;
 
+        
       
     }
 
@@ -107,6 +135,9 @@ class GerenteRepresentanteController extends Controller
             $file_fecha = $request->file('fecha_nombramiento_file');
             $file_rut   = $request->file('rut_file');
 
+            $file_fecha_remplazante = $request->file('fecha_designacion_file');
+            $file_rut_remplazante   = $request->file('rut_file_remplazante');
+
             $gerente_request = $request->all();
             $gerente = new GerenteRepresentante($gerente_request);
             $gerente->save();
@@ -123,6 +154,20 @@ class GerenteRepresentanteController extends Controller
                 //obtenemos el campo file definido en el formulario
                 $gerente->update(['rut_file'=>$nombre_rut]);              
                 $file_rut->move('uploads/gerentes', str_replace(" ","_",$file_rut->getClientOriginalName()));
+            }
+
+            if($file_fecha_remplazante) {
+                $nombre_fecha_remplazante= str_replace(" ", "_", $file_fecha_remplazante->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $gerente->update(['fecha_designacion_file'=>$nombre_fecha_remplazante]);              
+                $file_fecha_remplazante->move('uploads/gerentes', str_replace(" ","_",$file_fecha_remplazante->getClientOriginalName()));
+            }
+
+            if($file_rut_remplazante) {
+                $nombre_rut_remplazante= str_replace(" ", "_", $file_rut_remplazante->getClientOriginalName());
+                //obtenemos el campo file definido en el formulario
+                $gerente->update(['rut_file_remplazante'=>$nombre_rut_remplazante]);              
+                $file_rut_remplazante->move('uploads/gerentes', str_replace(" ","_",$file_rut_remplazante->getClientOriginalName()));
             }
 
             $sociedad=Sociedades::find($gerente_request['sociedad_id']);
@@ -146,6 +191,9 @@ class GerenteRepresentanteController extends Controller
             $nombre_rut_old = $gerente->rut_file;
             $nombre_fecha_old = $gerente->fecha_nombramiento_file;
 
+            $nombre_rut_remplazante_old = $gerente->rut_file_remplazante;
+            $nombre_fecha_remplazante_old = $gerente->fecha_designacion_file;
+
             $sociedad_id=$gerente['sociedad_id'];
 
             $gerente->delete();
@@ -156,6 +204,13 @@ class GerenteRepresentanteController extends Controller
 
             if(\File::exists(public_path('uploads/gerentes/'.$nombre_fecha_old))){
                 \File::delete(public_path('uploads/gerentes/'.$nombre_fecha_old));
+            }
+            if(\File::exists(public_path('uploads/gerentes/'.$nombre_rut_remplazante_old))){
+                \File::delete(public_path('uploads/gerentes/'.$nombre_rut_remplazante_old));
+            }
+
+            if(\File::exists(public_path('uploads/gerentes/'.$nombre_fecha_remplazante_old))){
+                \File::delete(public_path('uploads/gerentes/'.$nombre_fecha_remplazante_old));
             }
 
             $sociedad=Sociedades::find($sociedad_id);

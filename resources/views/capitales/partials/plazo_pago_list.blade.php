@@ -17,7 +17,7 @@
 			<tr>
 				<td>{{$pag->fecha_emision or ''}}</td>
 				<td>{{$pag->plazo_maximo_pago or ''}}</td>
-				<td><a href="/capital/pago/edit/{{$pag->id}}" class="menu-cuentas">editar</a></td>
+				<td><a href="/capital/pago/edit/{{$pag->id}}" class="menu-cuentas">Editar</a></td>
 				<td>
 					
 				</td>

@@ -10,7 +10,10 @@
 	@include('inspectoresCuentas.partials.fields')
 	<br>
   	<br>
-  	<input type="submit" class="btn btn-info" value="Guardar Cambios">
+  	<div class="form-group col-sm-12">
+  		<input type="submit" class="btn btn-info" value="Guardar Cambios">
+  	</div>
+
 
 	{{ Form::close() }}
 </div>
@@ -22,7 +25,10 @@
 	@include('inspectoresCuentas.partials.inspector_fields')
 	<br>
   	<br>
-  	<input type="submit" class="btn btn-info" value="Guardar Cambios">
+  	
+  	<div class="form-group col-sm-12">
+  		<input type="submit" class="btn btn-info" value="Guardar Cambios">
+  	</div>
 
 	{{ Form::close() }}
 </div>

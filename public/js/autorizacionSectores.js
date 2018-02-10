@@ -39,7 +39,7 @@ $('.add-autorizacion').on("submit", function(ev){
         return false;
     });
 
-$('.delete-gerente').on('click',function(event){
+$('.delete-autorizacion').on('click',function(event){
         event.preventDefault();
         
         if (confirm("Esta seguro que desea eliminar")) {
@@ -58,7 +58,7 @@ $('.delete-gerente').on('click',function(event){
                 $('#principalPanel').empty().append($(data));
                 $("#resultado").hide();
                 $('html, body').animate({scrollTop:0}, 'slow');
-                $('.modal-body').html('<p>Gerente o Representante ELiminado con Exito</p>');
+                $('.modal-body').html('<p>Eliminado con Exito</p>');
                 $('#myAlertModal').modal('show');
 
             },

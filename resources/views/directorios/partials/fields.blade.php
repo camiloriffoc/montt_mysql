@@ -21,7 +21,7 @@
   <div class="form-group col-sm-6">
     <label>Cifra Repartidora de Eleccion</label>
     <input type="text" class="form-control" id=""  placeholder="CIFRA REPARTIDORA DE ELECCIÓN" name="cifra_repartidora_de_eleccion" value="{{ $directorio->cifra_repartidora_de_eleccion or ''}}">
-    <small id="emailHelp" class="form-text text-muted">TOTAL ACCIONES DEREHO A VOTO DIVIDIO POR EL NUMERO
+    <small id="emailHelp" class="form-text text-muted">TOTAL ACCIONES DEREHO A VOTO DIVIDIDO POR EL NUMERO
     DE DIRECTORES TITULARES A ESCOGER MÁS UNA UNIDAD, Y AL CUOCIENTE SE LE AGREGA UNA UNIDAD.</small>
   </div>
 
@@ -116,7 +116,7 @@
   <div class="form-group col-sm-6">
     @if(isset($directorio->actas_de_directorio))
     <br>
-    <p style="margin-top: 20px;"><a target="_blank" href="{{asset('uploads/directorios/'.$directorio->actas_de_directorio) }}">Ver Archivo Adjunto</a></p>
+    <p style="margin-top: 20px;"><a target="_blank" href="{{asset('uploads/directorios/'.$directorio->actas_de_directorio) }}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p>
     @else
     <br>
     <p style="margin-top: 20px;">No tiene Archivo Adjunto.</p>

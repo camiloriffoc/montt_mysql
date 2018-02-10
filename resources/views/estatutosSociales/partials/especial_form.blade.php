@@ -26,7 +26,7 @@
 	<input type="text" class="form-control" name="observaciones" value="{{ $especial->observaciones or '' }}">
 </div>	
 <div class="form-group col-sm-3">
-	<label>S.A. Abierta o Cerrada</label>
+	<label>Texto Refundido</label>
 	<input type="text" class="form-control" name="texto_refundido" value="{{ $especial->texto_refundido or '' }}">
 </div>
 

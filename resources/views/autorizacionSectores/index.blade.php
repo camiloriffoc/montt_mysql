@@ -24,7 +24,7 @@
 	<table class="table table-striped">
     <thead>
       <tr >
-        <th >Id</th>
+        <th >Nombre Archivo</th>
         <th >Resolucion</th>
         <th >Acciones</th>
      </tr>
@@ -33,9 +33,9 @@
     	
     	@foreach($resoluciones as $resolucion)
 			<tr>
-				<td>{{$resolucion->id}}</td>
+				<td>{{$resolucion->resoluciones}}</td>
             	<td><a target="_blank" href="{{asset('uploads/autorizaciones/'.$resolucion->resoluciones)}}"><span style="font-size: 18px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></td>
-            	<td><a href="/autorizacion_sectores/edit/{{$resolucion->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/autorizacion_sectores/delete/{{$resolucion->id}}" class="delete-gerente"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+            	<td><a href="/autorizacion_sectores/edit/{{$resolucion->id}}" class="menu-cuentas" style="margin-left: 5px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> - <a href="/autorizacion_sectores/delete/{{$resolucion->id}}" class="delete-autorizacion"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
             </tr>
 		@endforeach     
     </tbody>
