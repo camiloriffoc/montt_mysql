@@ -73,16 +73,22 @@ class Sociedades extends Model
         
         return $this->hasMany('App\ListadoAccionistaCapital','sociedad_id');
     }
-    //Relacion 1 : n (Sociedad muchos LIstado accionista capital)
+    //Relacion 1 : n (Sociedad muchos LIstado accionista voto)
     public function listadoAccionistasVotos(){
         
         return $this->hasMany('App\ListadoAccionistaVoto','sociedad_id');
     }
 
-    //Relacion 1 : n (Sociedad muchos LIstado accionista capital)
+    //Relacion 1 : n (Sociedad muchos LIstado accionista dividendo)
     public function listadoAccionistasDividendos(){
         
         return $this->hasMany('App\ListadoAccionistaDividendo','sociedad_id');
+    }
+
+    //Relacion 1 : n (Sociedad muchos LIstado Opciones)
+    public function listadoOpciones(){
+        
+        return $this->hasMany('App\ListadoOpciones','sociedad_id');
     }
 
 }

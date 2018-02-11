@@ -169,6 +169,11 @@ Route::get('listado_dividendo/{id}','ListadoAccionistaDividendoController@index'
 Route::post('listado_dividendo/{id}','ListadoAccionistaDividendoController@destroy');
 Route::resource('listado_dividendo', 'ListadoAccionistaDividendoController');
 
+//Rutas Listado de opciones
+Route::get('listado_opciones/{id}','ListadoOpcionesController@index');
+Route::post('listado_opciones/{id}','ListadoOpcionesController@destroy');
+Route::resource('listado_opciones', 'ListadoOpcionesController');
+
 //Rutas SubPacto Accionistas
 Route::get('subpacto_accionista/{id}','SubPactosController@index');
 Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
