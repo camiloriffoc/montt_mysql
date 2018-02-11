@@ -9,7 +9,7 @@
 
 <div class="form-group col-sm-6">
 	<label>{{ trans('form_general.abierta_cerrada_sa') }}</label>
-	<input type="text" class="form-control" name="sa_abierta_o_cerrada" value="{{ $sociedad->sa_abierta_o_cerrada or '' }}">
+	{{ Form::select('sa_abierta_o_cerrada',['SA Abierta' => 'SA Abierta', 'SA Cerrada' => 'SA Cerrada'],isset($sociedad->sa_abierta_o_cerrada) ? $sociedad->sa_abierta_o_cerrada : 'SA Abierta', array('class' => 'form-control')) }}
 </div>
 <div class="form-group col-sm-6">
 	<label>{{ trans('form_general.rut') }}:</label>
@@ -18,7 +18,7 @@
 
 <div class="form-group col-sm-6">
 	<label>{{ trans('form_general.pais_de_incorporacion') }}:</label>
-	<input type="text" class="form-control" name="pais_incorporacion" value="{{ $sociedad->pais_incorporacion or '' }}">
+	{{ Form::select('pais_incorporacion',['ARGENTINA' => 'ARGENTINA', 'BOLIVIA' => 'BOLIVIA', 'BRASIL' => 'BRASIL', 'CHILE' => 'CHILE', 'COLOMBIA' => 'COLOMBIA', 'ECUADOR' => 'ECUADOR', 'PARAGUAY' => 'PARAGUAY', 'PERU' => 'PERU', 'MEXICO' => 'MEXICO', 'OTRA' => 'OTRA'],isset($sociedad->pais_incorporacion) ? $sociedad->pais_incorporacion : 'OTRA', array('class' => 'form-control')) }}
 </div>
 <div class="form-group col-sm-6">
 	<label>{{ trans('form_general.telefono_corporativo') }}:</label>
@@ -40,7 +40,7 @@
 </div>
 <div class="form-group col-sm-6">
 	<label>{{ trans('form_general.duracion') }}:</label>
-	<input type="text" class="form-control" name="duracion" value="{{ $sociedad->duracion or '' }}">
+	{{ Form::select('duracion',['Indefinida' => 'Indefinida', 'Plazo Fijo' => 'Plazo Fijo'],isset($sociedad->duracion) ? $sociedad->duracion : 'SA Abierta', array('class' => 'form-control')) }}
 </div>
 
 <div class="form-group col-sm-6">
@@ -63,8 +63,9 @@
 
 <div class="form-group col-sm-6">
 	<label>Denominación moneda Capital Social:</label>
-	<input type="text" class="form-control" name="denominacion_moneda_capital_social" value="{{ $sociedad->denominacion_moneda_capital_social or '' }}">
+	{{ Form::select('denominacion_moneda_capital_social',['Peso Chileno' => 'Peso Chileno', 'Peso Colombiano' => 'Peso Colombiano', 'Nuevos Soles' => 'Nuevos Soles', 'Peso Argentino' => 'Peso Argentino', 'Reales' => 'Reales', 'Guaranies' => 'Guaranies', 'Dolares' => 'Dolares'],isset($sociedad->denominacion_moneda_capital_social) ? $sociedad->denominacion_moneda_capital_social : 'Peso Chileno', array('class' => 'form-control')) }}
 </div>
+
 <div class="form-group col-sm-6">
 	<label>Autorizado o no para declarar y pagar sus impuestos en moneda extranjera:</label>
 	<input type="text" class="form-control" name="autorizado_moneda_extranjera" value="{{ $sociedad->autorizado_moneda_extranjera or '' }}">
@@ -72,16 +73,16 @@
 
 <div class="form-group col-sm-6">
 	<label>Tipo de Contribuyente:</label>
-	<input type="text" class="form-control" name="tipo_de_contribuyente" value="{{ $sociedad->tipo_de_contribuyente or '' }}">
+	{{ Form::select('tipo_de_contribuyente',['Microempresas' => 'Microempresas', 'Pequeñas y Medianas Empresas' => 'Pequeñas y Medianas Empresas', 'Grandes Contribuyentes' => 'Grandes Contribuyentes'],isset($sociedad->tipo_de_contribuyente) ? $sociedad->tipo_de_contribuyente : 'Microempresas', array('class' => 'form-control')) }}
 </div>
 <div class="form-group col-sm-6">
 	<label>Regimen Tributario:</label>
-	<input type="text" class="form-control" name="regimen_tributario" value="{{ $sociedad->regimen_tributario or '' }}">
+	{{ Form::select('regimen_tributario',['SEMI INTEGRADO ART. 14 B' => 'SEMI INTEGRADO ART. 14 B', 'RENTA ATRIBUIDA ART. 14ª' => 'RENTA ATRIBUIDA ART. 14ª', 'RENTA PRESUNTA ART. 34' => 'RENTA PRESUNTA ART. 34', 'TRIBUTACION SIMPLICADA ART. 14 TER A' => 'TRIBUTACION SIMPLICADA ART. 14 TER A'], isset($sociedad->regimen_tributario) ? $sociedad->regimen_tributario : 'SEMI INTEGRADO ART. 14 B', array('class' => 'form-control')) }}
 </div>
 
 <div class="form-group col-sm-6">
 	<label>Inscrita o no Regulador Financiero:</label>
-	<input type="text" class="form-control" name="inscrita_regulador_finaciero" value="{{ $sociedad->inscrita_regulador_finaciero or '' }}">
+	{{ Form::select('inscrita_regulador_finaciero',['No' => 'No', 'SVS' => 'SVS', 'SBIF' => 'SBIF'], isset($sociedad->inscrita_regulador_finaciero) ? $sociedad->inscrita_regulador_finaciero : 'No', array('class' => 'form-control')) }}
 </div>
 <div class="form-group col-sm-6">
 	<label>Fax:</label>

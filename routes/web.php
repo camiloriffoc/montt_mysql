@@ -179,6 +179,14 @@ Route::get('subpacto_accionista/{id}','SubPactosController@index');
 Route::post('subpacto_accionista/{id}','SubPactosController@destroy');
 Route::resource('subpacto_accionista', 'SubPactosController');
 
+//Rutas Registro de accionista
+Route::get('registro_accionistas/{id}','RegistroAccionistaController@index');
+Route::resource('registro_accionistas', 'RegistroAccionistaController');
+
+//Rutas para Derecho a Retiro
+Route::post('/derecho_retiro/{id}','DerechoRetiroController@update');
+Route::resource('derecho_retiro', 'DerechoRetiroController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 });

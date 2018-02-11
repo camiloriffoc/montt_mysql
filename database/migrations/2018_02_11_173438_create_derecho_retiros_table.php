@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRegistroAccionistasTable extends Migration
+class CreateDerechoRetirosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateRegistroAccionistasTable extends Migration
      */
     public function up()
     {
-        Schema::create('registro_accionistas', function (Blueprint $table) {
+        Schema::create('derecho_retiros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('registro_accionista_adjunto')->nullable();
+            $table->string('causales_derecho_retiro')->nullable();
+            $table->string('formalidades_disidencia')->nullable();
+            $table->string('criterio_valoracion_acciones_disidente')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateRegistroAccionistasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registro_accionistas');
+        Schema::dropIfExists('derecho_retiros');
     }
 }

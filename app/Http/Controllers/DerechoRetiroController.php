@@ -4,35 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\DB;
-use App\Accionista;
+use App\DerechoRetiro;
 use App\Sociedades;
-use Session;
 
-class RegistroAccionistaController extends Controller
+class DerechoRetiroController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $id)
+    public function index()
     {
         //
-        //Asigno a la session la sociedad correspondiente
-        $this->getSociedad($id);
-        $sociedad = Session::get('sociedad');
-        //obtendo todos los accionistas*********
-        $registro_accionistas = Sociedades::find($id)->accionistas()->orderBy('accionistas.id','DESC')->get();
-        $registro_accionista_adjunto = $sociedad->registroAccionista;
-      
-
-        $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
-
-        if($request->ajax()){
-            $sections = $view->renderSections();
-            return Response::json($sections['myContent']); 
-        }else return $view;
     }
 
     /**
@@ -73,9 +57,19 @@ class RegistroAccionistaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         //
+        //Vista de la edición del derecho a retiro
+        $sociedad = Sociedades::find($id);
+        $derecho_retiro = $sociedad->derechoRetiro;
+
+        $view = \View::make('derechoRetiro.edit')->with('sociedad',$sociedad)->with('derecho_retiro',$derecho_retiro);
+
+        if($request->ajax()){
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+        }else return $view;
     }
 
     /**
@@ -88,6 +82,26 @@ class RegistroAccionistaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $sociedad = Sociedades::find($request->input('sociedad_id'));
+        //dd(isset($sociedad->fiscalizador));
+        //Comprobamos si existe relación
+        if(!isset($sociedad->derechoRetiro)){
+            //No existe relación (debo crear un fiscalizador para la sociedad)
+            DerechoRetiro::create($request->all());
+
+            return response()->json([
+                'message' => 'Creado con éxito',
+            ]);
+
+        }else{
+            //Si existe relación (debo Actualizar al fiscalizador para la sociedad)
+            $derecho_retiro = DerechoRetiro::find($sociedad->derechoRetiro->id);
+            $derecho_retiro->update($request->all());
+
+            return response()->json([
+                'message' => 'Editado con éxito',
+            ]);
+        }
     }
 
     /**

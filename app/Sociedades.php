@@ -91,4 +91,13 @@ class Sociedades extends Model
         return $this->hasMany('App\ListadoOpciones','sociedad_id');
     }
 
+    public function registroAccionista(){
+        
+        return $this->hasOne('App\RegistroAccionista','sociedad_id');
+    }
+
+    public function derechoRetiro(){
+        return $this->hasOne('App\DerechoRetiro','sociedad_id');
+    }
+
 }

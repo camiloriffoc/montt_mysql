@@ -19,9 +19,11 @@
         {!! Form::open(['route' => ['listado_voto.destroy', ':LISTADOVOTO_ID'], 'method' => 'DELETE', 'id' => 'form-delete-accion']) !!}
 
             <td class="text-center">
+                <!--
                 <a type="submit" class="btn btn-danger btn-xs">
                     <span class="glyphicon glyphicon-remove delete-accion" aria-hidden="true"></span>
                 </a>
+                -->
                 <a href="{{ url('/listado_voto/'.$listado->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                 </a>

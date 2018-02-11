@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRegistroAccionistasTable extends Migration
+class AddForeignKeyRegistroAccionista extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateRegistroAccionistasTable extends Migration
      */
     public function up()
     {
-        Schema::create('registro_accionistas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('registro_accionista_adjunto')->nullable();
-            $table->timestamps();
+        //
+        Schema::table('registro_accionistas', function (Blueprint $table) {
+
+            $table->integer('sociedad_id')->unsigned();
+            $table->foreign('sociedad_id')->references('id')->on('sociedades')->onDelete('cascade');
         });
     }
 
@@ -27,6 +28,6 @@ class CreateRegistroAccionistasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registro_accionistas');
+        //
     }
 }
