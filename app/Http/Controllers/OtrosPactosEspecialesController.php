@@ -81,51 +81,61 @@ class OtrosPactosEspecialesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $sociedad = Sociedades::find($request->input('sociedad_id'));
-        //dd(isset($sociedad->fiscalizador));
-        //Comprobamos si existe relación
-        if(!isset($sociedad->otrosPactosEspeciales)){
-            //No existe relación (debo crear)
+        if($request->ajax()){
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
+            //dd(isset($sociedad->fiscalizador));
+            //Comprobamos si existe relación
+            if(!isset($sociedad->otrosPactosEspeciales)){
+                //No existe relación (debo crear)
 
-            ////Método para guardar en al Base de Datos
-            $registro = OtrosPactosEspeciales::create($request->all());
+                ////Método para guardar en al Base de Datos
+                $registro = OtrosPactosEspeciales::create($request->all());
 
-            if($file = $request->hasFile('otros_pactos_adjunto')){
-                //Obtenemos el File Input
+                if($file = $request->hasFile('otros_pactos_adjunto')){
+                    //Obtenemos el File Input
+                    $otros_pactos_adjunto = $request->file('otros_pactos_adjunto');
+                    //Le damos un nombre único
+                    $nombre_otros_pactos_adjunto = uniqid().'_'.str_replace(" ", "_", $otros_pactos_adjunto->getClientOriginalName());
+                    //Actualizamos el campo del nombre del archivo adjunto
+                    $registro->update(['otros_pactos_adjunto'=>$nombre_otros_pactos_adjunto]);
+                    //Movemos el File con el nuevo nombre
+                    $otros_pactos_adjunto->move('uploads/otros_pactos_especiales', $nombre_otros_pactos_adjunto);
+                }          
+                
+                //dd($sociedad);
+                $otros_pactos_especiales = $sociedad->otrosPactosEspeciales;
+                
+                //dd($otros_pactos_especiales);
+
+                $view = \View::make('otrosPactosEspeciales.edit')->with('sociedad',$sociedad)->with('otros_pactos_especiales',$otros_pactos_especiales);
+
+                $sections = $view->renderSections();
+                return Response::json($sections['myContent']); 
+
+            }else{
+                //Si existe relación (debo Actualizar)
+                $registro = OtrosPactosEspeciales::find($sociedad->otrosPactosEspeciales->id);
+                $adjunto_antiguo = $registro->otros_pactos_adjunto;
+
+                if(file_exists(public_path('uploads/otros_pactos_especiales/'.$adjunto_antiguo))){
+                  unlink(public_path('uploads/otros_pactos_especiales/'.$adjunto_antiguo));
+                }
+
+
+              $registro->update($request->all());
+
+              if($file = $request->hasFile('otros_pactos_adjunto')){
+                    //Obtenemos el File Input
                 $otros_pactos_adjunto = $request->file('otros_pactos_adjunto');
-                //Le damos un nombre único
+                    //Le damos un nombre único
                 $nombre_otros_pactos_adjunto = uniqid().'_'.str_replace(" ", "_", $otros_pactos_adjunto->getClientOriginalName());
-                //Actualizamos el campo del nombre del archivo adjunto
+                    //Actualizamos el campo del nombre del archivo adjunto
                 $registro->update(['otros_pactos_adjunto'=>$nombre_otros_pactos_adjunto]);
-                //Movemos el File con el nuevo nombre
-                $otros_pactos_adjunto->move('uploads/otros_pactos_especiales', $nombre_otros_pactos_adjunto);
-            }          
-            
-
-            $otros_pactos_especiales = $sociedad->otrosPactosEspeciales;
-
-            $view = \View::make('otrosPactosEspeciales.edit')->with('sociedad',$sociedad)->with('otros_pactos_especiales',$otros_pactos_especiales);
-
-            $sections = $view->renderSections();
-            return Response::json($sections['myContent']); 
-
-        }else{
-            //Si existe relación (debo Actualizar)
-            $registro = OtrosPactosEspeciales::find($sociedad->otrosPactosEspeciales->id);
-            $registro->update($request->all());
-
-            if($file = $request->hasFile('otros_pactos_adjunto')){
-                //Obtenemos el File Input
-                $otros_pactos_adjunto = $request->file('otros_pactos_adjunto');
-                //Le damos un nombre único
-                $nombre_otros_pactos_adjunto = uniqid().'_'.str_replace(" ", "_", $otros_pactos_adjunto->getClientOriginalName());
-                //Actualizamos el campo del nombre del archivo adjunto
-                $registro->update(['otros_pactos_adjunto'=>$nombre_otros_pactos_adjunto]);
-                //Movemos el File con el nuevo nombre
+                    //Movemos el File con el nuevo nombre
                 $otros_pactos_adjunto->move('uploads/otros_pactos_especiales', $nombre_otros_pactos_adjunto);
 
             }
-            
+
             $otros_pactos_especiales = $sociedad->otrosPactosEspeciales;
 
             $view = \View::make('otrosPactosEspeciales.edit')->with('sociedad',$sociedad)->with('otros_pactos_especiales',$otros_pactos_especiales);
@@ -133,7 +143,13 @@ class OtrosPactosEspecialesController extends Controller
             $sections = $view->renderSections();
             return Response::json($sections['myContent']); 
         }
+
+    }else{
+        return response()->json([
+            'response' => 'Error en guardar',
+        ]);
     }
+}
 
     /**
      * Remove the specified resource from storage.

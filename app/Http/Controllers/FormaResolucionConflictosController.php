@@ -91,7 +91,7 @@ class FormaResolucionConflictosController extends Controller
             ////Método para guardar en al Base de Datos
             $registro = FormaResolucionConflicto::create($request->all());
 
-            if($file = $request->hasFile('forma_disolucion_liquidacion_adjunto')){
+            if($file = $request->hasFile('clausula_estatutos_adjunto')){
                 //Obtenemos el File Input
                 $clausula_estatutos_adjunto = $request->file('clausula_estatutos_adjunto');
                 //Le damos un nombre único
@@ -113,25 +113,33 @@ class FormaResolucionConflictosController extends Controller
         }else{
             //Si existe relación (debo Actualizar)
             $registro = FormaResolucionConflicto::find($sociedad->formaResolucionConflicto->id);
-            $registro->update($request->all());
+
+            $adjunto_antiguo = $registro->clausula_estatutos_adjunto;
+
+            if(file_exists(public_path('uploads/forma_resolucion_conflictos/'.$adjunto_antiguo))){
+              unlink(public_path('uploads/forma_resolucion_conflictos/'.$adjunto_antiguo));
+          }
+
+          
+          $registro->update($request->all());
 
             //Obtenemos el File Input
-            $clausula_estatutos_adjunto = $request->file('clausula_estatutos_adjunto');
+          $clausula_estatutos_adjunto = $request->file('clausula_estatutos_adjunto');
             //Le damos un nombre único
-            $nombre_clausula_estatutos_adjunto = uniqid().'_'.str_replace(" ", "_", $clausula_estatutos_adjunto->getClientOriginalName());
+          $nombre_clausula_estatutos_adjunto = uniqid().'_'.str_replace(" ", "_", $clausula_estatutos_adjunto->getClientOriginalName());
             //Actualizamos el campo del nombre del archivo adjunto
-            $registro->update(['clausula_estatutos_adjunto'=>$nombre_clausula_estatutos_adjunto]);
+          $registro->update(['clausula_estatutos_adjunto'=>$nombre_clausula_estatutos_adjunto]);
             //Movemos el File con el nuevo nombre
-            $clausula_estatutos_adjunto->move('uploads/forma_resolucion_conflictos', $nombre_clausula_estatutos_adjunto);
+          $clausula_estatutos_adjunto->move('uploads/forma_resolucion_conflictos', $nombre_clausula_estatutos_adjunto);
 
-            $forma_resolucion_conflictos = $sociedad->formaResolucionConflicto;
+          $forma_resolucion_conflictos = $sociedad->formaResolucionConflicto;
 
-            $view = \View::make('formaResolucionConflictos.edit')->with('sociedad',$sociedad)->with('forma_resolucion_conflictos',$forma_resolucion_conflictos);
+          $view = \View::make('formaResolucionConflictos.edit')->with('sociedad',$sociedad)->with('forma_resolucion_conflictos',$forma_resolucion_conflictos);
 
-            $sections = $view->renderSections();
-            return Response::json($sections['myContent']); 
-        }
-    }
+          $sections = $view->renderSections();
+          return Response::json($sections['myContent']); 
+      }
+  }
 
     /**
      * Remove the specified resource from storage.

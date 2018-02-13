@@ -1,5 +1,12 @@
 <h1 class="text-primary">Administración de Acciones: {{ $sociedad->razon_social }}</h1>
 
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-primary">Series</h1>
+    </div>
+</div>
+
 <table class="table table-bordered" id="MyTable">
   <thead>
     <tr>
@@ -59,4 +66,62 @@
     </tr>
   </tfoot>
 </table>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-primary">Preferencias</h1>
+    </div>
+</div>
+
+<table class="table table-bordered" id="MyTable">
+  <thead>
+    <tr>
+        <th class="text-center">Voto</th>
+        <th class="text-center">Dividendos</th>
+        <th class="text-center">Liquidación</th>
+        <th class="text-center">Cargas</th>
+        <th class="text-center">Otras preferencias especiales</th>
+        <th class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($acciones as $accion)
+        <tr data-id='{{ $accion->id }}'>
+            <td class="text-center">{{ $accion->voto }}</td>
+            <td class="text-center">{{ $accion->dividendos}}</td>
+            <td class="text-center">{{ $accion->preferidas }}</td>
+            <td class="text-center">{{ $accion->liquidacion }}</td>
+            <td class="text-center">{{ $accion->cargas }}</td>
+            <td class="text-center">{{ $accion->otras_preferencias_especiales }}</td>
+        {!! Form::open(['route' => ['acciones.destroy', ':ACCION_ID'], 'method' => 'DELETE', 'id' => 'form-delete-accion']) !!}
+
+            <td class="text-center">
+                <a type="submit" class="btn btn-danger btn-xs">
+                    <span class="glyphicon glyphicon-remove delete-accion" aria-hidden="true"></span>
+                </a>
+                <a href="{{ url('/acciones/'.$accion->id.'/edit') }}" class="btn btn-info btn-xs menu-cuentas">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
+            </td>
+
+        {!! Form::close() !!}
+
+        </tr>
+    @endforeach
+  </tbody>
+  <tfoot>
+    <tr>
+        <th class="text-center">Voto</th>
+        <th class="text-center">Dividendos</th>
+        <th class="text-center">Liquidación</th>
+        <th class="text-center">Cargas</th>
+        <th class="text-center">Otras preferencias especiales</th>
+        <th class="text-center">Acciones</th>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+
 <script src="{{ asset('js/acciones.js') }}"></script>

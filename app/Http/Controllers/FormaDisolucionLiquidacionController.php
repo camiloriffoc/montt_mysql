@@ -57,31 +57,64 @@ class FormaDisolucionLiquidacionController extends Controller
             $this->getSociedad($id);
             $sociedad = Session::get('sociedad');
 
-            ////Método para guardar en al Base de Datos
-            $registro = FormaDisolucionLiquidacion::create($request->all());
+            if(!isset($sociedad->formaDisolucionLiquidacion)){
+                //dEBO CREAR
+                ////Método para guardar en al Base de Datos
+                $registro = FormaDisolucionLiquidacion::create($request->all());
 
-            //Preguntamos si existe el file input
-            if($file = $request->hasFile('forma_disolucion_liquidacion_adjunto')){
+                 //Preguntamos si existe el file input
+                if($file = $request->hasFile('forma_disolucion_liquidacion_adjunto')){
                 //Obtenemos el File Input
-                $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
-                $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
-                $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
-                $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
+                    $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
+                    $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
+                    $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
+                    $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
+                }
+
+                $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
+                $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
+
+
+                $sections = $view->renderSections();
+                return Response::json($sections['myContent']); 
+
+
+            }else{
+                //Si existe relación (debo Actualizar)
+                $registro = FormaDisolucionLiquidacion::find($sociedad->formaDisolucionLiquidacion->id);
+                $adjunto_antiguo = $registro->forma_disolucion_liquidacion_adjunto;
+
+                if(file_exists(public_path('uploads/forma_disolucion_liquidacion/'.$adjunto_antiguo))){
+                    unlink(public_path('uploads/forma_disolucion_liquidacion/'.$adjunto_antiguo));
+                }
+
+                $registro->update($request->all());
+
+                 //Preguntamos si existe el file input
+                if($file = $request->hasFile('forma_disolucion_liquidacion_adjunto')){
+                //Obtenemos el File Input
+                    $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
+                    $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
+                    $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
+                    $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
+                }
+
+                $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
+                $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
+
+
+                $sections = $view->renderSections();
+                return Response::json($sections['myContent']); 
+
             }
 
-            $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
-            $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
-
-            
-            $sections = $view->renderSections();
-            return Response::json($sections['myContent']); 
-
+          
         }else{
             return response()->json([
-                'response' => 'Error en guardar',
-            ]);
-        }
+            'response' => 'Error en guardar',
+        ]);
     }
+}
 
     /**
      * Display the specified resource.

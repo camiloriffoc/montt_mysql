@@ -276,6 +276,12 @@
 	<input type="text" class="form-control" name="patente_municipal_registra_impaga" value="{{ $sociedad->patente_municipal_registra_impaga or '' }}">
 </div>
 
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="text-primary">Datos Generales</h1>
+	</div>
+</div>
+
 <div class="form-group col-sm-6">
 	<label>Denominación moneda Capital Social:</label>
 	{{ Form::select('denominacion_moneda_capital_social',['Peso Chileno' => 'Peso Chileno', 'Peso Colombiano' => 'Peso Colombiano', 'Nuevos Soles' => 'Nuevos Soles', 'Peso Argentino' => 'Peso Argentino', 'Reales' => 'Reales', 'Guaranies' => 'Guaranies', 'Dolares' => 'Dolares'],isset($sociedad->denominacion_moneda_capital_social) ? $sociedad->denominacion_moneda_capital_social : 'Peso Chileno', array('class' => 'form-control')) }}

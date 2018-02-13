@@ -117,7 +117,10 @@ $(document).ready(function(){
                 	}
                 	$('#myAlertModal  .modal-body').html('<p>'+data.message+'</p>');
                     $('#myAlertModal').modal('show');
-                    $row.hide();
+                    //$row.hide();
+                    //$("tr").data($id).hide();
+                    $('[data-id='+$id+']').hide();
+                    //$('tr').attr('data-id',$id).hide();
 
                     
 

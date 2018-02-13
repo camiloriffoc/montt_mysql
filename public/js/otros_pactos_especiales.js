@@ -1,6 +1,4 @@
-$(document).ready(function(){
 
-	//Funcion para agregar o editar fiscalizadores
 	$('.update-otros-pactos-especiales-ajax').on("submit", function(ev){
         ev.preventDefault();
         var $form = $(this);
@@ -41,13 +39,3 @@ $(document).ready(function(){
 
         return false;
     });
-
-
-
-
-
-
-
-
-
-});

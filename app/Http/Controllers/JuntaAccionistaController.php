@@ -146,6 +146,35 @@ class JuntaAccionistaController extends Controller
         }else{
             //Si existe relación (debo Actualizar)
             $registro = JuntaAccionista::find($sociedad->juntaAccionista->id);
+            
+
+
+
+            //Borramos los archivos antiguos
+            $adjunto_antiguo_1 = $registro->primera_citacion_adjunto;
+            $adjunto_antiguo_2 = $registro->segunda_citacion_adjunto;
+            $adjunto_antiguo_3 = $registro->quorum_adoptar_acuerdos_adjunto;
+            $adjunto_antiguo_4 = $registro->quorum_especiales_adjunto;
+
+            if(file_exists(public_path('uploads/junta_accionista/'.$adjunto_antiguo_1)) && $request->hasFile('primera_citacion_adjunto')){
+                unlink(public_path('uploads/junta_accionista/'.$adjunto_antiguo_1));
+            }
+
+            if(file_exists(public_path('uploads/junta_accionista/'.$adjunto_antiguo_2)) && $request->hasFile('segunda_citacion_adjunto')){
+                unlink(public_path('uploads/junta_accionista/'.$adjunto_antiguo_2));
+            }
+
+            if(file_exists(public_path('uploads/junta_accionista/'.$adjunto_antiguo_3)) && $request->hasFile('quorum_adoptar_acuerdos_adjunto')){
+                unlink(public_path('uploads/junta_accionista/'.$adjunto_antiguo_3));
+            }
+
+            if(file_exists(public_path('uploads/junta_accionista/'.$adjunto_antiguo_4)) && $request->hasFile('quorum_especiales_adjunto')){
+                unlink(public_path('uploads/junta_accionista/'.$adjunto_antiguo_4));
+            }
+
+
+            //////
+
             $registro->update($request->all());
 
             if($file = $request->hasFile('primera_citacion_adjunto')){
@@ -159,15 +188,15 @@ class JuntaAccionistaController extends Controller
                 $primera_citacion_adjunto->move('uploads/junta_accionista', $nombre_primera_citacion_adjunto);
             } 
 
-            if($file = $request->hasFile('segunda_citacion')){
+            if($file = $request->hasFile('segunda_citacion_adjunto')){
                 //Obtenemos el File Input
-                $segunda_citacion = $request->file('segunda_citacion');
+                $segunda_citacion_adjunto = $request->file('segunda_citacion_adjunto');
                 //Le damos un nombre único
-                $nombre_segunda_citacion = uniqid().'_'.str_replace(" ", "_", $segunda_citacion->getClientOriginalName());
+                $nombre_segunda_citacion_adjunto = uniqid().'_'.str_replace(" ", "_", $segunda_citacion_adjunto->getClientOriginalName());
                 //Actualizamos el campo del nombre del archivo adjunto
-                $registro->update(['segunda_citacion'=>$nombre_segunda_citacion]);
+                $registro->update(['segunda_citacion_adjunto'=>$nombre_segunda_citacion_adjunto]);
                 //Movemos el File con el nuevo nombre
-                $segunda_citacion->move('uploads/junta_accionista', $nombre_segunda_citacion);
+                $segunda_citacion_adjunto->move('uploads/junta_accionista', $nombre_segunda_citacion_adjunto);
             }   
 
             if($file = $request->hasFile('quorum_adoptar_acuerdos_adjunto')){
