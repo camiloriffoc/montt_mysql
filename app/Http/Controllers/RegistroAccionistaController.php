@@ -62,43 +62,83 @@ class RegistroAccionistaController extends Controller
             $this->getSociedad($id);
             $sociedad = Session::get('sociedad');
 
-
-            if(isset($sociedad->registroAccionista)){
-                $adjunto_antiguo = $sociedad->registroAccionista->registro_accionista_adjunto;
-                if(file_exists(public_path('uploads/registro_accionistas/'.$adjunto_antiguo))){
-                  unlink(public_path('uploads/registro_accionistas/'.$adjunto_antiguo));
-                }
-            }
-
-
-            //Obtenemos el File Input
-          $registro_accionista_adjunto = $request->file('registro_accionista_adjunto');
-          $nombre_registro_accionista_adjunto = uniqid().'_'.str_replace(" ", "_", $registro_accionista_adjunto->getClientOriginalName());
+            if(!isset($sociedad->registroAccionista)){
+                //Debo Crear
+                  //Obtenemos el File Input
+              $registro_accionista_adjunto = $request->file('registro_accionista_adjunto');
+              $nombre_registro_accionista_adjunto = uniqid().'_'.str_replace(" ", "_", $registro_accionista_adjunto->getClientOriginalName());
 
             ////Método para guardar en al Base de Datos
-          $registro = RegistroAccionista::create($request->all());
-          $registro->update(['registro_accionista_adjunto'=>$nombre_registro_accionista_adjunto]);
-          $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
+              $registro = RegistroAccionista::create($request->all());
+              $registro->update(['registro_accionista_adjunto'=>$nombre_registro_accionista_adjunto]);
+              $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
 
             //obtendo todos los accionistas*********
-          $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
-          $registro_accionista_adjunto = $sociedad->registroAccionista;
+              $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
+              $registro_accionista_adjunto = $sociedad->registroAccionista;
 
-          if(isset($registro_accionistas)){
-            $registro_accionistas = [];
+              if(isset($registro_accionistas)){
+                $registro_accionistas = [];
+            }
+
+            $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
+
+
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+
+
+        }else{
+                //Debo Actualizar
+            //Si existe relación (debo Actualizar)
+            $registro = RegistroAccionista::find($sociedad->registroAccionista->id);
+            $adjunto_antiguo = $registro->registro_accionista_adjunto;
+
+            if(file_exists(public_path('uploads/registro_accionistas/'.$adjunto_antiguo))){
+                unlink(public_path('uploads/registro_accionistas/'.$adjunto_antiguo));
+            }
+
+            $registro->update($request->all());
+
+            $registro_accionista_adjunto = $request->file('registro_accionista_adjunto');
+            $nombre_registro_accionista_adjunto = uniqid().'_'.str_replace(" ", "_", $registro_accionista_adjunto->getClientOriginalName());
+
+            $registro->update(['registro_accionista_adjunto'=>$nombre_registro_accionista_adjunto]);
+            $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
+
+            //obtendo todos los accionistas*********
+            $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
+            $registro_accionista_adjunto = $sociedad->registroAccionista;
+
+            if(isset($registro_accionistas)){
+                $registro_accionistas = [];
+            }
+
+            $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
+
+
+            $sections = $view->renderSections();
+            return Response::json($sections['myContent']); 
+
+
         }
 
-        $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
+
+        if(isset($sociedad->registroAccionista)){
+            $adjunto_antiguo = $sociedad->registroAccionista->registro_accionista_adjunto;
+            if(file_exists(public_path('uploads/registro_accionistas/'.$adjunto_antiguo))){
+              unlink(public_path('uploads/registro_accionistas/'.$adjunto_antiguo));
+          }
+      }
 
 
-        $sections = $view->renderSections();
-        return Response::json($sections['myContent']); 
 
-    }else{
-        return response()->json([
-            'response' => 'Error en guardar',
-        ]);
-    }
+
+  }else{
+    return response()->json([
+        'response' => 'Error en guardar',
+    ]);
+}
 }
 
     /**
