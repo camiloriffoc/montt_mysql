@@ -102,7 +102,7 @@ class FormaResolucionConflictosController extends Controller
                 $clausula_estatutos_adjunto->move('uploads/forma_resolucion_conflictos', $nombre_clausula_estatutos_adjunto);
             }          
             
-
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
             $forma_resolucion_conflictos = $sociedad->formaResolucionConflicto;
 
             $view = \View::make('formaResolucionConflictos.edit')->with('sociedad',$sociedad)->with('forma_resolucion_conflictos',$forma_resolucion_conflictos);
@@ -132,6 +132,7 @@ class FormaResolucionConflictosController extends Controller
             //Movemos el File con el nuevo nombre
           $clausula_estatutos_adjunto->move('uploads/forma_resolucion_conflictos', $nombre_clausula_estatutos_adjunto);
 
+          $sociedad = Sociedades::find($request->input('sociedad_id'));
           $forma_resolucion_conflictos = $sociedad->formaResolucionConflicto;
 
           $view = \View::make('formaResolucionConflictos.edit')->with('sociedad',$sociedad)->with('forma_resolucion_conflictos',$forma_resolucion_conflictos);

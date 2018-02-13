@@ -103,6 +103,7 @@ class OtrosPactosEspecialesController extends Controller
                 }          
                 
                 //dd($sociedad);
+                $sociedad = Sociedades::find($request->input('sociedad_id'));
                 $otros_pactos_especiales = $sociedad->otrosPactosEspeciales;
                 
                 //dd($otros_pactos_especiales);
@@ -136,6 +137,7 @@ class OtrosPactosEspecialesController extends Controller
 
             }
 
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
             $otros_pactos_especiales = $sociedad->otrosPactosEspeciales;
 
             $view = \View::make('otrosPactosEspeciales.edit')->with('sociedad',$sociedad)->with('otros_pactos_especiales',$otros_pactos_especiales);

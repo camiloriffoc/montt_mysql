@@ -4,7 +4,7 @@
 
 <div class="row">
 	<h4 class="text-center">Junta de Accionistas</h4>
-	{!! Form::model($junta_accionista, [ 'route' => ['junta_accionistas.update',$sociedad->id], 'method' => 'POST', 'class' =>'update-junta-accionistas-ajax']) !!}
+	{!! Form::model($junta_accionista, [ 'route' => ['junta_accionistas.update',$sociedad->id], 'method' => 'POST', 'class' =>'update-junta-accionistas-ajax','files' => true]) !!}
 	
 	@include('juntaAccionista.partials.fields')
 	<button type="submit" class="btn btn-success btn-block">Guardar cambios</button>

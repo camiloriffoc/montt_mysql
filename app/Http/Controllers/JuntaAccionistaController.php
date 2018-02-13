@@ -136,8 +136,9 @@ class JuntaAccionistaController extends Controller
             }            
             
 
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
             $junta_accionista = $sociedad->juntaAccionista;
-
+            //dd($junta_accionista);
             $view = \View::make('juntaAccionista.edit')->with('sociedad',$sociedad)->with('junta_accionista',$junta_accionista);
 
             $sections = $view->renderSections();
@@ -221,6 +222,7 @@ class JuntaAccionistaController extends Controller
                 $quorum_especiales_adjunto->move('uploads/junta_accionista', $nombre_quorum_especiales_adjunto);
             }            
             
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
              $junta_accionista = $sociedad->juntaAccionista;
 
             $view = \View::make('juntaAccionista.edit')->with('sociedad',$sociedad)->with('junta_accionista',$junta_accionista);

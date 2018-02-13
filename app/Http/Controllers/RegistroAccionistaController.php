@@ -74,6 +74,7 @@ class RegistroAccionistaController extends Controller
               $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
 
             //obtendo todos los accionistas*********
+              $sociedad = Sociedades::find($request->input('sociedad_id'));
               $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
               $registro_accionista_adjunto = $sociedad->registroAccionista;
 
@@ -107,6 +108,7 @@ class RegistroAccionistaController extends Controller
             $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
 
             //obtendo todos los accionistas*********
+            $sociedad = Sociedades::find($request->input('sociedad_id'));
             $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
             $registro_accionista_adjunto = $sociedad->registroAccionista;
 

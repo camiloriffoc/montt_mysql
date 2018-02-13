@@ -71,6 +71,7 @@ class FormaDisolucionLiquidacionController extends Controller
                     $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
                 }
 
+                $sociedad = Sociedades::find($request->input('sociedad_id'));
                 $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
                 $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
 
@@ -99,6 +100,7 @@ class FormaDisolucionLiquidacionController extends Controller
                     $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
                 }
 
+                $sociedad = Sociedades::find($request->input('sociedad_id'));
                 $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
                 $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
 
