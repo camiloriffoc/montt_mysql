@@ -14,9 +14,6 @@
 	<li><a href="{{ url('/derecho_retiro/'.$sociedad->id.'/edit') }}" class="menu-cuentas">Derecho a Retiro</a></li> 
 	<li><a href="/estatutos_sociales/{{$sociedad->id}}" class="menu-cuentas">Estatuto Sociales</a></li>
 	<li><a href="/autorizacion_sectores/{{$sociedad->id}}" class="menu-cuentas">{{str_limit('Autorizaciones sectoriales', $limit = 25, $end = '...') }}</a></li>
-
-	<!--<li><a href="/form_inspectores_cuenta/" class="menu-cuentas">Inspectores de Cuenta</a></li>
-	<li><a href="/formas_disolucion/form_disolucion_liq_haber_social/" class="menu-cuentas">{{-- str_limit('Forma de disolución y Liq. haber social', $limit = 25, $end = '...') }}</a></li>
-	<li><a href="/formas_disolucion/form_conflicto_accionistas/" class="menu-cuentas">{{ str_limit('Forma de resolución entre accionistas', $limit = 25, $end = '...') --}}</a></li>
-	<li><a href="/pactos_especiales/" class="menu-cuentas">Otros Pactos Especiales</a></li>
-	<li><a href="/junta_accionistas/form_junta_accionista/" class="menu-cuentas">Junta de Accionistas</a></li>-->
+	<li><a href="{{ url('/forma_resolucion_conflictos/'.$sociedad->id.'/edit') }}" class="menu-cuentas">{{ str_limit('Forma de resolución entre accionistas', $limit = 25, $end = '...') }}</a></li>
+	<li><a href="{{ url('/otros_pactos_especiales/'.$sociedad->id.'/edit') }}" class="menu-cuentas">Otros Pactos Especiales</a></li>
+	<li><a href="{{ url('/junta_accionistas/'.$sociedad->id.'/edit') }}" class="menu-cuentas">Junta Accionistas</a></li>

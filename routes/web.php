@@ -187,9 +187,21 @@ Route::resource('registro_accionistas', 'RegistroAccionistaController');
 Route::post('/derecho_retiro/{id}','DerechoRetiroController@update');
 Route::resource('derecho_retiro', 'DerechoRetiroController');
 
+//Rutas Forma de resolución de conflictos
+Route::post('forma_resolucion_conflictos/{id}','FormaResolucionConflictosController@update');
+Route::resource('forma_resolucion_conflictos', 'FormaResolucionConflictosController');
+
 //Rutas Forma de disolución y liquidacion del haber
 Route::get('forma_disolucion_liquidacion/{id}','FormaDisolucionLiquidacionController@index');
 Route::resource('forma_disolucion_liquidacion', 'FormaDisolucionLiquidacionController');
+
+//Rutas Otros pactos especiales
+Route::post('otros_pactos_especiales/{id}','OtrosPactosEspecialesController@update');
+Route::resource('otros_pactos_especiales', 'OtrosPactosEspecialesController');
+
+//Rutas Otros pactos especiales
+Route::post('junta_accionistas/{id}','JuntaAccionistaController@update');
+Route::resource('junta_accionistas', 'JuntaAccionistaController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

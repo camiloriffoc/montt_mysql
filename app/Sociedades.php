@@ -105,4 +105,19 @@ class Sociedades extends Model
         return $this->hasOne('App\FormaDisolucionLiquidacion','sociedad_id');
     }
 
+    public function formaResolucionConflicto(){
+        
+        return $this->hasOne('App\FormaResolucionConflicto','sociedad_id');
+    }
+
+    public function otrosPactosEspeciales(){
+        
+        return $this->hasOne('App\OtrosPactosEspeciales','sociedad_id');
+    }
+
+    public function juntaAccionista(){
+        
+        return $this->hasOne('App\JuntaAccionista','sociedad_id');
+    }
+
 }

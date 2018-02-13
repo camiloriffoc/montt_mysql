@@ -6,7 +6,7 @@
 	<input type="hidden" name="sociedad_id" value="{{$sociedad->id}}" >
 	<div class="form-group col-sm-6">
 		<label>Adjunto:</label>
-		<input type="file" class="form-control" accept='application/pdf' name="forma_disolucion_liquidacion_adjunto" value="{{ $forma_disolucion_liquidacion->forma_disolucion_liquidacion_adjunto or ''}}">
+		<input type="file" class="form-control" accept='application/pdf' name="forma_disolucion_liquidacion_adjunto" value="{{ $forma_disolucion_liquidacion->forma_disolucion_liquidacion_adjunto or ''}}" required="true">
 	</div>
 	<div class="form-group col-sm-6">
 		@if(isset($forma_disolucion_liquidacion->forma_disolucion_liquidacion_adjunto))

@@ -28,4 +28,3 @@
     </tr>
 </tfoot>
 </table>
-<script src="{{ asset('js/registro_accionista.js') }}"></script>

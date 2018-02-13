@@ -6,7 +6,7 @@
 	<input type="hidden" name="sociedad_id" value="{{$sociedad->id}}" >
 	<div class="form-group col-sm-6">
 		<label>Adjunto:</label>
-		<input type="file" class="form-control" accept='application/pdf' name="registro_accionista_adjunto" value="{{ $registro_accionista_adjunto->registro_accionista_adjunto or ''}}">
+		<input type="file" class="form-control" accept='application/pdf' name="registro_accionista_adjunto" value="{{ $registro_accionista_adjunto->registro_accionista_adjunto or ''}}" required="true">
 	</div>
 	<div class="form-group col-sm-6">
 		@if(isset($registro_accionista_adjunto->registro_accionista_adjunto))

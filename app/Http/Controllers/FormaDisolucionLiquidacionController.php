@@ -57,16 +57,18 @@ class FormaDisolucionLiquidacionController extends Controller
             $this->getSociedad($id);
             $sociedad = Session::get('sociedad');
 
-
-            //Obtenemos el File Input
-            $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
-            $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
-
             ////Método para guardar en al Base de Datos
             $registro = FormaDisolucionLiquidacion::create($request->all());
-            $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
-            $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
-            
+
+            //Preguntamos si existe el file input
+            if($file = $request->hasFile('forma_disolucion_liquidacion_adjunto')){
+                //Obtenemos el File Input
+                $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
+                $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
+                $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
+                $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
+            }
+
             $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
             $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
 
