@@ -187,6 +187,10 @@ Route::resource('registro_accionistas', 'RegistroAccionistaController');
 Route::post('/derecho_retiro/{id}','DerechoRetiroController@update');
 Route::resource('derecho_retiro', 'DerechoRetiroController');
 
+//Rutas Forma de disolución y liquidacion del haber
+Route::get('forma_disolucion_liquidacion/{id}','FormaDisolucionLiquidacionController@index');
+Route::resource('forma_disolucion_liquidacion', 'FormaDisolucionLiquidacionController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 });

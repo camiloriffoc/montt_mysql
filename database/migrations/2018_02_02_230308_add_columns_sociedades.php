@@ -52,6 +52,7 @@ class AddColumnsSociedades extends Migration
             $table->string('comercial_matriz_codigo_postal')->nullable();
 
             $table->string('patente_municipal_exenta_pago')->nullable();
+            $table->string('patente_municipal_enrolado_patente')->nullable();
             $table->string('patente_municipal_comuna')->nullable();
             $table->string('patente_municipal_ultima_pagada')->nullable();
             $table->string('patente_municipal_registra_impaga')->nullable();
@@ -85,68 +86,6 @@ class AddColumnsSociedades extends Migration
      */
     public function down()
     {
-          Schema::table('sociedades', function($table) {
 
-            $table->dropColumn('comercial_calle');
-            $table->dropColumn('comercial_numero');
-            $table->dropColumn('comercial_piso_oficina');
-            $table->dropColumn('comercial_comuna');
-            $table->dropColumn('comercial_ciudad');
-            $table->dropColumn('comercial_region');
-            $table->dropColumn('comercial_estado');
-            $table->dropColumn('comercial_pais');
-            $table->dropColumn('comercial_codigo_postal');
-
-            $table->dropColumn('contacto_nombre');
-            $table->dropColumn('contacto_telefono');
-            $table->dropColumn('contacto_email');
-            $table->dropColumn('contacto_celular');
-            $table->dropColumn('contacto_skype');
-
-
-            $table->dropColumn('tributario_calle');
-            $table->dropColumn('tributario_numero');
-            $table->dropColumn('tributario_piso_oficina');
-            $table->dropColumn('tributario_comuna');
-            $table->dropColumn('tributario_ciudad');
-            $table->dropColumn('tributario_region');
-            $table->dropColumn('tributario_estado');
-            $table->dropColumn('tributario_pais');
-            $table->dropColumn('tributario_codigo_postal');
-
-            $table->dropColumn('comercial_matriz_calle');
-            $table->dropColumn('comercial_matriz_numero');
-            $table->dropColumn('comercial_matriz_piso_oficina');
-            $table->dropColumn('comercial_matriz_comuna');
-            $table->dropColumn('comercial_matriz_ciudad');
-            $table->dropColumn('comercial_matriz_region');
-            $table->dropColumn('comercial_matriz_estado');
-            $table->dropColumn('comercial_matriz_pais');
-            $table->dropColumn('comercial_matriz_codigo_postal');
-
-            $table->dropColumn('patente_municipal_exenta_pago');
-            $table->dropColumn('patente_municipal_comuna');
-            $table->dropColumn('patente_municipal_ultima_pagada');
-            $table->dropColumn('patente_municipal_ultima_pagada');
-            $table->dropColumn('patente_municipal_registra_impaga');
-
-            $table->dropColumn('contador_nombre');
-            $table->dropColumn('contador_rut');
-            $table->dropColumn('contador_domicilio_calle');
-            $table->dropColumn('contador_domicilio_numero');
-            $table->dropColumn('contador_domicilio_piso');
-            $table->dropColumn('contador_domicilio_comuna');
-            $table->dropColumn('contador_domicilio_ciudad');
-            $table->dropColumn('contador_domicilio_region');
-            $table->dropColumn('contador_domicilio_estado');
-            $table->dropColumn('contador_domicilio_pais');
-            $table->dropColumn('contador_domicilio_codigo');
-            $table->dropColumn('contador_domicilio_profesion');
-            $table->dropColumn('contador_domicilio_nacionalidad');
-            $table->dropColumn('contador_domicilio_email');
-            $table->dropColumn('contador_domicilio_skype');
-            $table->dropColumn('contador_domicilio_telefono');
-            $table->dropColumn('contador_domicilio_celular');
-        });    
     }
 }

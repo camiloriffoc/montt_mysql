@@ -100,4 +100,9 @@ class Sociedades extends Model
         return $this->hasOne('App\DerechoRetiro','sociedad_id');
     }
 
+    public function formaDisolucionLiquidacion(){
+        
+        return $this->hasOne('App\FormaDisolucionLiquidacion','sociedad_id');
+    }
+
 }

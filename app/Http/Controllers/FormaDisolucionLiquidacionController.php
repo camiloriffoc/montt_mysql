@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\DB;
-use App\Accionista;
 use App\Sociedades;
-use App\RegistroAccionista;
+use App\FormaDisolucionLiquidacion;
 use Session;
 
-class RegistroAccionistaController extends Controller
+class FormaDisolucionLiquidacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,12 +21,9 @@ class RegistroAccionistaController extends Controller
         //Asigno a la session la sociedad correspondiente
         $this->getSociedad($id);
         $sociedad = Session::get('sociedad');
-        //obtendo todos los accionistas*********
-        $registro_accionistas = Sociedades::find($id)->accionistas()->orderBy('accionistas.id','DESC')->get();
-        $registro_accionista_adjunto = $sociedad->registroAccionista;
 
-
-        $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
+        $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
+        $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
 
         if($request->ajax()){
             $sections = $view->renderSections();
@@ -64,23 +59,16 @@ class RegistroAccionistaController extends Controller
 
 
             //Obtenemos el File Input
-            $registro_accionista_adjunto = $request->file('registro_accionista_adjunto');
-            $nombre_registro_accionista_adjunto = uniqid().'_'.str_replace(" ", "_", $registro_accionista_adjunto->getClientOriginalName());
+            $forma_disolucion_liquidacion_adjunto = $request->file('forma_disolucion_liquidacion_adjunto');
+            $nombre_forma_disolucion_liquidacion_adjunto = uniqid().'_'.str_replace(" ", "_", $forma_disolucion_liquidacion_adjunto->getClientOriginalName());
 
-            ////Método para guardar en al Base de Datos  un giro
-            $registro = RegistroAccionista::create($request->all());
-            $registro->update(['registro_accionista_adjunto'=>$nombre_registro_accionista_adjunto]);
-            $registro_accionista_adjunto->move('uploads/registro_accionistas', $nombre_registro_accionista_adjunto);
-
-            //obtendo todos los accionistas*********
-            $registro_accionistas = $sociedad->accionistas()->orderBy('accionistas.id','DESC')->get();
-            $registro_accionista_adjunto = $sociedad->registroAccionista;
-
-            if(isset($registro_accionistas)){
-                $registro_accionistas = [];
-            }
+            ////Método para guardar en al Base de Datos
+            $registro = FormaDisolucionLiquidacion::create($request->all());
+            $registro->update(['forma_disolucion_liquidacion_adjunto'=>$nombre_forma_disolucion_liquidacion_adjunto]);
+            $forma_disolucion_liquidacion_adjunto->move('uploads/forma_disolucion_liquidacion', $nombre_forma_disolucion_liquidacion_adjunto);
             
-            $view = \View::make('registroAccionista.index')->with('registro_accionistas',$registro_accionistas)->with('sociedad',$sociedad)->with('registro_accionista_adjunto',$registro_accionista_adjunto);
+            $forma_disolucion_liquidacion = $sociedad->formaDisolucionLiquidacion;
+            $view = \View::make('formaDisolucionLiquidacion.index')->with('forma_disolucion_liquidacion',$forma_disolucion_liquidacion)->with('sociedad',$sociedad);
 
             
             $sections = $view->renderSections();
