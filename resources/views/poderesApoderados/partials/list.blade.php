@@ -49,8 +49,8 @@
             @else
             <td> </td>
             @endif
-            
-            <td>{{ $value['Revocación informada a Bancos'] or '' }}</td>
+            00
+            <td>{{ $poder->revocacion_informada_bancos}}</td>
             <td>
               <a href="/poderes_apoderados/edit/{{ $poder->id}}" class="menu-cuentas btn btn-info btn-xs ">
                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
