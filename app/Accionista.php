@@ -38,4 +38,10 @@ class Accionista extends Model
         
         return $this->hasMany('App\SubPactosAccionistas','accionista_id');
     }
+
+    //Relacion 1 : n (accionista muchos folios)
+    public function folioRegistroAccionista(){
+        
+        return $this->hasMany('App\FolioRegistroAccionista','accionista_id');
+    }
 }

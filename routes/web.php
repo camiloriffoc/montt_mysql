@@ -102,6 +102,11 @@ Route::get('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaCont
 Route::post('porcentajeAccionesAccionista/{id}','PorcentajeAccionesAccionistaController@destroy');
 Route::resource('porcentajeAccionesAccionista', 'PorcentajeAccionesAccionistaController');
 
+//Rutas Folio Registro de Accionistas
+Route::get('folioRegistroAccionista/{id}','FolioRegistroAccionistaController@index');
+Route::post('folioRegistroAccionista/{id}','FolioRegistroAccionistaController@destroy');
+Route::resource('folioRegistroAccionista', 'FolioRegistroAccionistaController');
+
 //Rutas titulos de acciones
 Route::get('tituloAcciones/{id}','TituloAccionesController@index');
 Route::post('tituloAcciones/{id}','TituloAccionesController@destroy');
