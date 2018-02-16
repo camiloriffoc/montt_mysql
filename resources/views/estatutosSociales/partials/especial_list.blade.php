@@ -25,8 +25,8 @@
 					<td>{{$especial->informado_sii}}</td>
 					<td>{{$especial->informado_banco}}</td>
 					<td>{{$especial->observaciones}}</td>
-					<td>adjunto texto refundido</td>
-					<td>archivo adjunto</td>
+					<td><p><a target="_blank" href="{{asset('uploads/estatutos/'.$especial->escritura_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p></td>
+					<td><p><a target="_blank" href="{{asset('uploads/estatutos/'.$especial->texto_refundido_file)}}"><span style="font-size: 22px;" class="glyphicon glyphicon-file" aria-hidden="true"></span></a></p></td>
 					<td>
 		              <a href="/estatutos_sociales/especiales/edit/{{$especial->id}}" class="menu-cuentas btn btn-info btn-xs ">
 		                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
