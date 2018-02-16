@@ -31,7 +31,7 @@
 	<input type="text" class="form-control" name="saldo_acciones" value="{{ $folio_registro_accionista->saldo_acciones or '' }}">
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
 	<label>Instrumento de suscripción o Transferencia:</label>
 	<input type="file" class="form-control" accept='application/pdf' name="instrumento_suscripcion_adjunto" value="{{ $folio_registro_accionista->instrumento_suscripcion_adjunto or ''}}">
 	<div class="form-group col-sm-6">
@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
 	<label>No. Título Inutilizado:</label>
 	<input type="file" class="form-control" accept='application/pdf' name="numero_titulo_inutilizable_adjunto" value="{{ $folio_registro_accionista->numero_titulo_inutilizable_adjunto or ''}}">
 	<div class="form-group col-sm-6">
@@ -59,7 +59,7 @@
 	</div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
 	<label>Nuevo título comprador:</label>
 	<input type="file" class="form-control" accept='application/pdf' name="nuevo_titulo_comprador_adjunto" value="{{ $folio_registro_accionista->nuevo_titulo_comprador_adjunto or ''}}">
 	<div class="form-group col-sm-6">
@@ -73,7 +73,7 @@
 	</div>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
 	<label>Nuevo título Vendedor:</label>
 	<input type="file" class="form-control" accept='application/pdf' name="nuevo_titulo_vendedor_adjunto" value="{{ $folio_registro_accionista->nuevo_titulo_vendedor_adjunto or ''}}">
 	<div class="form-group col-sm-6">
@@ -138,7 +138,7 @@
 			<input type="date" class="form-control" name="fecha_usufructo" value="{{ $folio_registro_accionista->fecha_usufructo or '' }}">
 		</div>
 
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-12">
 			<label>Fecha Usufructo (Adjunto):</label>
 			<input type="file" class="form-control" accept='application/pdf' name="fecha_usufructo_adjunto" value="{{ $folio_registro_accionista->fecha_usufructo_adjunto or ''}}">
 			<div class="form-group col-sm-6">
@@ -177,7 +177,7 @@
 			<label>Fecha Prenda:</label>
 			<input type="date" class="form-control" name="fecha_prenda" value="{{ $folio_registro_accionista->fecha_prenda or '' }}">
 		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-12">
 			<label>Fecha Prenda (Adjunto):</label>
 			<input type="file" class="form-control" accept='application/pdf' name="fecha_prenda_adjunto" value="{{ $folio_registro_accionista->fecha_prenda_adjunto or ''}}">
 			<div class="form-group col-sm-6">
@@ -220,7 +220,7 @@
 			<label>Fecha Embargo o medida precautoria:</label>
 			<input type="date" class="form-control" name="fecha_embargo" value="{{ $folio_registro_accionista->fecha_embargo or '' }}">
 		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-12">
 			<label>Fecha Embargo o medida precautoria (Adjunto):</label>
 			<input type="file" class="form-control" accept='application/pdf' name="fecha_embargo_adjunto" value="{{ $folio_registro_accionista->fecha_embargo_adjunto or ''}}">
 			<div class="form-group col-sm-6">

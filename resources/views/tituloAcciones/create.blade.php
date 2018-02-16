@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<h1>Creación de Porcentaje de acciones de Accionista: {{ $accionista->razon_social or $accionista->nombre }}</h1>
+		<h1>Creación de Titulo de acciones: {{ $accionista->razon_social or $accionista->nombre }}</h1>
 	</div>
 </div>
 
